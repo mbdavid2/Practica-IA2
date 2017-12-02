@@ -1,4 +1,4 @@
-; Sat Dec 02 12:09:43 CET 2017
+; Sat Dec 02 14:00:26 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -26,6 +26,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Disponible24h
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Superficie
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -34,8 +39,22 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Estudios
+		(type SYMBOL)
+		(allowed-values Secundaria Primaria Universidad)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class4
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot N_Ba%C3%B1os
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Publico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot UbicacionX
@@ -51,7 +70,40 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot TipoTransp
+		(type SYMBOL)
+		(allowed-values Bus Metro Tren)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Precio
+		(type SYMBOL)
+		(allowed-values Caro Barato Medio)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Tipo
+		(type SYMBOL)
+		(allowed-values Hospital CentroDeDia Farmacia)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot MascotasPermitidas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot contiene
+		(type INSTANCE)
+;+		(allowed-classes Vivienda)
+		(create-accessor read-write))
+	(multislot formada_por
+		(type INSTANCE)
+;+		(allowed-classes Barrio)
+		(create-accessor read-write))
 	(single-slot Aire_Acondicionado
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoMinusvalidos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -76,7 +128,7 @@
 		(create-accessor read-write))
 	(multislot tiene
 		(type INSTANCE)
-;+		(allowed-classes Vivienda)
+;+		(allowed-classes Dormitorio)
 		(create-accessor read-write))
 	(single-slot UbicacionY
 		(type INTEGER)
@@ -84,6 +136,11 @@
 		(create-accessor read-write))
 	(single-slot Superficie_Total
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Horario
+		(type SYMBOL)
+		(allowed-values Diurno Nocturno 24h)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Ascensor
@@ -95,6 +152,25 @@
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoOcio
+		(type SYMBOL)
+		(allowed-values Cine Teatro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoComercio
+		(type SYMBOL)
+		(allowed-values Alimentacion Electrodomesticos Otros)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Parking_cerca
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ofrece
+		(type INSTANCE)
+;+		(allowed-classes Servicio)
 		(create-accessor read-write))
 	(single-slot Calefaccion
 		(type SYMBOL)
@@ -146,6 +222,10 @@
 	(single-slot Dorm_Dobles
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot tiene
+		(type INSTANCE)
+;+		(allowed-classes Dormitorio)
 		(create-accessor read-write))
 	(single-slot Aire_Acondicionado
 		(type SYMBOL)
@@ -207,7 +287,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot tiene
+	(multislot ofrece
+		(type INSTANCE)
+;+		(allowed-classes Servicio)
+		(create-accessor read-write))
+	(multislot contiene
 		(type INSTANCE)
 ;+		(allowed-classes Vivienda)
 		(create-accessor read-write)))
@@ -227,5 +311,124 @@
 		(create-accessor read-write))
 	(single-slot Superficie
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Poblacion
+	(is-a USER)
+	(role concrete)
+	(multislot formada_por
+		(type INSTANCE)
+;+		(allowed-classes Barrio)
+		(create-accessor read-write)))
+
+(defclass Servicio
+	(is-a USER)
+	(role concrete)
+	(single-slot UbicacionX
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot UbicacionY
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Parking_cerca
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Salud
+	(is-a Servicio)
+	(role concrete)
+	(single-slot Tipo
+		(type SYMBOL)
+		(allowed-values Hospital CentroDeDia Farmacia)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Disponible24h
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Ocio
+	(is-a Servicio)
+	(role concrete)
+	(single-slot Horario
+		(type SYMBOL)
+		(allowed-values Diurno Nocturno 24h)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Precio
+		(type SYMBOL)
+		(allowed-values Caro Barato Medio)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoOcio
+		(type SYMBOL)
+		(allowed-values Cine Teatro)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Educacion
+	(is-a Servicio)
+	(role concrete)
+	(single-slot Precio
+		(type SYMBOL)
+		(allowed-values Caro Barato Medio)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estudios
+		(type SYMBOL)
+		(allowed-values Secundaria Primaria Universidad)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Publico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ZonaVerde
+	(is-a Servicio)
+	(role concrete)
+	(single-slot MascotasPermitidas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Comercio
+	(is-a Servicio)
+	(role concrete)
+	(single-slot Horario
+		(type SYMBOL)
+		(allowed-values Diurno Nocturno 24h)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoComercio
+		(type SYMBOL)
+		(allowed-values Alimentacion Electrodomesticos Otros)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Transp_Publico
+	(is-a Servicio)
+	(role concrete)
+	(single-slot TipoTransp
+		(type SYMBOL)
+		(allowed-values Bus Metro Tren)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoMinusvalidos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Disponible24h
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

@@ -2,3 +2,5 @@ cd C:\Users\David\Google Drive\UNI\IA\_Practica\Practica-IA2\newspaper
 cd C:\Users\David\Google Drive\UNI\IA\_Practica\Practica-IA2
 
 dot -Tpng -O Ontologia.dot
+
+dot -Tpng -O newspaper.dot

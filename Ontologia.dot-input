@@ -1,0 +1,10 @@
+digraph "Ontologia" {
+
+"Duplex" [shape=box, label="Duplex", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Vivienda"->"Duplex" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Unifamiliar" [shape=box, label="Unifamiliar", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Vivienda"->"Unifamiliar" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Piso" [shape=box, label="Piso", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Vivienda"->"Piso" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Vivienda" [shape=box, label="Vivienda", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+}

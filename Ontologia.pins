@@ -1,7 +1,32 @@
-; Sat Dec 02 16:52:18 CET 2017
+; Sat Dec 02 17:48:21 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([Ontologia_Class0] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 2)
+	(Dorm_Dobles 1)
+	(Dorm_Simples 2)
+	(Estado nuevo)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Duplex1")
+	(Piscina TRUE)
+	(Superficie_Total 130)
+	(tiene
+		[Ontologia_Class20005]
+		[Ontologia_Class20006]
+		[Ontologia_Class20007])
+	(UbicacionX 200)
+	(UbicacionY 300))
+
+([Ontologia_Class1] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 12))
 
 ([Ontologia_Class10004] of  Comercio
 
@@ -56,13 +81,21 @@
 
 ([Ontologia_Class10010] of  Poblacion
 
-	(formada_por [Ontologia_Class10011])
-	(NombrePoblacion "PoblacionEjemplo"))
+	(formada_por
+		[Ontologia_Class10011]
+		[Ontologia_Class20020])
+	(NombrePoblacion "Barcelona"))
 
 ([Ontologia_Class10011] of  Barrio
 
-	(contiene [Ontologia_Class10012])
-	(NombreBarrio "BarrioEjemplo")
+	(contiene
+		[Ontologia_Class10012]
+		[Ontologia_Class10012]
+		[Ontologia_Class20008]
+		[Ontologia_Class20010]
+		[Ontologia_Class20012]
+		[Ontologia_Class20016])
+	(NombreBarrio "BarrioEjemplo (Sin Unifamiliar)")
 	(ofrece
 		[Ontologia_Class10004]
 		[Ontologia_Class10007]
@@ -86,7 +119,12 @@
 	(Piscina TRUE)
 	(Superficie_Total 60)
 	(Terraza TRUE)
-	(tiene [Ontologia_Class10013])
+	(tiene
+		[Ontologia_Class10013]
+		[Ontologia_Class1]
+		[Ontologia_Class2]
+		[Ontologia_Class3]
+		[Ontologia_Class20004])
 	(UbicacionX 34)
 	(UbicacionY 123))
 
@@ -94,3 +132,536 @@
 
 	(Simple TRUE)
 	(Superficie 5))
+
+([Ontologia_Class2] of  Dormitorio
+
+	(Balcon FALSE)
+	(Simple FALSE)
+	(Superficie 8))
+
+([Ontologia_Class20004] of  Dormitorio
+
+	(Balcon FALSE)
+	(Superficie 12))
+
+([Ontologia_Class20005] of  Dormitorio
+
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20006] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 7))
+
+([Ontologia_Class20007] of  Dormitorio
+
+	(Balcon FALSE)
+	(Superficie 10))
+
+([Ontologia_Class20008] of  Duplex
+
+	(Altura 30)
+	(Dorm_Dobles 0)
+	(Dorm_Simples 1)
+	(Estado nuevo)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "DuplexSinNada")
+	(Superficie_Total 30)
+	(tiene [Ontologia_Class20009])
+	(UbicacionX 35)
+	(UbicacionY 130))
+
+([Ontologia_Class20009] of  Dormitorio
+
+	(Superficie 10))
+
+([Ontologia_Class20010] of  Duplex
+
+	(Altura 30)
+	(Dorm_Dobles 1)
+	(Dorm_Simples 0)
+	(Estado nuevo)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "DuplexConTodo")
+	(Superficie_Total 30)
+	(tiene [Ontologia_Class20011])
+	(UbicacionX 30)
+	(UbicacionY 130))
+
+([Ontologia_Class20011] of  Dormitorio
+
+	(Simple FALSE)
+	(Superficie 10))
+
+([Ontologia_Class20012] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 40)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 2)
+	(Dorm_Simples 1)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "PisoTodo")
+	(Piscina TRUE)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20013]
+		[Ontologia_Class20014]
+		[Ontologia_Class20015])
+	(UbicacionX 31)
+	(UbicacionY 128))
+
+([Ontologia_Class20013] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20014] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20015] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20016] of  Piso
+
+	(Altura 40)
+	(Dorm_Dobles 2)
+	(Dorm_Simples 1)
+	(Estado nuevo)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "PisoSinNada")
+	(Superficie_Total 100)
+	(tiene
+		[Ontologia_Class20017]
+		[Ontologia_Class20018]
+		[Ontologia_Class20019])
+	(UbicacionX 30)
+	(UbicacionY 140))
+
+([Ontologia_Class20017] of  Dormitorio
+
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20018] of  Dormitorio
+
+	(Balcon FALSE)
+	(Simple FALSE)
+	(Superficie 12))
+
+([Ontologia_Class20019] of  Dormitorio
+
+	(Superficie 13))
+
+([Ontologia_Class20020] of  Barrio
+
+	(contiene
+		[Ontologia_Class20021]
+		[Ontologia_Class20025])
+	(NombreBarrio "BarrioEjemplo (solo monolocal)")
+	(ofrece
+		[Ontologia_Class20029]
+		[Ontologia_Class20030])
+	(Precio_General 1000))
+
+([Ontologia_Class20021] of  Unifamiliar
+
+	(Aire_Acondicionado TRUE)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 2)
+	(Dorm_Simples 1)
+	(Estado buen_estado)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "UnifamiliarConTodo")
+	(Piscina TRUE)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20022]
+		[Ontologia_Class20023]
+		[Ontologia_Class20024])
+	(UbicacionX 40)
+	(UbicacionY 179))
+
+([Ontologia_Class20022] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 12))
+
+([Ontologia_Class20023] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 8))
+
+([Ontologia_Class20024] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20025] of  Unifamiliar
+
+	(Dorm_Dobles 2)
+	(Dorm_Simples 1)
+	(Estado reformar)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "SinNada")
+	(Superficie_Total 100)
+	(tiene
+		[Ontologia_Class20026]
+		[Ontologia_Class20027]
+		[Ontologia_Class20028])
+	(UbicacionX 40)
+	(UbicacionY 180))
+
+([Ontologia_Class20026] of  Dormitorio
+
+	(Simple TRUE)
+	(Superficie 6))
+
+([Ontologia_Class20027] of  Dormitorio
+
+	(Balcon FALSE)
+	(Superficie 10))
+
+([Ontologia_Class20028] of  Dormitorio
+
+	(Superficie 11))
+
+([Ontologia_Class20029] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Carrefour")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 40)
+	(UbicacionY 175))
+
+([Ontologia_Class20030] of  Transp_Publico
+
+	(AptoMinusvalidos FALSE)
+	(Disponible24h FALSE)
+	(NombreServicio "MetroL1")
+	(Parking_cerca TRUE)
+	(TipoTransp Metro)
+	(UbicacionX 40)
+	(UbicacionY 185))
+
+([Ontologia_Class20031] of  Poblacion
+
+	(formada_por
+		[Ontologia_Class20032]
+		[Ontologia_Class20052])
+	(NombrePoblacion "Ciudad2"))
+
+([Ontologia_Class20032] of  Barrio
+
+	(contiene
+		[Ontologia_Class20033]
+		[Ontologia_Class20040]
+		[Ontologia_Class20044])
+	(NombreBarrio "BarrioCiudad2")
+	(ofrece
+		[Ontologia_Class20047]
+		[Ontologia_Class20048]
+		[Ontologia_Class20049]
+		[Ontologia_Class20050]
+		[Ontologia_Class20051])
+	(Precio_General 800))
+
+([Ontologia_Class20033] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 20)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 2)
+	(Dorm_Simples 3)
+	(Estado buen_estado)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "Ciudad2Duplex")
+	(Piscina TRUE)
+	(Superficie_Total 180)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20034]
+		[Ontologia_Class20035]
+		[Ontologia_Class20036]
+		[Ontologia_Class20037]
+		[Ontologia_Class20038]
+		[Ontologia_Class20039])
+	(UbicacionX 100)
+	(UbicacionY 200))
+
+([Ontologia_Class20034] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20035] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 8))
+
+([Ontologia_Class20036] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 7))
+
+([Ontologia_Class20037] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 13))
+
+([Ontologia_Class20038] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 15))
+
+([Ontologia_Class20039] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 12))
+
+([Ontologia_Class20040] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 10)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 1)
+	(Dorm_Simples 2)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 2)
+	(Piscina TRUE)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20041]
+		[Ontologia_Class20042]
+		[Ontologia_Class20043])
+	(UbicacionX 100)
+	(UbicacionY 190))
+
+([Ontologia_Class20041] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20042] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 8))
+
+([Ontologia_Class20043] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 15))
+
+([Ontologia_Class20044] of  Unifamiliar
+
+	(Aire_Acondicionado TRUE)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 1)
+	(Dorm_Simples 1)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 1)
+	(Piscina TRUE)
+	(Superficie_Total 70)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20045]
+		[Ontologia_Class20046])
+	(UbicacionX 110)
+	(UbicacionY 190))
+
+([Ontologia_Class20045] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 10))
+
+([Ontologia_Class20046] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple FALSE)
+	(Superficie 15))
+
+([Ontologia_Class20047] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Hospital 1")
+	(Parking_cerca TRUE)
+	(Tipo Hospital)
+	(UbicacionX 130)
+	(UbicacionY 178))
+
+([Ontologia_Class20048] of  Transp_Publico
+
+	(Disponible24h TRUE)
+	(NombreServicio "Bus40")
+	(Parking_cerca FALSE)
+	(TipoTransp Bus)
+	(UbicacionX 120)
+	(UbicacionY 180))
+
+([Ontologia_Class20049] of  Educacion
+
+	(Estudios Secundaria)
+	(NombreServicio "Escola1")
+	(Parking_cerca TRUE)
+	(Precio Barato)
+	(Publico TRUE)
+	(UbicacionX 95)
+	(UbicacionY 180))
+
+([Ontologia_Class20050] of  Ocio
+
+	(Horario Nocturno)
+	(NombreServicio "Cine1")
+	(Parking_cerca TRUE)
+	(Precio Barato)
+	(TipoOcio Cine)
+	(UbicacionX 120)
+	(UbicacionY 200))
+
+([Ontologia_Class20051] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parc1")
+	(Parking_cerca TRUE)
+	(UbicacionX 120)
+	(UbicacionY 190))
+
+([Ontologia_Class20052] of  Barrio
+
+	(contiene
+		[Ontologia_Class20053]
+		[Ontologia_Class20058])
+	(NombreBarrio "BarrioCaroCiudad2")
+	(Precio_General 1800))
+
+([Ontologia_Class20053] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 10)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 2)
+	(Dorm_Simples 1)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "ConTodoBarrioCaro")
+	(Piscina TRUE)
+	(Superficie_Total 120)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20054]
+		[Ontologia_Class20055]
+		[Ontologia_Class20056])
+	(UbicacionX 113)
+	(UbicacionY 196))
+
+([Ontologia_Class20054] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 12))
+
+([Ontologia_Class20055] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple FALSE)
+	(Superficie 20))
+
+([Ontologia_Class20056] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 21))
+
+([Ontologia_Class20057] of  Duplex
+)
+
+([Ontologia_Class20058] of  Unifamiliar
+
+	(Aire_Acondicionado TRUE)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 1)
+	(Dorm_Simples 3)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "UnifamiliarCaro")
+	(Piscina TRUE)
+	(Superficie_Total 170)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20059]
+		[Ontologia_Class20060]
+		[Ontologia_Class20061]
+		[Ontologia_Class20062])
+	(UbicacionX 130)
+	(UbicacionY 183))
+
+([Ontologia_Class20059] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 15))
+
+([Ontologia_Class20060] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 12))
+
+([Ontologia_Class20061] of  Dormitorio
+
+	(Balcon TRUE)
+	(Simple TRUE)
+	(Superficie 17))
+
+([Ontologia_Class20062] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 25))
+
+([Ontologia_Class3] of  Dormitorio
+
+	(Balcon TRUE)
+	(Superficie 10))

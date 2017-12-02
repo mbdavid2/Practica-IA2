@@ -1,4 +1,4 @@
-; Sat Dec 02 16:52:18 CET 2017
+; Sat Dec 02 17:48:21 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class40]
-		[Ontologia_ProjectKB_Class41]
-		[Ontologia_ProjectKB_Class42]))
+		[Ontologia_ProjectKB_Class10273]
+		[Ontologia_ProjectKB_Class10274]
+		[Ontologia_ProjectKB_Class10275]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,9 +66,6 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_532999_Class3] of  Map
-)
-
 ([KB_738170_Class0] of  String
 
 	(name "factory_class_name")
@@ -77,9 +74,9 @@
 ([KB_738170_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class43]
-		[Ontologia_ProjectKB_Class44]
-		[Ontologia_ProjectKB_Class45]))
+		[Ontologia_ProjectKB_Class10276]
+		[Ontologia_ProjectKB_Class10277]
+		[Ontologia_ProjectKB_Class10278]))
 
 ([KB_738170_Class10] of  Property_List
 )
@@ -497,41 +494,44 @@
 	(name "instances_file_name")
 	(string_value "Ontologia.pins"))
 
+([KB_796079_Class3] of  Map
+)
+
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class40] of  String
+([Ontologia_ProjectKB_Class10273] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ontologia_ProjectKB_Class41] of  String
+([Ontologia_ProjectKB_Class10274] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Ontologia_ProjectKB_Class42] of  String
+([Ontologia_ProjectKB_Class10275] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ontologia_ProjectKB_Class43] of  Map_Entry
+([Ontologia_ProjectKB_Class10276] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class44] of  Map_Entry
+([Ontologia_ProjectKB_Class10277] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class45] of  Map_Entry
+([Ontologia_ProjectKB_Class10278] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
@@ -620,11 +620,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
-		[PAL_FORM_WIDGET])
+		[PAL_FORM_WIDGET]
+		[INSTANCE_ANNOTATION_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

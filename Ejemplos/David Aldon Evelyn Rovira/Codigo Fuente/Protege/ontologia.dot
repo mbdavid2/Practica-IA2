@@ -1,0 +1,95 @@
+digraph ontologia {
+	node [label="\N"];
+	graph [bb="0,0,1640,2262"];
+	Obligatoria [label="{Obligatoria|{curso|Symbol|{Primero|Segundo|Tercero|Cuarto}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1159,93", rects="1072,127.5,1246,150.5 1072,35.5,1120,127.5 1120,35.5,1180,127.5 1180,104.5,1246,127.5 1180,81.5,1246,104.5 1180,58.5,1246,81.5 1180\
+,35.5,1246,58.5", width="2.4167", height="1.6111"];
+	AsignaturaFIB [label="{AsignaturaFIB|{idioma|Symbol*|{Castellano|Catalan|Ingles}}|{nivelCompetencia|Symbol|{N1|N2|N3}}|{horasLab|Float}|{proyecto|Boolean\
+}|{horasEstudio|Float}|{competencias|Symbol|{G1|G2|G3|G4|G5|G6|G7|G8|G9}}|{cuatrimestre|Symbol*|{Q1|Q2}}|{horasProb|String}|{\
+siglas|String}|{horasLabExterno|Float}|{horasTeo|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1210,526", rects="1105.5,790.5,1314.5,813.5 1105.5,721.5,1163.5,790.5 1163.5,721.5,1235.5,790.5 1235.5,767.5,1314.5,790.5 1235.5,744.5,1314.5,767.5\
+ 1235.5,721.5,1314.5,744.5 1105.5,652.5,1221.5,721.5 1221.5,652.5,1281.5,721.5 1281.5,698.5,1314.5,721.5 1281.5,675.5,1314.5,698.5\
+ 1281.5,652.5,1314.5,675.5 1105.5,629.5,1221.5,652.5 1221.5,629.5,1314.5,652.5 1105.5,606.5,1212.5,629.5 1212.5,606.5,1314.5,\
+629.5 1105.5,583.5,1232.5,606.5 1232.5,583.5,1314.5,606.5 1105.5,376.5,1205.5,583.5 1205.5,376.5,1272.5,583.5 1272.5,560.5,1314.5\
+,583.5 1272.5,537.5,1314.5,560.5 1272.5,514.5,1314.5,537.5 1272.5,491.5,1314.5,514.5 1272.5,468.5,1314.5,491.5 1272.5,445.5,1314.5\
+,468.5 1272.5,422.5,1314.5,445.5 1272.5,399.5,1314.5,422.5 1272.5,376.5,1314.5,399.5 1105.5,330.5,1197.5,376.5 1197.5,330.5,1272.5\
+,376.5 1272.5,353.5,1314.5,376.5 1272.5,330.5,1314.5,353.5 1105.5,307.5,1222.5,330.5 1222.5,307.5,1314.5,330.5 1105.5,284.5\
+,1208.5,307.5 1208.5,284.5,1314.5,307.5 1105.5,261.5,1243.5,284.5 1243.5,261.5,1314.5,284.5 1105.5,238.5,1222.5,261.5 1222.5,238.5\
+,1314.5,261.5", width="2.8958", height=8];
+	Especializado [label="{Especializado|{temasAfines|Instance*|{Especializado}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="641,93", rects="517,93,765,116 517,70,602,93 602,70,672,93 672,70,765,93", width="3.4444", height="0.65278"];
+	Tema [label="{Tema|{nombreTema|String}|{asignaturas|Instance*|{Asignatura}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="975,526", rects="863,537.5,1087,560.5 863,514.5,995,537.5 995,514.5,1087,537.5 863,491.5,941,514.5 941,491.5,1011,514.5 1011,491.5,1087,514.5", width="3.1111", height="0.97222"];
+	NoInformatico [label=NoInformatico, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="927,93", width="1.3681", height="0.5"];
+	RestriccionHorario [label="{RestriccionHorario|{prefHorario|Symbol|{Manana|Tarde|Indiferente}}|{trabaja|Symbol|{Manana|Tarde|Ninguna}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="109,1606", rects="0,1663.5,218,1686.5 0,1594.5,82,1663.5 82,1594.5,142,1663.5 142,1640.5,218,1663.5 142,1617.5,218,1640.5 142,1594.5,218,1617.5 0,\
+1525.5,67,1594.5 67,1525.5,141,1594.5 141,1571.5,218,1594.5 141,1548.5,218,1571.5 141,1525.5,218,1548.5", width="3.0278", height="2.25"];
+	Restriccion [label="{Restriccion|{importante|Boolean}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="666,1989", rects="597,1989,735,2012 597,1966,673,1989 673,1966,735,1989", width="1.9167", height="0.65278"];
+	Asignatura [label="{Asignatura|{distribucionLab|Float}|{distribucionProb|Float}|{promedioAprobados|Float}|{distribucionTeo|Float}|{corequisitos|Instance\
+*|{Asignatura}}|{temas|Instance*|{Tema}}|{prerequisitos|Instance*|{Asignatura}}|{nombreAsig|String}|{creditosTotales|Float}\
+|{horario|Symbol|{Manana|Tarde|Ambos}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1114,1016", rects="996.5,1142.5,1231.5,1165.5 996.5,1119.5,1143.5,1142.5 1143.5,1119.5,1231.5,1142.5 996.5,1096.5,1146.5,1119.5 1146.5,1096.5,1231.5\
+,1119.5 996.5,1073.5,1158.5,1096.5 1158.5,1073.5,1231.5,1096.5 996.5,1050.5,1143.5,1073.5 1143.5,1050.5,1231.5,1073.5 996.5,1027.5\
+,1082.5,1050.5 1082.5,1027.5,1153.5,1050.5 1153.5,1027.5,1231.5,1050.5 996.5,1004.5,1067.5,1027.5 1067.5,1004.5,1160.5,1027.5\
+ 1160.5,1004.5,1231.5,1027.5 996.5,981.5,1085.5,1004.5 1085.5,981.5,1155.5,1004.5 1155.5,981.5,1231.5,1004.5 996.5,958.5,1131.5,\
+981.5 1131.5,958.5,1231.5,981.5 996.5,935.5,1142.5,958.5 1142.5,935.5,1231.5,958.5 996.5,866.5,1071.5,935.5 1071.5,866.5,1151.5,\
+935.5 1151.5,912.5,1231.5,935.5 1151.5,889.5,1231.5,912.5 1151.5,866.5,1231.5,889.5", width="3.2569", height="4.1667"];
+	Estudiante [label="{Estudiante|{preferencias|Instance*|{Restriccion}}|{recomendaciones|Instance*|{Recomendacion}}|{DNI|String}|{nombre|String}|{expediente\
+|Instance|{ExpedienteAcademico}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1101,2192", rects="955.5,2238,1246.5,2261 955.5,2215,1058.5,2238 1058.5,2215,1147.5,2238 1147.5,2215,1246.5,2238 955.5,2192,1069.5,2215 1069.5,2192\
+,1139.5,2215 1139.5,2192,1246.5,2215 955.5,2169,1096.5,2192 1096.5,2169,1246.5,2192 955.5,2146,1105.5,2169 1105.5,2146,1246.5,2169\
+ 955.5,2123,1034.5,2146 1034.5,2123,1100.5,2146 1100.5,2123,1246.5,2146", width="4.0347", height="1.9306"];
+	Recomendacion [label="{Recomendacion|{justificacionU|String*}|{recomendacion|Instance|{Asignatura}}|{justificacionS|String*}|{gradoRecomendacion|Integer\
+}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1037,1832", rects="916.5,1866.5,1157.5,1889.5 916.5,1843.5,1055.5,1866.5 1055.5,1843.5,1157.5,1866.5 916.5,1820.5,1018.5,1843.5 1018.5,1820.5,1081.5\
+,1843.5 1081.5,1820.5,1157.5,1843.5 916.5,1797.5,1054.5,1820.5 1054.5,1797.5,1157.5,1820.5 916.5,1774.5,1079.5,1797.5 1079.5,1774.5\
+,1157.5,1797.5", width="3.3403", height="1.6111"];
+	ExpedienteAcademico [label="{ExpedienteAcademico|{faltanECTSOblig|Float}|{ultimoCuatrimestre|Instance|{MatriculaCuatrimestre}}|{faltanECTSEsp|Float}|{cuatrimestres\
+|Instance*|{MatriculaCuatrimestre}}|{estudiante|Instance|{Estudiante}}|{faltanECTSOpt|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1248,1989", rects="1086,2046.5,1410,2069.5 1086,2023.5,1282,2046.5 1282,2023.5,1410,2046.5 1086,2000.5,1208,2023.5 1208,2000.5,1271,2023.5 1271,2000.5\
+,1410,2023.5 1086,1977.5,1277,2000.5 1277,1977.5,1410,2000.5 1086,1954.5,1184,1977.5 1184,1954.5,1262,1977.5 1262,1954.5,1410\
+,1977.5 1086,1931.5,1196,1954.5 1196,1931.5,1297,1954.5 1297,1931.5,1410,1954.5 1086,1908.5,1277,1931.5 1277,1908.5,1410,1931.5", width="4.5", height="2.25"];
+	Convocatoria [label="{Convocatoria|{idiomaConvocatoria|Symbol|{Castellano|Catalan|Ingles}}|{asignatura|Instance|{Asignatura}}|{tipoHorario|Symbol|{Manana\
+|Tarde}}|{calificacion|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1234,1311", rects="1102,1380,1366,1403 1102,1311,1232,1380 1232,1311,1292,1380 1292,1357,1366,1380 1292,1334,1366,1357 1292,1311,1366,1334 1102,1288\
+,1191,1311 1191,1288,1272,1311 1272,1288,1366,1311 1102,1242,1204,1288 1204,1242,1285,1288 1285,1265,1366,1288 1285,1242,1366,1265\
+ 1102,1219,1251,1242 1251,1219,1366,1242", width="3.6667", height="2.5694"];
+	General [label=General, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1024,93", width="0.8125", height="0.5"];
+	RestriccionCalidad [label="{RestriccionCalidad|{completarEspecialidad|Symbol|{Mucho|Poco|Indiferente}}|{asigProyecto|Boolean}|{dificultad|Symbol|{Facil|Dificil\
+|Cualquiera}}|{asigIngles|Boolean}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="376,1606", rects="236.5,1686.5,515.5,1709.5 236.5,1617.5,379.5,1686.5 379.5,1617.5,439.5,1686.5 439.5,1663.5,515.5,1686.5 439.5,1640.5,515.5,1663.5\
+ 439.5,1617.5,515.5,1640.5 236.5,1594.5,389.5,1617.5 389.5,1594.5,515.5,1617.5 236.5,1525.5,329.5,1594.5 329.5,1525.5,414.5,1594.5\
+ 414.5,1571.5,515.5,1594.5 414.5,1548.5,515.5,1571.5 414.5,1525.5,515.5,1548.5 236.5,1502.5,380.5,1525.5 380.5,1502.5,515.5,1525.5", width="3.8681", height="2.8889"];
+	RestriccionMultievaluada [label="{RestriccionMultievaluada|{temasNoInformaticos|String*}|{competenciasPrefe|Symbol*|{Indiferente|G1|G2|G3|G4|G5|G6|G7|G8|G9}}|{temasInteres\
+|String*}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="666,1606", rects="533.5,1732.5,798.5,1755.5 533.5,1709.5,706.5,1732.5 706.5,1709.5,798.5,1732.5 533.5,1479.5,655.5,1709.5 655.5,1479.5,722.5,1709.5\
+ 722.5,1686.5,798.5,1709.5 722.5,1663.5,798.5,1686.5 722.5,1640.5,798.5,1663.5 722.5,1617.5,798.5,1640.5 722.5,1594.5,798.5,1617.5\
+ 722.5,1571.5,798.5,1594.5 722.5,1548.5,798.5,1571.5 722.5,1525.5,798.5,1548.5 722.5,1502.5,798.5,1525.5 722.5,1479.5,798.5,1502.5\
+ 533.5,1456.5,680.5,1479.5 680.5,1456.5,798.5,1479.5", width="3.6736", height="4.1667"];
+	Optativa [label=Optativa, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1296,93", width="0.88889", height="0.5"];
+	MatriculaCuatrimestre [label="{MatriculaCuatrimestre|{tipoCuatri|Symbol|{OtonoQ1|PrimaveraQ2}}|{fechaCurso|String}|{convocatorias|Instance*|{Convocatoria}}|{expedienteAlumno\
+|Instance|{ExpedienteAcademico}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1269,1606", rects="1106.5,1652,1431.5,1675 1106.5,1606,1212.5,1652 1212.5,1606,1307.5,1652 1307.5,1629,1431.5,1652 1307.5,1606,1431.5,1629 1106.5,1583\
+,1284.5,1606 1284.5,1583,1431.5,1606 1106.5,1560,1223.5,1583 1223.5,1560,1316.5,1583 1316.5,1560,1431.5,1583 1106.5,1537,1226.5\
+,1560 1226.5,1537,1289.5,1560 1289.5,1537,1431.5,1560", width="4.5069", height="1.9306"];
+	ECTSLibreEleccion [label="{ECTSLibreEleccion|{presencial|Boolean}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1400,526", rects="1333,526,1467,549 1333,503,1405,526 1405,503,1467,526", width="1.8611", height="0.65278"];
+	RestriccionCantidad [label="{RestriccionCantidad|{numMaxAsig|Integer}|{numHorasDedicadas|Integer}|{numHorasLabs|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="911,1606", rects="817,1629,1005,1652 817,1606,929,1629 929,1606,1005,1629 817,1583,950,1606 950,1583,1005,1606 817,1560,934,1583 934,1560,1005,1583", width="2.6111", height="1.2917"];
+	Especialidad [label="{Especialidad|{obligatoria|Symbol|{Obligatoria|Complementaria}}|{nombreEsp|Symbol|{Computacion|IngenieriaComputadores|IngenieriaSoftware\
+|SistemasInformacion|TecnologiasInformacion}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1493,93", rects="1346,162,1640,185 1346,116,1438,162 1438,116,1515,162 1515,139,1640,162 1515,116,1640,139 1346,1,1427,116 1427,1,1487,116 1487,93\
+,1640,116 1487,70,1640,93 1487,47,1640,70 1487,24,1640,47 1487,1,1640,24", width="4.0833", height="2.5694"];
+	AsignaturaFIB -> Obligatoria [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1176.1,238.42 1174.9,228.47 1171.5,199.39 1168.3,172.62 1165.7,150.75", lp="1181,212"];
+	Tema -> Especializado [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,948.79,491.18 942.55,483.12 872.93,393.28 711.25,184.66 658.2,116.2", lp="739,212"];
+	Especializado -> Especializado [label="temasAfines*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,765.15,75.576 765.15,110.42 776.12,106.76 783,100.95 783,93 783,87.658 779.9,83.283 774.53,79.876", lp="821,93"];
+	Tema -> NoInformatico [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,971.23,491.18 970.12,481.22 959.74,387.94 935.81,173.06 928.9,111.05", lp="948,212"];
+	Restriccion -> RestriccionHorario [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,606.67,1965.9 597.27,1962.2 506.1,1925.7 343.2,1852.6 227,1756 203.15,1736.2 180.9,1710.8 162.3,1686.7", lp="440,1832"];
+	Asignatura -> Asignatura [label="corequisitos*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1231.6,1002.9 1231.6,1029.1 1242.3,1026.4 1249,1022 1249,1016 1249,1012.1 1246.1,1008.8 1241.1,1006.3", lp="1287,1016"];
+	Asignatura -> Tema [label="temas*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,971.37,560.53 1003.4,866.48 1000.7,860.36 998.19,854.19 996,848 962.55,753.5 965.68,633.69 970.54,570.54", lp="1016,840"];
+	Asignatura -> Asignatura [label="prerequisitos*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1231.5,983.09 1231.5,1048.9 1280.8,1050.1 1325,1039.1 1325,1016 1325,994.46 1286.7,983.47 1241.5,983.01", lp="1364.5,1016"];
+	Estudiante -> Restriccion [label="preferencias*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,713.83,2012.1 955.24,2123.7 875.68,2086.9 781.68,2043.5 722.95,2016.3", lp="947.5,2096"];
+	Estudiante -> Recomendacion [label="recomendaciones*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1031.2,1889.6 1055.2,2122.7 1052.4,2116.5 1049.9,2110.3 1048,2104 1027.6,2036.6 1027.3,1955.6 1030.5,1899.8", lp="1100.5,2096"];
+	Estudiante -> ExpedienteAcademico [label=expediente, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1180,2069.5 1142.2,2122.8 1149.9,2111 1158,2099 1166,2088 1168.5,2084.6 1171.1,2081.1 1173.7,2077.6", lp="1196,2096"];
+	Tema -> Asignatura [label="asignaturas*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1071.6,866.26 984.63,560.8 1001.8,621.14 1038.8,750.99 1068.8,856.46", lp="1100.5,840"];
+	Convocatoria -> Asignatura [label=asignatura, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1174.9,1165.6 1196.7,1218.9 1190.9,1204.8 1184.9,1190 1178.7,1175", lp="1217,1192"];
+	Asignatura -> AsignaturaFIB [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1143.3,866.26 1145.2,856.25 1148,842.38 1150.8,828.1 1153.6,813.6", lp="1156,840"];
+	Tema -> General [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,978.84,491.18 979.98,481.22 990.58,387.94 1015,173.06 1022.1,111.05", lp="1019,212"];
+	Restriccion -> RestriccionCalidad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,649.15,1965.9 643.09,1957.9 602.8,1905 517.54,1793 454.13,1709.6", lp="597,1832"];
+	Recomendacion -> Asignatura [label=recomendacion, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1098.2,1165.7 1041.9,1774.4 1051.4,1666.2 1073,1422.7 1093,1218 1094.3,1204.4 1095.7,1190.2 1097.2,1176", lp="1117,1430"];
+	Restriccion -> RestriccionMultievaluada [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,666,1965.9 666,1955.8 666,1911.6 666,1829.4 666,1755.9", lp="674,1832"];
+	AsignaturaFIB -> Optativa [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1267.2,238.42 1269.2,228.52 1279.3,177.74 1288,133.99 1292.6,111.07", lp="1281,212"];
+	ExpedienteAcademico -> MatriculaCuatrimestre [label=ultimoCuatrimestre, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1224,1675.1 1189.1,1908.3 1186.3,1902.3 1183.9,1896.2 1182,1890 1166.9,1840.7 1169.7,1824.1 1182,1774 1189.6,1743 1204,1711.5 \
+1219,1684.2", lp="1235,1832"];
+	ExpedienteAcademico -> MatriculaCuatrimestre [label="cuatrimestres*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1283.4,1675.1 1283.4,1908.3 1285.3,1902.2 1286.8,1896 1288,1890 1301.4,1821.6 1294.2,1742.4 1285.1,1685.2", lp="1336.5,1832"];
+	ExpedienteAcademico -> Estudiante [label=estudiante, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1211.1,2122.9 1240.8,2069.7 1237.5,2081.8 1232.7,2093.7 1226,2104 1223.5,2107.8 1220.8,2111.6 1217.8,2115.2", lp="1262,2096"];
+	Asignatura -> ECTSLibreEleccion [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1231.6,923.08 1239.1,915.99 1270.3,886.08 1301,851.22 1323,814 1375.6,724.94 1393,599.34 1398.1,549.06", lp="1319,840"];
+	Restriccion -> RestriccionCantidad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,680.23,1965.9 685.65,1957.4 728.67,1890.5 831.34,1730.9 881.88,1652.3", lp="812,1832"];
+	MatriculaCuatrimestre -> Convocatoria [label="convocatorias*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1244.9,1403.2 1260.8,1536.7 1256.5,1500 1251,1454 1246.1,1413.2", lp="1292,1430"];
+	MatriculaCuatrimestre -> ExpedienteAcademico [label=expedienteAlumno, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1369.5,1908.3 1328.4,1675.1 1371.7,1733.4 1416.9,1818.9 1381,1890 1379.3,1893.4 1377.4,1896.7 1375.3,1899.9", lp="1446,1832"];
+	AsignaturaFIB -> Especialidad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1314.6,251.69 1320.4,243.07 1321.6,241.36 1322.8,239.68 1324,238 1337.4,219.35 1353.6,201.6 1370.8,185.32", lp="1359,212"];
+}

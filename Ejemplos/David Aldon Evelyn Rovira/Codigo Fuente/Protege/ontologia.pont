@@ -1,0 +1,662 @@
+; Sat May 23 13:18:24 CEST 2015
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(multislot idioma
+		(type SYMBOL)
+		(allowed-values Castellano Catalan Ingles)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot horasLab
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot promedioAprobados
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot importante
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot horasTeo
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot numMaxAsig
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot temasNoInformaticos
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot prefHorario
+		(type SYMBOL)
+		(allowed-values Manana Tarde Indiferente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot calificacion
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasLabExterno
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot curso
+		(type SYMBOL)
+		(allowed-values Primero Segundo Tercero Cuarto)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot trabaja
+		(type SYMBOL)
+		(allowed-values Manana Tarde Ninguna)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot asignaturas
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot asignatura
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasProb
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cuatrimestres
+		(type INSTANCE)
+;+		(allowed-classes MatriculaCuatrimestre)
+		(create-accessor read-write))
+	(multislot temas
+		(type INSTANCE)
+;+		(allowed-classes Tema)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot faltanECTSOpt
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasEstudio
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot recomendaciones
+		(type INSTANCE)
+;+		(allowed-classes Recomendacion)
+		(create-accessor read-write))
+	(single-slot ultimoCuatrimestre
+		(type INSTANCE)
+;+		(allowed-classes MatriculaCuatrimestre)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot fechaCurso
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipoHorario
+		(type SYMBOL)
+		(allowed-values Manana Tarde)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot numHorasLabs
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot asigIngles
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot expediente
+		(type INSTANCE)
+;+		(allowed-classes ExpedienteAcademico)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot creditos
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot preferencias
+		(type INSTANCE)
+;+		(allowed-classes Restriccion)
+		(create-accessor read-write))
+	(multislot corequisitos
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(create-accessor read-write))
+	(multislot temasAfines
+		(type INSTANCE)
+;+		(allowed-classes Especializado)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot completarEspecialidad
+		(type SYMBOL)
+		(allowed-values Mucho Poco Indiferente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot horario
+		(type SYMBOL)
+		(allowed-values Manana Tarde Ambos)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot obligatoria
+		(type SYMBOL)
+		(allowed-values Obligatoria Complementaria)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot estudiante
+		(type INSTANCE)
+;+		(allowed-classes Estudiante)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot creditosTotales
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot dificultad
+		(type SYMBOL)
+		(allowed-values Facil Dificil Cualquiera)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot distribucionLab
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cuatrimestre
+;+		(comment "cuatrimestre que se imparte Q1 o Q2")
+		(type SYMBOL)
+		(allowed-values Q1 Q2)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot tipoCuatri
+		(type SYMBOL)
+		(allowed-values OtonoQ1 PrimaveraQ2)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot numHorasDedicadas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot competencias
+		(type SYMBOL)
+		(allowed-values G1 G2 G3 G4 G5 G6 G7 G8 G9)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot convocatorias
+		(type INSTANCE)
+;+		(allowed-classes Convocatoria)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot distribucionTeo
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot recomendacion
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot idiomaConvocatoria
+		(type SYMBOL)
+		(allowed-values Castellano Catalan Ingles)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot gradoRecomendacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot competenciasPrefe
+		(type SYMBOL)
+		(allowed-values Indiferente G1 G2 G3 G4 G5 G6 G7 G8 G9)
+		(create-accessor read-write))
+	(single-slot DNI
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot siglas
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot expedienteAlumno
+		(type INSTANCE)
+;+		(allowed-classes ExpedienteAcademico)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreEsp
+		(type SYMBOL)
+		(allowed-values Computacion IngenieriaComputadores IngenieriaSoftware SistemasInformacion TecnologiasInformacion)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot matriCuatri
+		(type INSTANCE)
+;+		(allowed-classes MatriculaCuatrimestre)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot distribucionProb
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot faltanECTSEsp
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreAsig
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot temasInteres
+		(type STRING)
+		(create-accessor read-write))
+	(multislot justificacionU
+		(type STRING)
+		(create-accessor read-write))
+	(multislot justificacionS
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot proyecto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot faltanECTSOblig
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot prerequisitos
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(create-accessor read-write))
+	(single-slot asigProyecto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot presencial
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nivelCompetencia
+		(type SYMBOL)
+		(allowed-values N1 N2 N3)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreTema
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Asignatura
+	(is-a USER)
+	(role concrete)
+	(single-slot distribucionLab
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot distribucionProb
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot promedioAprobados
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot distribucionTeo
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot corequisitos
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(create-accessor read-write))
+	(multislot temas
+		(type INSTANCE)
+;+		(allowed-classes Tema)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot prerequisitos
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(create-accessor read-write))
+	(single-slot nombreAsig
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot creditosTotales
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horario
+		(type SYMBOL)
+		(allowed-values Manana Tarde Ambos)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass ECTSLibreEleccion
+	(is-a Asignatura)
+	(role concrete)
+	(single-slot presencial
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass AsignaturaFIB
+	(is-a Asignatura)
+	(role concrete)
+	(multislot idioma
+		(type SYMBOL)
+		(allowed-values Castellano Catalan Ingles)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot nivelCompetencia
+		(type SYMBOL)
+		(allowed-values N1 N2 N3)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasLab
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot proyecto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasEstudio
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot competencias
+		(type SYMBOL)
+		(allowed-values G1 G2 G3 G4 G5 G6 G7 G8 G9)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cuatrimestre
+;+		(comment "cuatrimestre que se imparte Q1 o Q2")
+		(type SYMBOL)
+		(allowed-values Q1 Q2)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot horasProb
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot siglas
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasLabExterno
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot horasTeo
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Obligatoria
+	(is-a AsignaturaFIB)
+	(role concrete)
+	(single-slot curso
+		(type SYMBOL)
+		(allowed-values Primero Segundo Tercero Cuarto)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Optativa
+	(is-a AsignaturaFIB)
+	(role concrete))
+
+(defclass Especialidad
+	(is-a AsignaturaFIB)
+	(role concrete)
+	(single-slot obligatoria
+		(type SYMBOL)
+		(allowed-values Obligatoria Complementaria)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreEsp
+		(type SYMBOL)
+		(allowed-values Computacion IngenieriaComputadores IngenieriaSoftware SistemasInformacion TecnologiasInformacion)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Tema
+	(is-a USER)
+	(role concrete)
+	(single-slot nombreTema
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot asignaturas
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass General
+	(is-a Tema)
+	(role concrete))
+
+(defclass Especializado
+	(is-a Tema)
+	(role concrete)
+	(multislot temasAfines
+		(type INSTANCE)
+;+		(allowed-classes Especializado)
+		(create-accessor read-write)))
+
+(defclass NoInformatico
+	(is-a Tema)
+	(role concrete))
+
+(defclass Recomendacion
+	(is-a USER)
+	(role concrete)
+	(multislot justificacionU
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot recomendacion
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot justificacionS
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot gradoRecomendacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ExpedienteAcademico
+	(is-a USER)
+	(role concrete)
+	(single-slot faltanECTSOblig
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot ultimoCuatrimestre
+		(type INSTANCE)
+;+		(allowed-classes MatriculaCuatrimestre)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot faltanECTSEsp
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cuatrimestres
+		(type INSTANCE)
+;+		(allowed-classes MatriculaCuatrimestre)
+		(create-accessor read-write))
+	(single-slot estudiante
+		(type INSTANCE)
+;+		(allowed-classes Estudiante)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot faltanECTSOpt
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Estudiante
+	(is-a USER)
+	(role concrete)
+	(multislot preferencias
+		(type INSTANCE)
+;+		(allowed-classes Restriccion)
+		(create-accessor read-write))
+	(multislot recomendaciones
+		(type INSTANCE)
+;+		(allowed-classes Recomendacion)
+		(create-accessor read-write))
+	(single-slot DNI
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot expediente
+		(type INSTANCE)
+;+		(allowed-classes ExpedienteAcademico)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Restriccion
+	(is-a USER)
+	(role concrete)
+	(single-slot importante
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass RestriccionHorario
+	(is-a Restriccion)
+	(role concrete)
+	(single-slot prefHorario
+		(type SYMBOL)
+		(allowed-values Manana Tarde Indiferente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot trabaja
+		(type SYMBOL)
+		(allowed-values Manana Tarde Ninguna)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass RestriccionCantidad
+	(is-a Restriccion)
+	(role concrete)
+	(single-slot numMaxAsig
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot numHorasDedicadas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot numHorasLabs
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass RestriccionMultievaluada
+	(is-a Restriccion)
+	(role concrete)
+	(multislot temasNoInformaticos
+		(type STRING)
+		(create-accessor read-write))
+	(multislot competenciasPrefe
+		(type SYMBOL)
+		(allowed-values Indiferente G1 G2 G3 G4 G5 G6 G7 G8 G9)
+		(create-accessor read-write))
+	(multislot temasInteres
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass RestriccionCalidad
+	(is-a Restriccion)
+	(role concrete)
+	(single-slot completarEspecialidad
+		(type SYMBOL)
+		(allowed-values Mucho Poco Indiferente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot asigProyecto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dificultad
+		(type SYMBOL)
+		(allowed-values Facil Dificil Cualquiera)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot asigIngles
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Convocatoria
+	(is-a USER)
+	(role concrete)
+	(single-slot idiomaConvocatoria
+		(type SYMBOL)
+		(allowed-values Castellano Catalan Ingles)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot asignatura
+		(type INSTANCE)
+;+		(allowed-classes Asignatura)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipoHorario
+		(type SYMBOL)
+		(allowed-values Manana Tarde)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot calificacion
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass MatriculaCuatrimestre
+	(is-a USER)
+	(role concrete)
+	(single-slot tipoCuatri
+		(type SYMBOL)
+		(allowed-values OtonoQ1 PrimaveraQ2)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot fechaCurso
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot convocatorias
+		(type INSTANCE)
+;+		(allowed-classes Convocatoria)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot expedienteAlumno
+		(type INSTANCE)
+;+		(allowed-classes ExpedienteAcademico)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))

@@ -1,0 +1,2598 @@
+; Sat May 23 13:18:25 CEST 2015
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
+([ontologia_Class0] of  Especializado
+
+	(asignaturas [ontologia_Class10023])
+	(nombreTema "Lenguajes de Programacion"))
+
+([ontologia_Class1] of  Especializado
+
+	(asignaturas [ontologia_Class10022])
+	(nombreTema "Inteligencia Artificial")
+	(temasAfines [ontologia_Class10008]))
+
+([ontologia_Class100] of  ECTSLibreEleccion
+
+	(creditosTotales 2.0)
+	(distribucionLab 2.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 4.0)
+	(horario Manana)
+	(nombreAsig "HTML,CSS,JavaScript")
+	(presencial FALSE)
+	(promedioAprobados 99.0)
+	(temas
+		[ontologia_Class110]
+		[ontologia_Class10009]
+		[ontologia_Class101]))
+
+([ontologia_Class10000] of  Especialidad
+
+	(competencias G7)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 0.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 0.0)
+	(horasLabExterno 0.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Ampliacion de Algorismia")
+	(nombreEsp Computacion)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class10024])
+	(promedioAprobados 85.0)
+	(proyecto FALSE)
+	(siglas "AA")
+	(temas [ontologia_Class10008]))
+
+([ontologia_Class100001] of  Especialidad
+
+	(competencias G8)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 3.0)
+	(horasLabExterno 4.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Protocolos de Internet")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class10019])
+	(promedioAprobados 75.0)
+	(proyecto TRUE)
+	(siglas "PI")
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30009]
+		[ontologia_Class30011]))
+
+([ontologia_Class100002] of  Especialidad
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 0.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 4.0)
+	(horasLabExterno 4.0)
+	(horasProb "4")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Aplicaciones Distribuidas")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class10019])
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "AD")
+	(temas [ontologia_Class10010]))
+
+([ontologia_Class100003] of  Especialidad
+
+	(competencias G3)
+	(corequisitos [ontologia_Class10017])
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 5.0)
+	(horasLab 5.0)
+	(horasLabExterno 5.0)
+	(horasProb "4")
+	(horasTeo 2.0)
+	(idioma Castellano)
+	(nivelCompetencia N1)
+	(nombreAsig "Diseño de Bases de Datos")
+	(nombreEsp IngenieriaSoftware)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class91])
+	(promedioAprobados 60.0)
+	(proyecto FALSE)
+	(siglas "DBD")
+	(temas [ontologia_Class10009]))
+
+([ontologia_Class10001] of  Especialidad
+
+	(competencias G4)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 2.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Aprendizaje Automatico")
+	(nombreEsp Computacion)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class95])
+	(promedioAprobados 85.0)
+	(proyecto TRUE)
+	(siglas "APA")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class1]))
+
+([ontologia_Class10002] of  Especializado
+
+	(asignaturas [ontologia_Class10029])
+	(nombreTema "Calculo Numerico")
+	(temasAfines
+		[ontologia_Class10007]
+		[ontologia_Class10003]))
+
+([ontologia_Class10003] of  Especializado
+
+	(asignaturas
+		[ontologia_Class10026]
+		[ontologia_Class97])
+	(nombreTema "Graficos")
+	(temasAfines [ontologia_Class10007]))
+
+([ontologia_Class10004] of  Especializado
+
+	(asignaturas [ontologia_Class10030])
+	(nombreTema "Investigacion Operativa")
+	(temasAfines [ontologia_Class10005]))
+
+([ontologia_Class10005] of  Especializado
+
+	(asignaturas
+		[ontologia_Class95]
+		[ontologia_Class50006])
+	(nombreTema "Tratamiento De Datos")
+	(temasAfines [ontologia_Class10004]))
+
+([ontologia_Class10006] of  Especializado
+
+	(asignaturas [ontologia_Class10027])
+	(nombreTema "Logica"))
+
+([ontologia_Class10007] of  Especializado
+
+	(asignaturas [ontologia_Class10029])
+	(nombreTema "Geometria Computacional")
+	(temasAfines [ontologia_Class10003]))
+
+([ontologia_Class10008] of  Especializado
+
+	(asignaturas
+		[ontologia_Class10024]
+		[ontologia_Class10000]
+		[ontologia_Class93])
+	(nombreTema "Algoritmia")
+	(temasAfines [ontologia_Class1]))
+
+([ontologia_Class10009] of  General
+
+	(asignaturas [ontologia_Class10017])
+	(nombreTema "Ingenieria de Software"))
+
+([ontologia_Class10010] of  General
+
+	(asignaturas
+		[ontologia_Class10019]
+		[ontologia_Class50003])
+	(nombreTema "Redes"))
+
+([ontologia_Class10012] of  NoInformatico
+
+	(asignaturas [ontologia_Class50012])
+	(nombreTema "Ludicas"))
+
+([ontologia_Class10013] of  NoInformatico
+
+	(asignaturas [ontologia_Class50012])
+	(nombreTema "Culturales"))
+
+([ontologia_Class10014] of  NoInformatico
+
+	(asignaturas [ontologia_Class50012])
+	(nombreTema "Divulgacion Cientifica"))
+
+([ontologia_Class10015] of  NoInformatico
+
+	(asignaturas [ontologia_Class60000])
+	(nombreTema "Investigacion"))
+
+([ontologia_Class10016] of  NoInformatico
+
+	(asignaturas
+		[ontologia_Class100]
+		[ontologia_Class50011])
+	(nombreTema "Cursos"))
+
+([ontologia_Class10017] of  Obligatoria
+
+	(competencias G4)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 0.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 2.0)
+	(horasLab 0.0)
+	(horasLabExterno 0.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Introduccion a la Ingenieria de Software")
+	(prerequisitos [ontologia_Class91])
+	(promedioAprobados 98.0)
+	(proyecto FALSE)
+	(siglas "IES")
+	(temas [ontologia_Class10009]))
+
+([ontologia_Class10018] of  Obligatoria
+
+	(competencias G2)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 6.0)
+	(horasLab 1.0)
+	(horasLabExterno 4.0)
+	(horasProb "1")
+	(horasTeo 1.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Arquitectura de Computadores")
+	(prerequisitos
+		[ontologia_Class88]
+		[ontologia_Class96])
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "AC")
+	(temas [ontologia_Class109]))
+
+([ontologia_Class10019] of  Obligatoria
+
+	(competencias G7)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "1")
+	(horasTeo 2.0)
+	(idioma Catalan Ingles)
+	(nivelCompetencia N2)
+	(nombreAsig "Redes de Computadores")
+	(promedioAprobados 85.0)
+	(proyecto FALSE)
+	(siglas "XC")
+	(temas [ontologia_Class10010]))
+
+([ontologia_Class10020] of  Obligatoria
+
+	(competencias G1)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 0.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 2.0)
+	(horasLab 0.0)
+	(horasLabExterno 0.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Empresa y Entorno Económico")
+	(promedioAprobados 99.0)
+	(proyecto FALSE)
+	(siglas "EEE")
+	(temas
+		[ontologia_Class10021]
+		[ontologia_Class107]))
+
+([ontologia_Class10021] of  General
+
+	(asignaturas [ontologia_Class10020])
+	(nombreTema "Economicos"))
+
+([ontologia_Class10022] of  Especialidad
+
+	(competencias G5)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 8.0)
+	(horasLab 1.0)
+	(horasLabExterno 8.0)
+	(horasProb "1")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Inteligencia Artificial")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class93])
+	(promedioAprobados 89.0)
+	(proyecto TRUE)
+	(siglas "IA")
+	(temas
+		[ontologia_Class1]
+		[ontologia_Class101]))
+
+([ontologia_Class10023] of  Especialidad
+
+	(competencias G4)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 4.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 8.0)
+	(horasLab 2.0)
+	(horasLabExterno 8.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Lenguajes de Programacion")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class87])
+	(promedioAprobados 70.0)
+	(proyecto TRUE)
+	(siglas "LP")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class0]))
+
+([ontologia_Class10024] of  Especialidad
+
+	(competencias G7)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 4.0)
+	(horasLab 0.0)
+	(horasLabExterno 4.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N3)
+	(nombreAsig "Algoritmia")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class93])
+	(promedioAprobados 89.0)
+	(proyecto TRUE)
+	(siglas "A")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10008]))
+
+([ontologia_Class10025] of  Obligatoria
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 2.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan Ingles)
+	(nivelCompetencia N2)
+	(nombreAsig "Paralelismo")
+	(prerequisitos
+		[ontologia_Class10018]
+		[ontologia_Class93]
+		[ontologia_Class96])
+	(promedioAprobados 85.0)
+	(proyecto FALSE)
+	(siglas "PAR")
+	(temas
+		[ontologia_Class109]
+		[ontologia_Class101]))
+
+([ontologia_Class10026] of  Especialidad
+
+	(competencias G2)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Graficos")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos
+		[ontologia_Class97]
+		[ontologia_Class87])
+	(promedioAprobados 86.0)
+	(proyecto FALSE)
+	(siglas "G")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10003]))
+
+([ontologia_Class10027] of  Especialidad
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 8.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Logica en la Informatica")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class93])
+	(promedioAprobados 70.0)
+	(proyecto TRUE)
+	(siglas "LI")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10006]))
+
+([ontologia_Class10028] of  Especialidad
+
+	(competencias G7)
+	(creditosTotales 5.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 0.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "2")
+	(horasTeo 0.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Teoria de la Computacion")
+	(nombreEsp Computacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class93])
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "TC")
+	(temas [ontologia_Class101]))
+
+([ontologia_Class10029] of  Especialidad
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Computacion Numerica")
+	(nombreEsp Computacion)
+	(obligatoria Complementaria)
+	(prerequisitos
+		[ontologia_Class90]
+		[ontologia_Class89])
+	(promedioAprobados 85.0)
+	(proyecto TRUE)
+	(siglas "CN")
+	(temas
+		[ontologia_Class107]
+		[ontologia_Class101]
+		[ontologia_Class10002]
+		[ontologia_Class10007]))
+
+([ontologia_Class10030] of  Especialidad
+
+	(competencias G6)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Investigacion Operativa")
+	(nombreEsp Computacion)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class95])
+	(promedioAprobados 89.0)
+	(proyecto TRUE)
+	(siglas "IO")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10004]
+		[ontologia_Class10005]))
+
+([ontologia_Class101] of  General
+
+	(asignaturas
+		[ontologia_Class93]
+		[ontologia_Class97]
+		[ontologia_Class83]
+		[ontologia_Class92]
+		[ontologia_Class87]
+		[ontologia_Class10024])
+	(nombreTema "Programacion"))
+
+([ontologia_Class107] of  General
+
+	(asignaturas
+		[ontologia_Class78]
+		[ontologia_Class90]
+		[ontologia_Class89]
+		[ontologia_Class95])
+	(nombreTema "Matematicas"))
+
+([ontologia_Class108] of  General
+
+	(asignaturas [ontologia_Class77])
+	(nombreTema "Fisica"))
+
+([ontologia_Class109] of  General
+
+	(asignaturas
+		[ontologia_Class94]
+		[ontologia_Class88]
+		[ontologia_Class84])
+	(nombreTema "ArquitecturaComputadores"))
+
+([ontologia_Class110] of  General
+
+	(asignaturas [ontologia_Class91])
+	(nombreTema "BasesDatos"))
+
+([ontologia_Class2] of  Estudiante
+
+	(DNI "123456789")
+	(expediente [ontologia_Class20048])
+	(nombre "alumno3"))
+
+([ontologia_Class20000] of  Especializado
+
+	(asignaturas [ontologia_Class40000])
+	(nombreTema "Diseño de sistemas web"))
+
+([ontologia_Class20001] of  Especializado
+
+	(asignaturas [ontologia_Class10017])
+	(nombreTema "Diseño UML"))
+
+([ontologia_Class20002] of  Estudiante
+
+	(DNI "987654")
+	(expediente [ontologia_Class20009])
+	(nombre "alumno1"))
+
+([ontologia_Class20003] of  Estudiante
+
+	(DNI "654321")
+	(expediente [ontologia_Class20010])
+	(nombre "alumno2"))
+
+([ontologia_Class20006] of  Estudiante
+
+	(DNI "236547")
+	(expediente [ontologia_Class20012])
+	(nombre "alumno5"))
+
+([ontologia_Class20007] of  Estudiante
+
+	(DNI "741258")
+	(expediente [ontologia_Class20013])
+	(nombre "alumno6"))
+
+([ontologia_Class20008] of  Estudiante
+
+	(DNI "654123652")
+	(expediente [ontologia_Class20014])
+	(nombre "alumno7"))
+
+([ontologia_Class20009] of  ExpedienteAcademico
+
+	(cuatrimestres [ontologia_Class20015])
+	(estudiante [ontologia_Class20002])
+	(faltanECTSEsp 48.0)
+	(faltanECTSOblig 102.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class20015]))
+
+([ontologia_Class20010] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class20020]
+		[ontologia_Class90005])
+	(estudiante [ontologia_Class20003])
+	(faltanECTSEsp 48.0)
+	(faltanECTSOblig 87.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class90005]))
+
+([ontologia_Class20012] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class60002]
+		[ontologia_Class60004]
+		[ontologia_Class60006]
+		[ontologia_Class60003]
+		[ontologia_Class60005])
+	(estudiante [ontologia_Class20006])
+	(faltanECTSEsp 24.0)
+	(faltanECTSOblig 0.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class60006]))
+
+([ontologia_Class20013] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class70000]
+		[ontologia_Class70002]
+		[ontologia_Class60006]
+		[ontologia_Class70001]
+		[ontologia_Class70012]
+		[ontologia_Class70014]
+		[ontologia_Class70003]
+		[ontologia_Class90003])
+	(estudiante [ontologia_Class20007])
+	(faltanECTSEsp 0.0)
+	(faltanECTSOblig 0.0)
+	(faltanECTSOpt 18.0)
+	(ultimoCuatrimestre [ontologia_Class90003]))
+
+([ontologia_Class20014] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class70017]
+		[ontologia_Class70019]
+		[ontologia_Class70018]
+		[ontologia_Class70020])
+	(estudiante [ontologia_Class20008])
+	(faltanECTSEsp 42.0)
+	(faltanECTSOblig 18.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class70020]))
+
+([ontologia_Class20015] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20017]
+		[ontologia_Class20016]
+		[ontologia_Class20019]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20009])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20016] of  Convocatoria
+
+	(asignatura [ontologia_Class78])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20017] of  Convocatoria
+
+	(asignatura [ontologia_Class77])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20018] of  Convocatoria
+
+	(asignatura [ontologia_Class83])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class20019] of  Convocatoria
+
+	(asignatura [ontologia_Class84])
+	(calificacion 8.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20020] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20017]
+		[ontologia_Class20019]
+		[ontologia_Class20018]
+		[ontologia_Class20021])
+	(expedienteAlumno [ontologia_Class20010])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20021] of  Convocatoria
+
+	(asignatura [ontologia_Class78])
+	(calificacion 4.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20022] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20017]
+		[ontologia_Class20016]
+		[ontologia_Class20019]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20044])
+	(fechaCurso "2012-2013")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20023] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20027]
+		[ontologia_Class20024]
+		[ontologia_Class20025]
+		[ontologia_Class20026])
+	(expedienteAlumno [ontologia_Class20044])
+	(fechaCurso "2012-2013")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class20024] of  Convocatoria
+
+	(asignatura [ontologia_Class90])
+	(calificacion 6.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class20025] of  Convocatoria
+
+	(asignatura [ontologia_Class89])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class20026] of  Convocatoria
+
+	(asignatura [ontologia_Class92])
+	(calificacion 7.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class20027] of  Convocatoria
+
+	(asignatura [ontologia_Class88])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class20028] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20040]
+		[ontologia_Class20038]
+		[ontologia_Class5]
+		[ontologia_Class20041]
+		[ontologia_Class20042])
+	(expedienteAlumno [ontologia_Class20044])
+	(fechaCurso "2013-2014")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class20029] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20033]
+		[ontologia_Class20030]
+		[ontologia_Class20031]
+		[ontologia_Class20035]
+		[ontologia_Class20032])
+	(expedienteAlumno [ontologia_Class20044])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20030] of  Convocatoria
+
+	(asignatura [ontologia_Class94])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class20031] of  Convocatoria
+
+	(asignatura [ontologia_Class93])
+	(calificacion 6.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class20032] of  Convocatoria
+
+	(asignatura [ontologia_Class96])
+	(calificacion 5.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20033] of  Convocatoria
+
+	(asignatura [ontologia_Class91])
+	(calificacion 6.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class20034] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20037]
+		[ontologia_Class20036]
+		[ontologia_Class20043])
+	(expedienteAlumno [ontologia_Class20044])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20035] of  Convocatoria
+
+	(asignatura [ontologia_Class95])
+	(calificacion 7.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20036] of  Convocatoria
+
+	(asignatura [ontologia_Class10025])
+	(calificacion 6.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class20037] of  Convocatoria
+
+	(asignatura [ontologia_Class97])
+	(calificacion 8.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20038] of  Convocatoria
+
+	(asignatura [ontologia_Class10017])
+	(calificacion 6.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class20040] of  Convocatoria
+
+	(asignatura [ontologia_Class10018])
+	(calificacion 5.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class20041] of  Convocatoria
+
+	(asignatura [ontologia_Class10019])
+	(calificacion 7.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class20042] of  Convocatoria
+
+	(asignatura [ontologia_Class10020])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class20043] of  Convocatoria
+
+	(asignatura [ontologia_Class10029])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class20044] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class20022]
+		[ontologia_Class20029]
+		[ontologia_Class20023]
+		[ontologia_Class20028]
+		[ontologia_Class20034])
+	(estudiante [ontologia_Class20047])
+	(faltanECTSEsp 42.0)
+	(faltanECTSOblig 0.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class20034]))
+
+([ontologia_Class20047] of  Estudiante
+
+	(DNI "4568254")
+	(expediente [ontologia_Class20044])
+	(nombre "alumno4"))
+
+([ontologia_Class20048] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class20051]
+		[ontologia_Class20050]
+		[ontologia_Class20052]
+		[ontologia_Class20049])
+	(estudiante [ontologia_Class2])
+	(faltanECTSEsp 48.0)
+	(faltanECTSOblig 12.0)
+	(faltanECTSOpt 42.0)
+	(ultimoCuatrimestre [ontologia_Class20049]))
+
+([ontologia_Class20049] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20040]
+		[ontologia_Class20038]
+		[ontologia_Class5]
+		[ontologia_Class20041]
+		[ontologia_Class20042])
+	(expedienteAlumno [ontologia_Class20048])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20050] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20033]
+		[ontologia_Class20030]
+		[ontologia_Class20031]
+		[ontologia_Class20035]
+		[ontologia_Class20032])
+	(expedienteAlumno [ontologia_Class20048])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20051] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20017]
+		[ontologia_Class20016]
+		[ontologia_Class20019]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20048])
+	(fechaCurso "2012-2013")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class20052] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20027]
+		[ontologia_Class20024]
+		[ontologia_Class20025]
+		[ontologia_Class20026])
+	(expedienteAlumno [ontologia_Class20048])
+	(fechaCurso "2012-2013")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class30000] of  Especialidad
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2 Q1)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 2.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Arquitectura del Software")
+	(nombreEsp IngenieriaSoftware)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class10017])
+	(promedioAprobados 90.0)
+	(proyecto FALSE)
+	(siglas "AS")
+	(temas
+		[ontologia_Class10009]
+		[ontologia_Class30003]))
+
+([ontologia_Class30001] of  Especialidad
+
+	(competencias G6)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 3.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Ingenieria Requisitos")
+	(nombreEsp IngenieriaSoftware)
+	(obligatoria Obligatoria)
+	(prerequisitos
+		[ontologia_Class10020]
+		[ontologia_Class10017])
+	(promedioAprobados 95.0)
+	(proyecto TRUE)
+	(siglas "ER")
+	(temas
+		[ontologia_Class10009]
+		[ontologia_Class20001]
+		[ontologia_Class30002]))
+
+([ontologia_Class30002] of  Especializado
+
+	(asignaturas [ontologia_Class30001])
+	(nombreTema "Ingenieria de Requisitos"))
+
+([ontologia_Class30003] of  Especializado
+
+	(asignaturas [ontologia_Class10017])
+	(nombreTema "Arquitectura del Software"))
+
+([ontologia_Class30004] of  Especializado
+
+	(asignaturas
+		[ontologia_Class50006]
+		[ontologia_Class91]
+		[ontologia_Class40001])
+	(nombreTema "Administracion de bases de datos"))
+
+([ontologia_Class30005] of  Especializado
+
+	(asignaturas [ontologia_Class50006])
+	(nombreTema "Diseñador de bases de datos"))
+
+([ontologia_Class30006] of  Especializado
+
+	(asignaturas [ontologia_Class50003])
+	(nombreTema "Seguridad de bases de datos"))
+
+([ontologia_Class30007] of  Especializado
+
+	(asignaturas [ontologia_Class40001])
+	(nombreTema "Bases de Datos especializadas"))
+
+([ontologia_Class30008] of  Especializado
+
+	(asignaturas
+		[ontologia_Class40003]
+		[ontologia_Class96])
+	(nombreTema "Administracion de Sistemas Operativos"))
+
+([ontologia_Class30009] of  Especializado
+
+	(asignaturas [ontologia_Class50003])
+	(nombreTema "Internet"))
+
+([ontologia_Class30010] of  Especializado
+
+	(nombreTema "Seguridad Informatica"))
+
+([ontologia_Class30011] of  Especializado
+
+	(asignaturas [ontologia_Class10019])
+	(nombreTema "Tecnologias de Redes"))
+
+([ontologia_Class30012] of  Especializado
+
+	(asignaturas
+		[ontologia_Class10018]
+		[ontologia_Class88])
+	(nombreTema "Ensamblador"))
+
+([ontologia_Class30013] of  Especializado
+
+	(asignaturas [ontologia_Class50000])
+	(nombreTema "Microcomputadores"))
+
+([ontologia_Class30014] of  Especializado
+
+	(asignaturas [ontologia_Class77])
+	(nombreTema "Procesamiento de Señal"))
+
+([ontologia_Class30015] of  Especializado
+
+	(asignaturas [ontologia_Class96])
+	(nombreTema "Sistemas Operativos"))
+
+([ontologia_Class30016] of  Especializado
+
+	(nombreTema "Grafos"))
+
+([ontologia_Class30017] of  Especializado
+
+	(asignaturas
+		[ontologia_Class78]
+		[ontologia_Class89]
+		[ontologia_Class10029])
+	(nombreTema "Analisis Matematico"))
+
+([ontologia_Class30018] of  Especializado
+
+	(asignaturas [ontologia_Class77])
+	(nombreTema "Corriente Continua"))
+
+([ontologia_Class30019] of  Especializado
+
+	(asignaturas [ontologia_Class77])
+	(nombreTema "Corriente Alterna"))
+
+([ontologia_Class30020] of  Especializado
+
+	(asignaturas
+		[ontologia_Class77]
+		[ontologia_Class94])
+	(nombreTema "Electronica y Puertas Logicas"))
+
+([ontologia_Class30021] of  Especializado
+
+	(asignaturas [ontologia_Class77])
+	(nombreTema "Ondas"))
+
+([ontologia_Class40000] of  Especialidad
+
+	(competencias G4)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Proyecto Ingeniería Software")
+	(nombreEsp IngenieriaSoftware)
+	(obligatoria Obligatoria)
+	(prerequisitos
+		[ontologia_Class30000]
+		[ontologia_Class30001])
+	(promedioAprobados 85.0)
+	(proyecto TRUE)
+	(siglas "PES")
+	(temas
+		[ontologia_Class30003]
+		[ontologia_Class20000]
+		[ontologia_Class20001]
+		[ontologia_Class10009]))
+
+([ontologia_Class40001] of  Especialidad
+
+	(competencias G8)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Conceptos Bases Datos Especializadas")
+	(nombreEsp IngenieriaSoftware)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class91])
+	(promedioAprobados 85.0)
+	(proyecto FALSE)
+	(siglas "CBDE")
+	(temas
+		[ontologia_Class30004]
+		[ontologia_Class30007]
+		[ontologia_Class30005]
+		[ontologia_Class30006]
+		[ontologia_Class110]))
+
+([ontologia_Class40002] of  Especialidad
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Tecnologías Redes Computadores")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class10019])
+	(promedioAprobados 80.0)
+	(proyecto FALSE)
+	(siglas "TXC")
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30009]
+		[ontologia_Class30011]))
+
+([ontologia_Class40003] of  Especialidad
+
+	(competencias G7)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Administracion Sistemas Operativos")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class96])
+	(promedioAprobados 75.0)
+	(proyecto FALSE)
+	(siglas "ASO")
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30008]
+		[ontologia_Class30010]))
+
+([ontologia_Class5] of  Convocatoria
+
+	(asignatura [ontologia_Class87])
+	(calificacion 5.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class50000] of  Especialidad
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 8.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 4.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Arquitectura Computadores 2")
+	(nombreEsp IngenieriaComputadores)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class10018])
+	(promedioAprobados 50.0)
+	(proyecto FALSE)
+	(siglas "AC2")
+	(temas
+		[ontologia_Class109]
+		[ontologia_Class30012]
+		[ontologia_Class30018]))
+
+([ontologia_Class50001] of  Especialidad
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 3.0)
+	(horasLabExterno 8.0)
+	(horasProb "0")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Diseño Sistemas Basados Microcomputadores")
+	(nombreEsp IngenieriaComputadores)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class94])
+	(promedioAprobados 73.0)
+	(proyecto TRUE)
+	(siglas "DSBM")
+	(temas
+		[ontologia_Class109]
+		[ontologia_Class30019]
+		[ontologia_Class30018]))
+
+([ontologia_Class50002] of  Especialidad
+
+	(competencias G1)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 4.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Manana)
+	(horasEstudio 4.0)
+	(horasLab 4.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Programación Consciente Arquitectura")
+	(nombreEsp IngenieriaComputadores)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class10018])
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "PCA")
+	(temas
+		[ontologia_Class109]
+		[ontologia_Class30020]))
+
+([ontologia_Class50003] of  Especialidad
+
+	(competencias G6)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 3.0)
+	(horasLab 1.0)
+	(horasLabExterno 3.0)
+	(horasProb "2")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Seguridad Informática")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(promedioAprobados 60.0)
+	(proyecto FALSE)
+	(siglas "SI")
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30011]))
+
+([ontologia_Class50004] of  Especialidad
+
+	(competencias G1)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 2.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Negocio Electrónico")
+	(nombreEsp SistemasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class50005])
+	(promedioAprobados 85.0)
+	(proyecto TRUE)
+	(siglas "NE")
+	(temas [ontologia_Class10021]))
+
+([ontologia_Class50005] of  Especialidad
+
+	(competencias G2)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 2.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Sistemas Información Organizaciones")
+	(nombreEsp SistemasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos
+		[ontologia_Class91]
+		[ontologia_Class10020])
+	(promedioAprobados 80.0)
+	(proyecto FALSE)
+	(siglas "SIO")
+	(temas [ontologia_Class10021]))
+
+([ontologia_Class50006] of  Especialidad
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 4.0)
+	(horasLab 3.0)
+	(horasLabExterno 2.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Administración Bases Datos")
+	(nombreEsp SistemasInformacion)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class91])
+	(promedioAprobados 100.0)
+	(proyecto FALSE)
+	(siglas "ABD")
+	(temas
+		[ontologia_Class110]
+		[ontologia_Class20001]
+		[ontologia_Class30005]))
+
+([ontologia_Class50007] of  Optativa
+
+	(competencias G5)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "4")
+	(horasTeo 4.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Videojuegos")
+	(prerequisitos [ontologia_Class97])
+	(promedioAprobados 70.0)
+	(proyecto TRUE)
+	(siglas "VJ")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10003]))
+
+([ontologia_Class50008] of  Optativa
+
+	(competencias G5)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 3.0)
+	(horasLab 3.0)
+	(horasLabExterno 5.0)
+	(horasProb "4")
+	(horasTeo 5.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Robótica")
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "ROB")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class0]))
+
+([ontologia_Class50009] of  Optativa
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Tarde)
+	(horasEstudio 3.0)
+	(horasLab 2.0)
+	(horasLabExterno 3.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Ingles)
+	(nivelCompetencia N2)
+	(nombreAsig "Mineria Datos")
+	(prerequisitos
+		[ontologia_Class92]
+		[ontologia_Class95])
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "MD")
+	(temas [ontologia_Class10015]))
+
+([ontologia_Class50010] of  Optativa
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 1.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "4")
+	(horasTeo 4.0)
+	(idioma Ingles)
+	(nivelCompetencia N1)
+	(nombreAsig "Física Orientada a la Modelización y la Animación Realista")
+	(promedioAprobados 74.0)
+	(proyecto TRUE)
+	(siglas "FOMAR")
+	(temas
+		[ontologia_Class108]
+		[ontologia_Class30021]))
+
+([ontologia_Class50011] of  ECTSLibreEleccion
+
+	(creditosTotales 2.0)
+	(distribucionLab 2.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 0.0)
+	(horario Manana)
+	(nombreAsig "Seguridad Avanzada")
+	(promedioAprobados 90.0)
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30010]))
+
+([ontologia_Class50012] of  ECTSLibreEleccion
+
+	(creditosTotales 2.0)
+	(distribucionLab 0.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(nombreAsig "Seminario Empresa")
+	(promedioAprobados 100.0)
+	(temas [ontologia_Class10021]))
+
+([ontologia_Class50013] of  Optativa
+
+	(competencias G7)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 0.0)
+	(horario Tarde)
+	(horasEstudio 2.0)
+	(horasLab 2.0)
+	(horasLabExterno 3.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Visión por computador")
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "VC")
+	(temas [ontologia_Class101]))
+
+([ontologia_Class50014] of  Optativa
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 3.0)
+	(distribucionTeo 0.0)
+	(horario Manana)
+	(horasEstudio 3.0)
+	(horasLab 3.0)
+	(horasLabExterno 3.0)
+	(horasProb "3")
+	(horasTeo 0.0)
+	(idioma Ingles)
+	(nivelCompetencia N3)
+	(nombreAsig "Writing Skills Engineering")
+	(promedioAprobados 94.0)
+	(proyecto FALSE)
+	(siglas "WSE")
+	(temas [ontologia_Class10013]))
+
+([ontologia_Class60000] of  ECTSLibreEleccion
+
+	(creditosTotales 2.0)
+	(distribucionLab 1.0)
+	(distribucionProb 1.0)
+	(distribucionTeo 0.0)
+	(horario Ambos)
+	(nombreAsig "Programacion Basica")
+	(promedioAprobados 90.0)
+	(temas [ontologia_Class10016]))
+
+([ontologia_Class60001] of  Optativa
+
+	(competencias G4)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 3.0)
+	(horasLab 3.0)
+	(horasLabExterno 2.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Castellano)
+	(nivelCompetencia N2)
+	(nombreAsig "Tarjetas Gráficas y Aceleradores")
+	(promedioAprobados 80.0)
+	(proyecto TRUE)
+	(siglas "TGA")
+	(temas
+		[ontologia_Class109]
+		[ontologia_Class30013]))
+
+([ontologia_Class60002] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20016]
+		[ontologia_Class20019]
+		[ontologia_Class20017]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20012])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class60003] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20027]
+		[ontologia_Class20026]
+		[ontologia_Class20024]
+		[ontologia_Class20025])
+	(expedienteAlumno [ontologia_Class20012])
+	(fechaCurso "2013-2014")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class60004] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20033]
+		[ontologia_Class20030]
+		[ontologia_Class20032]
+		[ontologia_Class20031]
+		[ontologia_Class20035])
+	(expedienteAlumno [ontologia_Class20012])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class60005] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20041]
+		[ontologia_Class5]
+		[ontologia_Class20040]
+		[ontologia_Class20042]
+		[ontologia_Class20038])
+	(expedienteAlumno [ontologia_Class20012])
+	(fechaCurso "2014-2015")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class60006] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20037]
+		[ontologia_Class60007]
+		[ontologia_Class60008]
+		[ontologia_Class20043]
+		[ontologia_Class60009])
+	(expedienteAlumno [ontologia_Class20012])
+	(fechaCurso "2015-2016")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class60007] of  Convocatoria
+
+	(asignatura [ontologia_Class10023])
+	(calificacion 7.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class60008] of  Convocatoria
+
+	(asignatura [ontologia_Class10027])
+	(calificacion 5.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class60009] of  Convocatoria
+
+	(asignatura [ontologia_Class10028])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class70000] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20016]
+		[ontologia_Class20019]
+		[ontologia_Class20017]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2012-2013")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class70001] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20025]
+		[ontologia_Class20024]
+		[ontologia_Class20026]
+		[ontologia_Class20027])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2012-2013")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70002] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20030]
+		[ontologia_Class20031]
+		[ontologia_Class20033]
+		[ontologia_Class20035]
+		[ontologia_Class20032])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class70003] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20041]
+		[ontologia_Class5]
+		[ontologia_Class20040]
+		[ontologia_Class20038]
+		[ontologia_Class20042])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2013-2014")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70004] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20037]
+		[ontologia_Class60008]
+		[ontologia_Class60007]
+		[ontologia_Class60009]
+		[ontologia_Class20043])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class70006] of  Especialidad
+
+	(competencias G5)
+	(creditosTotales 6.0)
+	(cuatrimestre Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Tarde)
+	(horasEstudio 3.0)
+	(horasLab 3.0)
+	(horasLabExterno 3.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Compiladores")
+	(nombreEsp Computacion)
+	(obligatoria Complementaria)
+	(prerequisitos [ontologia_Class10028])
+	(promedioAprobados 50.0)
+	(proyecto TRUE)
+	(siglas "CL")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10008]))
+
+([ontologia_Class70009] of  Convocatoria
+
+	(asignatura [ontologia_Class70006])
+	(calificacion 5.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class70010] of  Convocatoria
+
+	(asignatura [ontologia_Class10024])
+	(calificacion 7.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class70011] of  Convocatoria
+
+	(asignatura [ontologia_Class10022])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class70012] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20036]
+		[ontologia_Class70011]
+		[ontologia_Class70009]
+		[ontologia_Class70010]
+		[ontologia_Class70013])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2014-2015")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70013] of  Convocatoria
+
+	(asignatura [ontologia_Class10026])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Tarde))
+
+([ontologia_Class70014] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class70016]
+		[ontologia_Class70015])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2015-2016")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70015] of  Convocatoria
+
+	(asignatura [ontologia_Class50008])
+	(calificacion 7.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class70016] of  Convocatoria
+
+	(asignatura [ontologia_Class50007])
+	(calificacion 8.0)
+	(idiomaConvocatoria Catalan)
+	(tipoHorario Manana))
+
+([ontologia_Class70017] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20016]
+		[ontologia_Class20017]
+		[ontologia_Class20019]
+		[ontologia_Class20018])
+	(expedienteAlumno [ontologia_Class20014])
+	(fechaCurso "2012-2013")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class70018] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20026]
+		[ontologia_Class20027]
+		[ontologia_Class20024]
+		[ontologia_Class20025])
+	(expedienteAlumno [ontologia_Class20014])
+	(fechaCurso "2012-2013")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70019] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20031]
+		[ontologia_Class20033]
+		[ontologia_Class20030]
+		[ontologia_Class20035]
+		[ontologia_Class20032])
+	(expedienteAlumno [ontologia_Class20014])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class70020] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20040]
+		[ontologia_Class20041]
+		[ontologia_Class20042]
+		[ontologia_Class20037]
+		[ontologia_Class70021])
+	(expedienteAlumno [ontologia_Class20014])
+	(fechaCurso "2013-2014")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class70021] of  Convocatoria
+
+	(asignatura [ontologia_Class50003])
+	(calificacion 7.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Tarde))
+
+([ontologia_Class77] of  Obligatoria
+
+	(competencias G4)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Primero)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "2")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Fisica")
+	(promedioAprobados 85.0)
+	(proyecto FALSE)
+	(siglas "F")
+	(temas [ontologia_Class108]))
+
+([ontologia_Class78] of  Obligatoria
+
+	(competencias G9)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Primero)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N1)
+	(nombreAsig "Fundamentos Matematicos")
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "FM")
+	(temas
+		[ontologia_Class107]
+		[ontologia_Class10002]
+		[ontologia_Class10006]))
+
+([ontologia_Class80000] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class90001]
+		[ontologia_Class90002])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2015-2016")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class80001] of  ExpedienteAcademico
+
+	(cuatrimestres
+		[ontologia_Class80003]
+		[ontologia_Class80005]
+		[ontologia_Class80007]
+		[ontologia_Class80004]
+		[ontologia_Class80006]
+		[ontologia_Class80008]
+		[ontologia_Class80000])
+	(estudiante [ontologia_Class80002])
+	(faltanECTSEsp 0.0)
+	(faltanECTSOblig 0.0)
+	(faltanECTSOpt 36.0)
+	(ultimoCuatrimestre [ontologia_Class80000]))
+
+([ontologia_Class80002] of  Estudiante
+
+	(DNI "45432131")
+	(expediente [ontologia_Class80001])
+	(nombre "alumno8"))
+
+([ontologia_Class80003] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20019]
+		[ontologia_Class20018]
+		[ontologia_Class20017]
+		[ontologia_Class20021])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2012-2013")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class80004] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20026]
+		[ontologia_Class20024]
+		[ontologia_Class20025]
+		[ontologia_Class20027]
+		[ontologia_Class20016])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2012-2013")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class80005] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20031]
+		[ontologia_Class20033]
+		[ontologia_Class20030]
+		[ontologia_Class20032]
+		[ontologia_Class20035])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2013-2014")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class80006] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20038]
+		[ontologia_Class5]
+		[ontologia_Class20040]
+		[ontologia_Class20042]
+		[ontologia_Class20041])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2013-2014")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class80007] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20036]
+		[ontologia_Class20037]
+		[ontologia_Class20043]
+		[ontologia_Class60007]
+		[ontologia_Class60008])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2014-2015")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class80008] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class60009]
+		[ontologia_Class70011]
+		[ontologia_Class70010]
+		[ontologia_Class70013]
+		[ontologia_Class70009])
+	(expedienteAlumno [ontologia_Class80001])
+	(fechaCurso "2014-2015")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class83] of  Obligatoria
+
+	(competencias G7)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Primero)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 8.0)
+	(horasLab 3.0)
+	(horasLabExterno 8.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N1)
+	(nombreAsig "Programacion1")
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "PRO1")
+	(temas [ontologia_Class101]))
+
+([ontologia_Class84] of  Obligatoria
+
+	(competencias G6)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Primero)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "IntroduccionComputadores")
+	(promedioAprobados 75.0)
+	(proyecto FALSE)
+	(siglas "IC")
+	(temas [ontologia_Class109]))
+
+([ontologia_Class87] of  Obligatoria
+
+	(competencias G5)
+	(corequisitos [ontologia_Class10017])
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 8.0)
+	(horasLab 2.0)
+	(horasLabExterno 8.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Poryecto de Programacion")
+	(prerequisitos
+		[ontologia_Class91]
+		[ontologia_Class93])
+	(promedioAprobados 70.0)
+	(proyecto TRUE)
+	(siglas "PROP")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10008]
+		[ontologia_Class1]))
+
+([ontologia_Class88] of  Obligatoria
+
+	(competencias G2)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Segundo)
+	(distribucionLab 4.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.5)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 3.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Estructura de Computadores")
+	(promedioAprobados 89.0)
+	(proyecto FALSE)
+	(siglas "EC")
+	(temas [ontologia_Class109]))
+
+([ontologia_Class89] of  Obligatoria
+
+	(competencias G7)
+	(creditosTotales 7.5)
+	(cuatrimestre Q2 Q1)
+	(curso Segundo)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 5.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "1")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N2)
+	(nombreAsig "Matematicas2")
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "M2")
+	(temas
+		[ontologia_Class107]
+		[ontologia_Class10002]))
+
+([ontologia_Class90] of  Obligatoria
+
+	(competencias G9)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Segundo)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 5.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "1")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N1)
+	(nombreAsig "Matematicas1")
+	(promedioAprobados 70.0)
+	(proyecto FALSE)
+	(siglas "M1")
+	(temas
+		[ontologia_Class107]
+		[ontologia_Class10002]))
+
+([ontologia_Class90000] of  Especialidad
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Manana)
+	(horasEstudio 4.0)
+	(horasLab 4.0)
+	(horasLabExterno 4.0)
+	(horasProb "3")
+	(horasTeo 3.0)
+	(idioma Castellano)
+	(nivelCompetencia N1)
+	(nombreAsig "Sistemas Operativos Avanzados")
+	(nombreEsp TecnologiasInformacion)
+	(obligatoria Obligatoria)
+	(prerequisitos [ontologia_Class96])
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "SOA")
+	(temas
+		[ontologia_Class10010]
+		[ontologia_Class30011]
+		[ontologia_Class30010]))
+
+([ontologia_Class90001] of  Convocatoria
+
+	(asignatura [ontologia_Class50014])
+	(calificacion 8.0)
+	(idiomaConvocatoria Ingles)
+	(tipoHorario Manana))
+
+([ontologia_Class90002] of  Convocatoria
+
+	(asignatura [ontologia_Class50009])
+	(calificacion 7.0)
+	(idiomaConvocatoria Ingles)
+	(tipoHorario Manana))
+
+([ontologia_Class90003] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class70021]
+		[ontologia_Class90004])
+	(expedienteAlumno [ontologia_Class20013])
+	(fechaCurso "2015-2016")
+	(tipoCuatri OtonoQ1))
+
+([ontologia_Class90004] of  Convocatoria
+
+	(asignatura [ontologia_Class50004])
+	(calificacion 6.0)
+	(idiomaConvocatoria Castellano)
+	(tipoHorario Manana))
+
+([ontologia_Class90005] of  MatriculaCuatrimestre
+
+	(convocatorias
+		[ontologia_Class20026]
+		[ontologia_Class20027]
+		[ontologia_Class20025])
+	(expedienteAlumno [ontologia_Class20010])
+	(fechaCurso "2014-2015")
+	(tipoCuatri PrimaveraQ2))
+
+([ontologia_Class91] of  Obligatoria
+
+	(competencias G8)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Tercero)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Bases de Datos")
+	(prerequisitos
+		[ontologia_Class83]
+		[ontologia_Class92])
+	(promedioAprobados 86.0)
+	(proyecto FALSE)
+	(siglas "BD")
+	(temas [ontologia_Class110]))
+
+([ontologia_Class92] of  Obligatoria
+
+	(competencias G5)
+	(creditosTotales 7.5)
+	(cuatrimestre Q1 Q2)
+	(curso Segundo)
+	(distribucionLab 3.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 6.0)
+	(horasLab 3.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Programacion2")
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "PRO2")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10008]))
+
+([ontologia_Class93] of  Obligatoria
+
+	(competencias G6)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Tercero)
+	(distribucionLab 2.0)
+	(distribucionProb 2.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Catalan Ingles)
+	(nivelCompetencia N2)
+	(nombreAsig "Estructura de Datos y Algoritmo")
+	(prerequisitos
+		[ontologia_Class83]
+		[ontologia_Class92])
+	(promedioAprobados 60.0)
+	(proyecto TRUE)
+	(siglas "EDA")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10008]))
+
+([ontologia_Class94] of  Obligatoria
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Tercero)
+	(distribucionLab 3.5)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.5)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "Interfaces de Computadores")
+	(prerequisitos
+		[ontologia_Class88]
+		[ontologia_Class84]
+		[ontologia_Class77])
+	(promedioAprobados 89.0)
+	(proyecto FALSE)
+	(siglas "CI")
+	(temas [ontologia_Class109]))
+
+([ontologia_Class95] of  Obligatoria
+
+	(competencias G9)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Tercero)
+	(distribucionLab 2.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N2)
+	(nombreAsig "ProbabilidadEstadistica")
+	(prerequisitos
+		[ontologia_Class90]
+		[ontologia_Class89])
+	(promedioAprobados 79.0)
+	(proyecto FALSE)
+	(siglas "PE")
+	(temas
+		[ontologia_Class107]
+		[ontologia_Class10004]))
+
+([ontologia_Class96] of  Obligatoria
+
+	(competencias G8)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Tercero)
+	(distribucionLab 2.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 4.0)
+	(horasLab 2.0)
+	(horasLabExterno 4.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan Ingles)
+	(nivelCompetencia N1)
+	(nombreAsig "SistemasOperativos")
+	(prerequisitos
+		[ontologia_Class88]
+		[ontologia_Class84])
+	(promedioAprobados 98.0)
+	(proyecto FALSE)
+	(siglas "SO")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10010]))
+
+([ontologia_Class97] of  Obligatoria
+
+	(competencias G8)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(curso Cuarto)
+	(distribucionLab 2.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 2.0)
+	(horario Ambos)
+	(horasEstudio 6.0)
+	(horasLab 2.0)
+	(horasLabExterno 6.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N3)
+	(nombreAsig "Interaccion y Diseño de Interficies")
+	(prerequisitos
+		[ontologia_Class93]
+		[ontologia_Class90])
+	(promedioAprobados 75.0)
+	(proyecto TRUE)
+	(siglas "IDI")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10003]))
+
+([ontologia_Class99] of  Optativa
+
+	(competencias G3)
+	(creditosTotales 6.0)
+	(cuatrimestre Q1 Q2)
+	(distribucionLab 3.0)
+	(distribucionProb 0.0)
+	(distribucionTeo 3.0)
+	(horario Manana)
+	(horasEstudio 5.0)
+	(horasLab 6.0)
+	(horasLabExterno 5.0)
+	(horasProb "0")
+	(horasTeo 2.0)
+	(idioma Castellano Catalan)
+	(nivelCompetencia N1)
+	(nombreAsig "Criptografia")
+	(promedioAprobados 85.0)
+	(proyecto TRUE)
+	(siglas "C")
+	(temas
+		[ontologia_Class101]
+		[ontologia_Class10010]))

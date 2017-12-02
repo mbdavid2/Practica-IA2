@@ -1,4 +1,96 @@
-; Sat Dec 02 16:26:22 CET 2017
+; Sat Dec 02 16:52:18 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([Ontologia_Class10004] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Carrefour")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 24)
+	(UbicacionY 24))
+
+([Ontologia_Class10005] of  Educacion
+
+	(Estudios Primaria)
+	(NombreServicio "Colegio Ejemplo")
+	(Precio Barato)
+	(Publico TRUE)
+	(UbicacionX 45)
+	(UbicacionY 45))
+
+([Ontologia_Class10006] of  Ocio
+
+	(Horario Diurno)
+	(NombreServicio "CineEjemplo")
+	(Precio Medio)
+	(TipoOcio Cine)
+	(UbicacionX 67)
+	(UbicacionY 12))
+
+([Ontologia_Class10007] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "HospitalEjemplo")
+	(Parking_cerca TRUE)
+	(Tipo Hospital)
+	(UbicacionX 45)
+	(UbicacionY 67))
+
+([Ontologia_Class10008] of  Transp_Publico
+
+	(AptoMinusvalidos TRUE)
+	(NombreServicio "ParadaBusEjemplo")
+	(TipoTransp Bus)
+	(UbicacionX 33)
+	(UbicacionY 33))
+
+([Ontologia_Class10009] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "ParqueEjemplo")
+	(UbicacionX 89)
+	(UbicacionY 99))
+
+([Ontologia_Class10010] of  Poblacion
+
+	(formada_por [Ontologia_Class10011])
+	(NombrePoblacion "PoblacionEjemplo"))
+
+([Ontologia_Class10011] of  Barrio
+
+	(contiene [Ontologia_Class10012])
+	(NombreBarrio "BarrioEjemplo")
+	(ofrece
+		[Ontologia_Class10004]
+		[Ontologia_Class10007]
+		[Ontologia_Class10009])
+	(Precio_General 1200))
+
+([Ontologia_Class10012] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 46)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Dorm_Dobles 3)
+	(Dorm_Simples 2)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "ViviendaEjemplo")
+	(Piscina TRUE)
+	(Superficie_Total 60)
+	(Terraza TRUE)
+	(tiene [Ontologia_Class10013])
+	(UbicacionX 34)
+	(UbicacionY 123))
+
+([Ontologia_Class10013] of  Dormitorio
+
+	(Simple TRUE)
+	(Superficie 5))

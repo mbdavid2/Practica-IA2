@@ -1,5 +1,5 @@
 digraph Ontologia {
-	graph [bb="0,0,224,123"];
+	graph [bb="0,0,236,210"];
 	node [label="\N"];
 	Duplex	 [color="0.0,0.0,0.0",
 		fontcolor="0.0,0.0,0.0",
@@ -47,4 +47,24 @@ digraph Ontologia {
 		label=isa,
 		lp="169,61.5",
 		pos="s,130,86.799 137.24,79.467 150.95,65.603 167.74,48.612 180.03,36.175"];
+	Dormitorio	 [color="0.0,0.0,0.0",
+		fontcolor="0.0,0.0,0.0",
+		height=0.5,
+		label=Dormitorio,
+		pos="197,192",
+		shape=box,
+		width=1.0833];
+	Barrio	 [color="0.0,0.0,0.0",
+		fontcolor="0.0,0.0,0.0",
+		height=0.5,
+		label=Barrio,
+		pos="113,192",
+		shape=box,
+		width=0.75];
+	Barrio -> Vivienda	 [color="0.6666667,1.0,1.0",
+		fontcolor="0.6666667,1.0,1.0",
+		label="tiene*",
+		lp="129.5,148.5",
+		pos="e,113,123.18 113,173.8 113,162.16 113,146.55 113,133.24",
+		style=filled];
 }

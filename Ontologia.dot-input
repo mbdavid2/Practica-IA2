@@ -6,5 +6,8 @@ digraph "Ontologia" {
 "Vivienda"->"Unifamiliar" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
 "Piso" [shape=box, label="Piso", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
 "Vivienda"->"Piso" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Dormitorio" [shape=box, label="Dormitorio", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Barrio" [shape=box, label="Barrio", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Barrio"->"Vivienda" [style=filled, label="tiene*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
 "Vivienda" [shape=box, label="Vivienda", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
 }

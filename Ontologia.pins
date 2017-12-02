@@ -1,4 +1,4 @@
-; Sat Dec 02 17:48:21 CET 2017
+; Sat Dec 02 23:51:26 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -14,6 +14,7 @@
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "Duplex1")
 	(Piscina TRUE)
+	(Preu 1200)
 	(Superficie_Total 130)
 	(tiene
 		[Ontologia_Class20005]
@@ -117,6 +118,7 @@
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "ViviendaEjemplo")
 	(Piscina TRUE)
+	(Preu 45421)
 	(Superficie_Total 60)
 	(Terraza TRUE)
 	(tiene
@@ -168,6 +170,7 @@
 	(Estado nuevo)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "DuplexSinNada")
+	(Preu 3112)
 	(Superficie_Total 30)
 	(tiene [Ontologia_Class20009])
 	(UbicacionX 35)
@@ -185,6 +188,7 @@
 	(Estado nuevo)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "DuplexConTodo")
+	(Preu 21231)
 	(Superficie_Total 30)
 	(tiene [Ontologia_Class20011])
 	(UbicacionX 30)
@@ -209,6 +213,7 @@
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "PisoTodo")
 	(Piscina TRUE)
+	(Preu 31231)
 	(Superficie_Total 100)
 	(Terraza TRUE)
 	(tiene
@@ -242,6 +247,7 @@
 	(Estado nuevo)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "PisoSinNada")
+	(Preu 1231)
 	(Superficie_Total 100)
 	(tiene
 		[Ontologia_Class20017]
@@ -290,6 +296,7 @@
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "UnifamiliarConTodo")
 	(Piscina TRUE)
+	(Preu 124112)
 	(Superficie_Total 100)
 	(Terraza TRUE)
 	(tiene
@@ -322,6 +329,7 @@
 	(Estado reformar)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "SinNada")
+	(Preu 21314)
 	(Superficie_Total 100)
 	(tiene
 		[Ontologia_Class20026]
@@ -400,6 +408,7 @@
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "Ciudad2Duplex")
 	(Piscina TRUE)
+	(Preu 111111)
 	(Superficie_Total 180)
 	(Terraza TRUE)
 	(tiene
@@ -457,7 +466,9 @@
 	(Garaje TRUE)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 2)
+	(NombreVivienda "ejemplo")
 	(Piscina TRUE)
+	(Preu 3123)
 	(Superficie_Total 100)
 	(Terraza TRUE)
 	(tiene
@@ -495,7 +506,9 @@
 	(Garaje TRUE)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 1)
+	(NombreVivienda "ejemplos")
 	(Piscina TRUE)
+	(Preu 12314)
 	(Superficie_Total 70)
 	(Terraza TRUE)
 	(tiene
@@ -585,6 +598,7 @@
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "ConTodoBarrioCaro")
 	(Piscina TRUE)
+	(Preu 314123)
 	(Superficie_Total 120)
 	(Terraza TRUE)
 	(tiene
@@ -611,9 +625,6 @@
 	(Balcon TRUE)
 	(Superficie 21))
 
-([Ontologia_Class20057] of  Duplex
-)
-
 ([Ontologia_Class20058] of  Unifamiliar
 
 	(Aire_Acondicionado TRUE)
@@ -628,6 +639,7 @@
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "UnifamiliarCaro")
 	(Piscina TRUE)
+	(Preu 213112)
 	(Superficie_Total 170)
 	(Terraza TRUE)
 	(tiene

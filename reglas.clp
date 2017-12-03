@@ -105,7 +105,7 @@
 		(bind ?grado (send ?i get-Preu))
 		(bind ?ubiX (send ?i get-UbicacionX))
 		(bind ?ubiY (send ?i get-UbicacionY))
-		(bind ?dormitorios (send ?i get-Dorm_Dobles))
+		(bind ?dormitorios (length$ (send ?i get-tiene)))
 		(bind ?ascensor (send ?i get-Ascensor))
 		(printout t " -> Precio vivienda: " ?grado " euros" crlf)
 		(printout t " -> Numero de dormitorios: " ?dormitorios crlf)

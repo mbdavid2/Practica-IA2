@@ -1,34 +1,8 @@
-;;;-------------------------------PREGUNTAS---(no son nuestras, hay que cambiar¿?¿?¿?)-------------------------------
-
-;;; Funcion para hacer una pregunta general 
-(deffunction pregunta-general (?pregunta) 
-	(format t "%s" ?pregunta) 
-	(bind ?respuesta (read)) 
-	?respuesta
-)
-
-;;; Funcion para hacer una pregunta con respuesta en un rango dado
-(deffunction pregunta-numerica (?pregunta ?rangini ?rangfi) 
-	(format t "%s [%d, %d]: " ?pregunta ?rangini ?rangfi) 
-	(bind ?respuesta (read)) 
-	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
-		(format t "%s [%d, %d] " ?pregunta ?rangini ?rangfi) 
-		(bind ?respuesta (read)) 
-	) 
-	?respuesta
-)
-
-;;; Funcion para hacer una pregunta con un conjunto definido de valores de repuesta    
-(deffunction pregunta-lista (?pregunta $?valores_posibles) 
-	(format t "%s" ?pregunta)  
-	(bind ?resposta (read))   
-	?resposta
-)
-
-;;;;---esta si, la he hecho yo---
+;;;-------------------------------PREGUNTAS-------------------------------------
 
 ;;; Funcion para hacer una pregunta con una respuesta si/no
 (deffunction pregunta-si-o-no (?pregunta)
+	(printout t crlf)
 	(format t "%s (si/no): " ?pregunta)
 	(bind ?respuesta (read))
 	(while (not (or (eq ?respuesta si) (eq ?respuesta no) (eq ?respuesta n) (eq ?respuesta s)))
@@ -39,8 +13,9 @@
 	else FALSE)
 )
 
-;;;igual que la otra pero no hace print del rango
-(deffunction pregunta-integer (?pregunta ?rangini ?rangfi) 
+;;; Funcion para hacer una pregunta con una respuesta entera dentro de un rango
+(deffunction pregunta-integer (?pregunta ?rangini ?rangfi)
+	(printout t crlf)
 	(format t "%s (entero): " ?pregunta) 
 	(bind ?respuesta (read)) 
 	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
@@ -53,14 +28,12 @@
 ;;;---------------------------DEFTEMPLATES-----------------------------------
 
 ;;; deftemplate para guardar la solucion final ordenada
-
 (deftemplate solucionOrdenada "solucion final"
 	(slot posicion (type INTEGER))
 	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  
 )
 
 ;;; deftemplate para guardar las preferencias de los solicitantes
-
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
     (slot minDorm (type INTEGER))
@@ -76,14 +49,13 @@
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t "----------- Sistema de Recomendacion de Viviendas ------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
-	(printout t crlf)
 	(assert (nuevo_solicitante))
 )
 
 (defrule preferencias "Pregunta las preferencias de los solicitantes"
 	(nuevo_solicitante)
 	=>
- 	(bind ?pmax (pregunta-integer "Precio maximo?" 0 1000000))
+ 	(bind ?pmax (pregunta-integer "Precio maximo?" 0 999999999))
  	(bind ?dorms (pregunta-integer "Minimo numero de dormitorios?" 0 50))
  	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
  	(assert (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus)))
@@ -91,6 +63,7 @@
 
 (defrule buscar-vivienda "Busca una vivienda"
 	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus))
+	?puntero <- (nuevo_solicitante)
 	=>
 	(printout t crlf)
 	(printout t "Buscando viviendas..." crlf)
@@ -122,9 +95,18 @@
 				(printout t crlf))
 			
 		else 
-			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)
-		
+			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)	
 	)
+
+	(retract ?PrefSolicitantes)
+	(retract ?puntero)
+
+	(bind ?nuevo (pregunta-si-o-no "Quieres hacer una solicitud nueva?"))
+
+	(if (eq ?nuevo TRUE)
+		then (assert (nuevo_solicitante))
+		else (printout t "Adios!" crlf)
+	)	
 )
 
 

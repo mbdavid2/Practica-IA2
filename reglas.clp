@@ -94,7 +94,8 @@
 		(find-all-instances ((?inst Vivienda)) 
 			(and 
 				(< ?inst:Preu ?pmax)
-				(>= ?inst:Dorm_Dobles ?dorms) 
+				(>= ?inst:Dorm_Dobles ?dorms)
+				(eq ?inst:Ascensor ?minus) 
 			)
 		)
 	)

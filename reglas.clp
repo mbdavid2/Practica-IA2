@@ -70,21 +70,16 @@
  	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus)))
 )
 
-(defmesssage-handler Vivenda printInfo ()
-	(printout t “X: “?self:UbicacioX”  Y: “?self:UbicacioY)
-	(printout t “Preu: “?self:Preu)
-	(printout t “Apte per a minusvalids? “?self:Ascensor)
-)
-
 (defrule buscar-vivienda "Busca una vivienda"
 	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus))
 	=>
-	(format t "Tenemos un solicidante con precio maximo: %d y minusvalido: %s" ?pmax ?minus crlf)
+	(format t "Tenemos un solicidante con precio maximo: %d y minusvalido: %s" ?pmax ?minus)
+	(printout t crlf)
 	(printout t "Vamos a buscarle una vivienda adecuada" crlf)
 	(printout t crlf)
-
-	(bind ?vivienda 
-		(find-instance ((?inst Vivienda)) 
+	
+	(bind ?viviendas 
+		(find-all-instances ((?inst Vivienda)) 
 		;;;(and 
 			(< ?inst:Preu ?pmax)
 			;;;(= ?inst:Ascensor ?minus) //Da un problema con el ?minus :/
@@ -92,7 +87,14 @@
 		)
 	)
 
-	(send ?vivienda printInfo) 
+	(progn$ (?i ?viviendas)
+		(printout t "Vivienda encontrada, instancia:")
+		(printout t " "(instance-name ?i) " " crlf)
+		(bind ?grado (send ?i get-Preu))
+		(printout t " -> Precio vivienda: " ?grado " euros" crlf)
+		(printout t " -> Tiene ascensor:" " ((aqui s'hauria de mostrar ascensor que ho he comentat pq donava errors abans))" crlf)
+		(printout t crlf)
+	)
 )
 
 

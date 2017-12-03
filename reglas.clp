@@ -1,7 +1,5 @@
 ;;;-------------------------------PREGUNTAS----------------------------------
 
-;;; Funcion para hacer una pregunta con un conjunto definido de valores de repuesta 
-
 ;;; Funcion para hacer una pregunta general 
 (deffunction pregunta-general (?pregunta) 
 	(format t "%s" ?pregunta) 
@@ -28,6 +26,12 @@
 	?res
 )
 
+;;;---------------------------DEFTEMPLATES-----------------------------------
+
+(deftemplate PrefSolicitantes
+    (slot preciomaximo)
+)
+
 ;;;------------------------------------MAIN--------------------------------------
 
 (defrule comienzo "regla inicial"
@@ -38,13 +42,14 @@
 	(printout t "----------- Sistema de Recomendacion de Viviendas ------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t crlf)
-	(assert (nuevo_interesado))
+	(assert (nuevo_solicitante))
 )
 
-(defrule prueba "prueba defrule"
-	(nuevo_interesado)
+(defrule preciomax "Precio Maximo"
+	(nuevo_solicitante)
 	=>
- 	(bind ?prueba (pregunta-numerica "Prueba: " 0 24))
+ 	(bind ?pmax (pregunta-numerica "Precio maximo entre: " 0 100000))
+ 	(assert (PrefSolicitantes (preciomaximo ?pmax)))
 )
 
 

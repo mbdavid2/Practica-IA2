@@ -52,6 +52,12 @@
 
 ;;;---------------------------DEFTEMPLATES-----------------------------------
 
+;;; deftemplate para guardar la solucion final ordenada
+
+(deftemplate solucionOrdenada "solucion final"
+	(slot posicion (type INTEGER))
+	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  
+)
 
 ;;; deftemplate para guardar las preferencias de los solicitantes
 
@@ -99,6 +105,8 @@
 			)
 		)
 	)
+
+	(if (eq lenght$(?viviendas) 0) then (printout t "No hay ninguna vivivienda que satisfazca tus condiciones" crlf))
 
 	(progn$ (?i ?viviendas)
 		(printout t "Vivienda encontrada, instancia:")

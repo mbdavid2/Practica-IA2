@@ -1,4 +1,4 @@
-; Sat Dec 02 23:51:26 CET 2017
+; Sun Dec 03 17:37:06 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -7,8 +7,6 @@
 
 	(Aire_Acondicionado TRUE)
 	(Altura 2)
-	(Dorm_Dobles 1)
-	(Dorm_Simples 2)
 	(Estado nuevo)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 3)
@@ -110,8 +108,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 3)
-	(Dorm_Simples 2)
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)
@@ -165,8 +161,6 @@
 ([Ontologia_Class20008] of  Duplex
 
 	(Altura 30)
-	(Dorm_Dobles 0)
-	(Dorm_Simples 1)
 	(Estado nuevo)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "DuplexSinNada")
@@ -183,8 +177,6 @@
 ([Ontologia_Class20010] of  Duplex
 
 	(Altura 30)
-	(Dorm_Dobles 1)
-	(Dorm_Simples 0)
 	(Estado nuevo)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "DuplexConTodo")
@@ -206,8 +198,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 2)
-	(Dorm_Simples 1)
 	(Garaje TRUE)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 2)
@@ -242,8 +232,6 @@
 ([Ontologia_Class20016] of  Piso
 
 	(Altura 40)
-	(Dorm_Dobles 2)
-	(Dorm_Simples 1)
 	(Estado nuevo)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "PisoSinNada")
@@ -288,8 +276,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 2)
-	(Dorm_Simples 1)
 	(Estado buen_estado)
 	(Garaje TRUE)
 	(Jardin TRUE)
@@ -324,8 +310,6 @@
 
 ([Ontologia_Class20025] of  Unifamiliar
 
-	(Dorm_Dobles 2)
-	(Dorm_Simples 1)
 	(Estado reformar)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "SinNada")
@@ -400,8 +384,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 2)
-	(Dorm_Simples 3)
 	(Estado buen_estado)
 	(Garaje TRUE)
 	(Jardin TRUE)
@@ -461,8 +443,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 1)
-	(Dorm_Simples 2)
 	(Garaje TRUE)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 2)
@@ -501,8 +481,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 1)
-	(Dorm_Simples 1)
 	(Garaje TRUE)
 	(Jardin TRUE)
 	(N_Ba%C3%B1os 1)
@@ -590,8 +568,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 2)
-	(Dorm_Simples 1)
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)
@@ -631,8 +607,6 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Dorm_Dobles 1)
-	(Dorm_Simples 3)
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)

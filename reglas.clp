@@ -1,4 +1,4 @@
-;;;-------------------------------PREGUNTAS---(no son nuestras hay que cambiar!!!!)-------------------------------
+;;;-------------------------------PREGUNTAS---(no son nuestras, hay que cambiar¿?¿?¿?)-------------------------------
 
 ;;; Funcion para hacer una pregunta general 
 (deffunction pregunta-general (?pregunta) 
@@ -31,7 +31,7 @@
 (deffunction pregunta-si-o-no (?pregunta)
 	(format t "%s (si/no): " ?pregunta)
 	(bind ?respuesta (read))
-	(while (not (or (eq ?respuesta si) (eq ?respuesta no)))
+	(while (not (or (eq ?respuesta si) (eq ?respuesta no) (eq ?respuesta n) (eq ?respuesta s)))
 		(format t "%s (si/no): " ?pregunta)
 		(bind ?respuesta (read))
 	)
@@ -69,6 +69,32 @@
  	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
  	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus)))
 )
+
+(defmesssage-handler Vivenda printInfo ()
+	(printout t “X: “?self:UbicacioX”  Y: “?self:UbicacioY)
+	(printout t “Preu: “?self:Preu)
+	(printout t “Apte per a minusvalids? “?self:Ascensor)
+)
+
+(defrule buscar-vivienda "Busca una vivienda"
+	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus))
+	=>
+	(format t "Tenemos un solicidante con precio maximo: %d y minusvalido: %s" ?pmax ?minus crlf)
+	(printout t "Vamos a buscarle una vivienda adecuada" crlf)
+	(printout t crlf)
+
+	(bind ?vivienda 
+		(find-instance ((?inst Vivienda)) 
+		;;;(and 
+			(< ?inst:Preu ?pmax)
+			;;;(= ?inst:Ascensor ?minus) //Da un problema con el ?minus :/
+		;;;)
+		)
+	)
+
+	(send ?vivienda printInfo) 
+)
+
 
 
 

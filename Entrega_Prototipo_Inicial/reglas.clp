@@ -74,7 +74,7 @@
 			(and 
 				(< ?inst:Preu ?pmax)
 				(>= (length$ (send ?inst get-tiene)) ?dorms)
-				(eq ?inst:Ascensor ?minus)
+				(not (and (eq ?minus TRUE)(eq ?inst:Ascensor FALSE)))
 			)
 		)
 	)

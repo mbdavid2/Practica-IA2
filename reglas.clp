@@ -39,6 +39,17 @@
 	else FALSE)
 )
 
+;;;igual que la otra pero no hace print del rango
+(deffunction pregunta-integer (?pregunta ?rangini ?rangfi) 
+	(format t "%s (entero): " ?pregunta) 
+	(bind ?respuesta (read)) 
+	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
+		(format t "%s (entero): " ?pregunta) 
+		(bind ?respuesta (read)) 
+	) 
+	?respuesta
+)
+
 ;;;---------------------------DEFTEMPLATES-----------------------------------
 
 
@@ -46,6 +57,7 @@
 
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
+    (slot minDorm (type INTEGER))
     (slot hayMinusvalido (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
 )
 
@@ -65,25 +77,25 @@
 (defrule preferencias "Pregunta las preferencias de los solicitantes"
 	(nuevo_solicitante)
 	=>
- 	(bind ?pmax (pregunta-numerica "Precio maximo entre" 0 100000))
+ 	(bind ?pmax (pregunta-integer "Precio maximo?" 0 1000000))
+ 	(bind ?dorms (pregunta-integer "Minimo numero de dormitorios?" 0 50))
  	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
- 	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus)))
+ 	(assert (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus)))
 )
 
 (defrule buscar-vivienda "Busca una vivienda"
-	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (hayMinusvalido ?minus))
+	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus))
 	=>
-	(format t "Tenemos un solicidante con precio maximo: %d y minusvalido: %s" ?pmax ?minus)
 	(printout t crlf)
-	(printout t "Vamos a buscarle una vivienda adecuada" crlf)
+	(printout t "Buscando viviendas..." crlf)
 	(printout t crlf)
 	
 	(bind ?viviendas 
 		(find-all-instances ((?inst Vivienda)) 
-		;;;(and 
-			(< ?inst:Preu ?pmax)
-			;;;(= ?inst:Ascensor ?minus) //Da un problema con el ?minus :/
-		;;;)
+			(and 
+				(< ?inst:Preu ?pmax)
+				(>= ?inst:Dorm_Dobles ?dorms) 
+			)
 		)
 	)
 
@@ -91,8 +103,14 @@
 		(printout t "Vivienda encontrada, instancia:")
 		(printout t " "(instance-name ?i) " " crlf)
 		(bind ?grado (send ?i get-Preu))
+		(bind ?ubiX (send ?i get-UbicacionX))
+		(bind ?ubiY (send ?i get-UbicacionY))
+		(bind ?dormitorios (send ?i get-Dorm_Dobles))
+		(bind ?ascensor (send ?i get-Ascensor))
 		(printout t " -> Precio vivienda: " ?grado " euros" crlf)
-		(printout t " -> Tiene ascensor:" " ((aqui s'hauria de mostrar ascensor que ho he comentat pq donava errors abans))" crlf)
+		(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
+		(printout t " -> Tiene ascensor: " ?ascensor crlf)
+		(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
 		(printout t crlf)
 	)
 )

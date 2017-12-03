@@ -100,27 +100,30 @@
 		(find-all-instances ((?inst Vivienda)) 
 			(and 
 				(< ?inst:Preu ?pmax)
-				(>= ?inst:Dorm_Dobles ?dorms)
-				(eq ?inst:Ascensor ?minus) 
+				(>= (length$ (send ?inst get-tiene)) ?dorms)
+				(eq ?inst:Ascensor ?minus)
 			)
 		)
 	)
-
-	(if (eq lenght$(?viviendas) 0) then (printout t "No hay ninguna vivivienda que satisfazca tus condiciones" crlf))
-
-	(progn$ (?i ?viviendas)
-		(printout t "Vivienda encontrada, instancia:")
-		(printout t " "(instance-name ?i) " " crlf)
-		(bind ?grado (send ?i get-Preu))
-		(bind ?ubiX (send ?i get-UbicacionX))
-		(bind ?ubiY (send ?i get-UbicacionY))
-		(bind ?dormitorios (length$ (send ?i get-tiene)))
-		(bind ?ascensor (send ?i get-Ascensor))
-		(printout t " -> Precio vivienda: " ?grado " euros" crlf)
-		(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
-		(printout t " -> Tiene ascensor: " ?ascensor crlf)
-		(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
-		(printout t crlf)
+	(if (> (length$ ?viviendas) 0)
+		then 
+			(progn$ (?i ?viviendas)
+				(printout t "Vivienda encontrada, instancia:")
+				(printout t " "(instance-name ?i) " " crlf)
+				(bind ?grado (send ?i get-Preu))
+				(bind ?ubiX (send ?i get-UbicacionX))
+				(bind ?ubiY (send ?i get-UbicacionY))
+				(bind ?dormitorios (length$ (send ?i get-tiene)))
+				(bind ?ascensor (send ?i get-Ascensor))
+				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
+				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
+				(printout t " -> Tiene ascensor: " ?ascensor crlf)
+				(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
+				(printout t crlf))
+			
+		else 
+			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)
+		
 	)
 )
 

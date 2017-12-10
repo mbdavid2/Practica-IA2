@@ -33,6 +33,9 @@
 	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  
 )
 
+;;;---------------------DEFTEMPLATES DE PREFERENCIAS-----------------------------
+
+
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
@@ -52,6 +55,8 @@
 	(assert (nuevo_solicitante))
 )
 
+;;;-----------------------RULES: PREGUNTAS DE PREFERENCIAS------------------------
+
 (defrule preferencias "Pregunta las preferencias de los solicitantes"
 	(nuevo_solicitante)
 	=>
@@ -60,6 +65,10 @@
  	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
  	(assert (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus)))
 )
+
+
+
+;;;--------------------------------BUSQUEDA SOLUCION----------------------------------
 
 (defrule buscar-vivienda "Busca una vivienda"
 	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus))

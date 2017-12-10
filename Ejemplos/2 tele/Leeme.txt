@@ -1,0 +1,3 @@
+En el zip se encuentra la memoria (PDF) y el codigo (ZIP).
+
+Dentro del codigo se encuentra el fichero practica.clp con el codigo CLIPS, los ficheros de la ontologia dentro de la carpeta protege y un fichero carga.bat que carga el codigo en CLIPS haciendo un (clear) antes y un (reset), por lo que no es necesario usarlo.

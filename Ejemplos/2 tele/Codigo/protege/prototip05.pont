@@ -1,0 +1,441 @@
+; Wed May 29 20:32:54 CEST 2013
+; 
+;+ (version "3.4.8")
+;+ (build "Build 629")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot dirigida_por
+		(type INSTANCE)
+;+		(allowed-classes Director)
+;+		(inverse-slot dirige)
+		(create-accessor read-write))
+	(multislot serie_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot genero_serie)
+		(create-accessor read-write))
+	(multislot actua
+		(type INSTANCE)
+;+		(allowed-classes Actor)
+;+		(inverse-slot actua_en)
+		(create-accessor read-write))
+	(multislot idioma_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+;+		(inverse-slot en_idioma)
+		(create-accessor read-write))
+	(single-slot es_mudo
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot genero_pelicula
+		(type INSTANCE)
+;+		(allowed-classes Pelicula)
+;+		(inverse-slot pelicula_genero)
+		(create-accessor read-write))
+	(multislot contenido_animo
+		(type INSTANCE)
+;+		(allowed-classes Estado_animo)
+;+		(inverse-slot animo_contenido)
+		(create-accessor read-write))
+	(single-slot tematica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot blanco_negro
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot argumento_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+;+		(inverse-slot trata_de)
+		(create-accessor read-write))
+	(single-slot bajo_presupuesto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot duracion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot buena_audiencia
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot genero_serie
+		(type INSTANCE)
+;+		(allowed-classes Serie)
+;+		(inverse-slot serie_genero)
+		(create-accessor read-write))
+	(multislot actua_en
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+;+		(inverse-slot actua)
+		(create-accessor read-write))
+	(multislot realizado_por
+		(type INSTANCE)
+;+		(allowed-classes Creador)
+;+		(inverse-slot realiza)
+		(create-accessor read-write))
+	(multislot hecha_en
+		(type INSTANCE)
+;+		(allowed-classes Nacionalidad)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot nacionalidad_contenido)
+		(create-accessor read-write))
+	(single-slot aclamada_por_critica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot creada_por
+		(type INSTANCE)
+;+		(allowed-classes Creador)
+;+		(inverse-slot crea)
+		(create-accessor read-write))
+	(multislot trata_de
+		(type INSTANCE)
+;+		(allowed-classes Argumento)
+;+		(inverse-slot argumento_contenido)
+		(create-accessor read-write))
+	(single-slot docu_tematica
+		(type INSTANCE)
+;+		(allowed-classes Tematica)
+;+		(cardinality 1 1)
+;+		(inverse-slot tematica_docu)
+		(create-accessor read-write))
+	(multislot animo_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+;+		(inverse-slot contenido_animo)
+		(create-accessor read-write))
+	(multislot crea
+		(type INSTANCE)
+;+		(allowed-classes Serie)
+;+		(inverse-slot creada_por)
+		(create-accessor read-write))
+	(multislot tematica_docu
+		(type INSTANCE)
+;+		(allowed-classes Documental)
+;+		(inverse-slot docu_tematica)
+		(create-accessor read-write))
+	(single-slot argumento
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot genero
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot clasificacion_edades
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot dirige
+		(type INSTANCE)
+;+		(allowed-classes Pelicula)
+;+		(inverse-slot dirigida_por)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot nacionalidad_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+;+		(inverse-slot hecha_en)
+		(create-accessor read-write))
+	(single-slot en_idioma
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+;+		(cardinality 1 1)
+;+		(inverse-slot idioma_contenido)
+		(create-accessor read-write))
+	(single-slot animo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot de_moda
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot realiza
+		(type INSTANCE)
+;+		(allowed-classes Documental)
+;+		(inverse-slot realizado_por)
+		(create-accessor read-write))
+	(multislot pelicula_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot genero_pelicula)
+		(create-accessor read-write))
+	(single-slot prototip03_Class0
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Genero
+	(is-a USER)
+	(role concrete)
+	(multislot genero_serie
+		(type INSTANCE)
+;+		(allowed-classes Serie)
+		(create-accessor read-write))
+	(multislot genero_pelicula
+		(type INSTANCE)
+;+		(allowed-classes Pelicula)
+		(create-accessor read-write))
+	(single-slot genero
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Contenido
+	(is-a USER)
+	(role concrete)
+	(multislot trata_de
+		(type INSTANCE)
+;+		(allowed-classes Argumento)
+		(create-accessor read-write))
+	(multislot actua
+		(type INSTANCE)
+;+		(allowed-classes Actor)
+		(create-accessor read-write))
+	(single-slot duracion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot clasificacion_edades
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot buena_audiencia
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot es_mudo
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot en_idioma
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot contenido_animo
+		(type INSTANCE)
+;+		(allowed-classes Estado_animo)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot blanco_negro
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot anyo
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot de_moda
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot bajo_presupuesto
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot hecha_en
+		(type INSTANCE)
+;+		(allowed-classes Nacionalidad)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot aclamada_por_critica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Pelicula
+	(is-a Contenido)
+	(role concrete)
+	(multislot dirigida_por
+		(type INSTANCE)
+;+		(allowed-classes Director)
+		(create-accessor read-write))
+	(multislot pelicula_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass Serie
+	(is-a Contenido)
+	(role concrete)
+	(multislot serie_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot creada_por
+		(type INSTANCE)
+;+		(allowed-classes Creador)
+		(create-accessor read-write)))
+
+(defclass Documental
+	(is-a Contenido)
+	(role concrete)
+	(multislot realizado_por
+		(type INSTANCE)
+;+		(allowed-classes Creador)
+		(create-accessor read-write))
+	(single-slot docu_tematica
+		(type INSTANCE)
+;+		(allowed-classes Tematica)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Entidad
+	(is-a USER)
+	(role concrete)
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipo
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Actor
+	(is-a Entidad)
+	(role concrete)
+	(multislot actua_en
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+		(create-accessor read-write)))
+
+(defclass Director
+	(is-a Entidad)
+	(role concrete)
+	(multislot dirige
+		(type INSTANCE)
+;+		(allowed-classes Pelicula)
+		(create-accessor read-write)))
+
+(defclass Creador
+	(is-a Entidad)
+	(role concrete)
+	(multislot crea
+		(type INSTANCE)
+;+		(allowed-classes Serie)
+		(create-accessor read-write))
+	(multislot realiza
+		(type INSTANCE)
+;+		(allowed-classes Documental)
+		(create-accessor read-write)))
+
+(defclass Nacionalidad
+	(is-a USER)
+	(role concrete)
+	(single-slot nacionalidad
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot nacionalidad_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+		(create-accessor read-write)))
+
+(defclass Idioma
+	(is-a USER)
+	(role concrete)
+	(single-slot idioma
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot idioma_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+		(create-accessor read-write)))
+
+(defclass Tematica
+	(is-a USER)
+	(role concrete)
+	(single-slot tematica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot tematica_docu
+		(type INSTANCE)
+;+		(allowed-classes Documental)
+		(create-accessor read-write)))
+
+(defclass Estado_animo
+	(is-a USER)
+	(role concrete)
+	(single-slot animo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot animo_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+		(create-accessor read-write)))
+
+(defclass Argumento
+	(is-a USER)
+	(role concrete)
+	(multislot argumento_contenido
+		(type INSTANCE)
+;+		(allowed-classes Contenido)
+		(create-accessor read-write))
+	(single-slot argumento
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))

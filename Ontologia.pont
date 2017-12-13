@@ -1,114 +1,13 @@
-; Sun Dec 03 17:37:06 CET 2017
+; Wed Dec 13 10:59:03 CET 2017
 ; 
-;+ (version "3.4.1")
-;+ (build "Build 537")
+;+ (version "3.5")
+;+ (build "Build 663")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Piscina
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Simple
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot NombrePoblacion
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Estado
-		(type SYMBOL)
-		(allowed-values nuevo buen_estado reformar)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Disponible24h
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Superficie
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Precio_General
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Estudios
-		(type SYMBOL)
-		(allowed-values Secundaria Primaria Universidad)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Ontologia_Class4
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot N_Ba%C3%B1os
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Publico
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Ontologia_Class22
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Buenas_Vistas
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot UbicacionX
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot TipoTransp
-		(type SYMBOL)
-		(allowed-values Bus Metro Tren)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Precio
-		(type SYMBOL)
-		(allowed-values Caro Barato Medio)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Tipo
-		(type SYMBOL)
-		(allowed-values Hospital CentroDeDia Farmacia)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot MascotasPermitidas
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot contiene
-		(type INSTANCE)
-;+		(allowed-classes Vivienda)
-		(create-accessor read-write))
-	(multislot formada_por
-		(type INSTANCE)
-;+		(allowed-classes Barrio)
-		(create-accessor read-write))
-	(single-slot Aire_Acondicionado
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Balcon
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot AptoMinusvalidos
+	(single-slot Terraza
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -118,35 +17,80 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Altura
+	(single-slot Jardin
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoComercio
+		(type SYMBOL)
+		(allowed-values Alimentacion Electrodomesticos Otros)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Piscina
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Precio_General
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Preu
-		(type INTEGER)
+	(single-slot NombreVivienda
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Parking_cerca
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot tiene
 		(type INSTANCE)
 ;+		(allowed-classes Dormitorio)
 		(create-accessor read-write))
-	(single-slot UbicacionY
-		(type INTEGER)
+	(single-slot Calefaccion
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Viv
+		(type INSTANCE)
+;+		(allowed-classes Vivienda)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Simple
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Aire_Acondicionado
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Superficie_Total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot NombreServicio
-		(type STRING)
+	(multislot ofrece
+		(type INSTANCE)
+;+		(allowed-classes Servicio)
+		(create-accessor read-write))
+	(single-slot Altura
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot NombreBarrio
-		(type STRING)
+	(single-slot Ontologia_Class4
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Ascensor
+	(single-slot Estudios
+		(type SYMBOL)
+		(allowed-values Secundaria Primaria Universidad)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Buenas_Vistas
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -156,49 +100,147 @@
 		(allowed-values Diurno Nocturno 24h)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Terraza
+	(single-slot Superficie
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot N_Ba%C3%B1os
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombreBarrio
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Precio
+		(type SYMBOL)
+		(allowed-values Caro Barato Medio)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Ascensor
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estado
+		(type SYMBOL)
+		(allowed-values nuevo buen_estado reformar)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot UbicacionX
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class10000
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot UbicacionY
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot contiene
+		(type INSTANCE)
+;+		(allowed-classes Vivienda)
+		(create-accessor read-write))
+	(single-slot Disponible24h
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Tipo
+		(type SYMBOL)
+		(allowed-values Hospital CentroDeDia Farmacia)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombrePoblacion
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Puntuacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Balcon
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot MascotasPermitidas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class22
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot TipoTransp
+		(type SYMBOL)
+		(allowed-values Bus Metro Tren)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Publico
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoMinusvalidos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombreServicio
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot formada_por
+		(type INSTANCE)
+;+		(allowed-classes Barrio)
+		(create-accessor read-write))
+	(single-slot Preu
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot TipoOcio
 		(type SYMBOL)
 		(allowed-values Cine Teatro)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot TipoComercio
-		(type SYMBOL)
-		(allowed-values Alimentacion Electrodomesticos Otros)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Parking_cerca
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot ofrece
-		(type INSTANCE)
-;+		(allowed-classes Servicio)
-		(create-accessor read-write))
-	(single-slot NombreVivienda
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Calefaccion
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Jardin
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Vivienda
 	(is-a USER)
 	(role concrete)
-	(single-slot Buenas_Vistas
+	(single-slot Terraza
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Superficie_Total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Ascensor
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Garaje
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot MascotasPermitidas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estado
+		(type SYMBOL)
+		(allowed-values nuevo buen_estado reformar)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Jardin
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -212,30 +254,19 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Ascensor
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Terraza
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Estado
-		(type SYMBOL)
-		(allowed-values nuevo buen_estado reformar)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Preu
-		(type INTEGER)
+	(single-slot Ontologia_Class10000
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot NombreVivienda
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Aire_Acondicionado
+	(single-slot UbicacionY
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Buenas_Vistas
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -249,26 +280,17 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot UbicacionY
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Garaje
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Jardin
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Superficie_Total
+	(single-slot Preu
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot N_Ba%C3%B1os
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Aire_Acondicionado
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -295,14 +317,6 @@
 (defclass Barrio
 	(is-a USER)
 	(role concrete)
-	(single-slot NombreBarrio
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Precio_General
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot ofrece
 		(type INSTANCE)
 ;+		(allowed-classes Servicio)
@@ -310,16 +324,19 @@
 	(multislot contiene
 		(type INSTANCE)
 ;+		(allowed-classes Vivienda)
+		(create-accessor read-write))
+	(single-slot Precio_General
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombreBarrio
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Dormitorio
 	(is-a USER)
 	(role concrete)
-	(single-slot Simple
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Balcon
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
@@ -327,6 +344,11 @@
 		(create-accessor read-write))
 	(single-slot Superficie
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Simple
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -380,14 +402,14 @@
 (defclass Ocio
 	(is-a Servicio)
 	(role concrete)
-	(single-slot Horario
-		(type SYMBOL)
-		(allowed-values Diurno Nocturno 24h)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Precio
 		(type SYMBOL)
 		(allowed-values Caro Barato Medio)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Horario
+		(type SYMBOL)
+		(allowed-values Diurno Nocturno 24h)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot TipoOcio
@@ -399,11 +421,6 @@
 (defclass Educacion
 	(is-a Servicio)
 	(role concrete)
-	(single-slot Estudios
-		(type SYMBOL)
-		(allowed-values Secundaria Primaria Universidad)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Precio
 		(type SYMBOL)
 		(allowed-values Caro Barato Medio)
@@ -412,6 +429,11 @@
 	(single-slot Publico
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estudios
+		(type SYMBOL)
+		(allowed-values Secundaria Primaria Universidad)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -446,13 +468,26 @@
 		(allowed-values Bus Metro Tren)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoMinusvalidos
+	(single-slot Disponible24h
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Disponible24h
+	(single-slot AptoMinusvalidos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Candidato
+	(is-a USER)
+	(role concrete)
+	(single-slot Viv
+		(type INSTANCE)
+;+		(allowed-classes Vivienda)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Puntuacion
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

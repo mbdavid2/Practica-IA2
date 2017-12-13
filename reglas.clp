@@ -25,6 +25,30 @@
 	?respuesta
 )
 
+;;;---------------------------FUNCIONES AUXILIARES-------------------------------------
+
+(deffunction print-vivienda (?viviendas)
+	(if (> (length$ ?viviendas) 0)
+		then 
+			(progn$ (?i ?viviendas)
+				(printout t "Vivienda encontrada, instancia:")
+				(printout t " "(instance-name ?i) " " crlf)
+				(bind ?grado (send ?i get-Preu))
+				(bind ?ubiX (send ?i get-UbicacionX))
+				(bind ?ubiY (send ?i get-UbicacionY))
+				(bind ?dormitorios (length$ (send ?i get-tiene)))
+				(bind ?ascensor (send ?i get-Ascensor))
+				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
+				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
+				(printout t " -> Tiene ascensor: " ?ascensor crlf)
+				(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
+				(printout t crlf))
+			
+		else 
+			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)	
+	)
+)
+
 ;;;---------------------------DEFTEMPLATES-----------------------------------
 
 ;;; deftemplate para guardar la solucion final ordenada
@@ -33,8 +57,11 @@
 	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  
 )
 
-;;;---------------------DEFTEMPLATES DE PREFERENCIAS-----------------------------
-
+(deftemplate candidato "vivienda posible"
+	(slot noCoinciden (type INTEGER))
+	(slot extras (type INTEGER))
+	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  	
+)
 
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
@@ -55,8 +82,6 @@
 	(assert (nuevo_solicitante))
 )
 
-;;;-----------------------RULES: PREGUNTAS DE PREFERENCIAS------------------------
-
 (defrule preferencias "Pregunta las preferencias de los solicitantes"
 	(nuevo_solicitante)
 	=>
@@ -65,10 +90,6 @@
  	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
  	(assert (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus)))
 )
-
-
-
-;;;--------------------------------BUSQUEDA SOLUCION----------------------------------
 
 (defrule buscar-vivienda "Busca una vivienda"
 	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus))
@@ -83,29 +104,12 @@
 			(and 
 				(< ?inst:Preu ?pmax)
 				(>= (length$ (send ?inst get-tiene)) ?dorms)
-				(eq ?inst:Ascensor ?minus)
+				(not (and (eq ?minus TRUE)(eq ?inst:Ascensor FALSE)))
 			)
 		)
 	)
-	(if (> (length$ ?viviendas) 0)
-		then 
-			(progn$ (?i ?viviendas)
-				(printout t "Vivienda encontrada, instancia:")
-				(printout t " "(instance-name ?i) " " crlf)
-				(bind ?grado (send ?i get-Preu))
-				(bind ?ubiX (send ?i get-UbicacionX))
-				(bind ?ubiY (send ?i get-UbicacionY))
-				(bind ?dormitorios (length$ (send ?i get-tiene)))
-				(bind ?ascensor (send ?i get-Ascensor))
-				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
-				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
-				(printout t " -> Tiene ascensor: " ?ascensor crlf)
-				(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
-				(printout t crlf))
-			
-		else 
-			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)	
-	)
+	
+	(print-vivienda ?viviendas)	
 
 	(retract ?PrefSolicitantes)
 	(retract ?puntero)

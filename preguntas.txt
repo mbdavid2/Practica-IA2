@@ -1,0 +1,17 @@
+Preguntas:
+
+-Precio maximo
+
+-Hay gente mayor?
+-Minusvalidos
+
+-Cuantos dormitorios simples quieres?
+
+-Cuantos dormitorios dobles quieres?
+
+-Tienes mascotas?
+
+-Hay menores de edad?
+
+-Necesitas garaje?
+

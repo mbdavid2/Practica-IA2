@@ -31,13 +31,16 @@
 	(if (> (length$ ?viviendas) 0)
 		then 
 			(progn$ (?i ?viviendas)
-				(printout t "Vivienda encontrada, instancia:")
+				(printout t "Vivienda posible:")
 				(printout t " "(instance-name ?i) " " crlf)
 				(bind ?grado (send ?i get-Preu))
 				(bind ?ubiX (send ?i get-UbicacionX))
 				(bind ?ubiY (send ?i get-UbicacionY))
 				(bind ?dormitorios (length$ (send ?i get-tiene)))
 				(bind ?ascensor (send ?i get-Ascensor))
+
+				;;Mostramos la información de la vivienda, e indicamos las cosas distintas respecto las preferencias
+
 				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
 				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
 				(printout t " -> Tiene ascensor: " ?ascensor crlf)
@@ -66,7 +69,10 @@
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
-    (slot minDorm (type INTEGER))
+    (slot minDorm (type INTEGER)) ;;este hay que quitarlo
+    (slot hayMascota (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot hayMenorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot hayMayorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMinusvalido (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
 )
 
@@ -86,9 +92,26 @@
 	(nuevo_solicitante)
 	=>
  	(bind ?pmax (pregunta-integer "Precio maximo?" 0 999999999))
- 	(bind ?dorms (pregunta-integer "Minimo numero de dormitorios?" 0 50))
- 	(bind ?minus (pregunta-si-o-no "Hay alguna persona minusvalida?"))
- 	(assert (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus)))
+ 	
+ 	;;aqui funcion a la que le pasamos pmax para que busque segun eso? o todas las preguntas seguidas
+
+ 	(bind ?mascota (pregunta-si-o-no "¿Hay alguna mascota?"))
+
+	(bind ?garaje (pregunta-si-o-no "¿Necesitas garaje?"))
+
+ 	(bind ?dSimples (pregunta-integer "¿Minimo numero de dormitorios simples?" 0 50))
+
+ 	(bind ?dDobles (pregunta-integer "¿Minimo numero de dormitorios dobles?" 0 50))
+
+ 	(bind ?menoredad (pregunta-si-o-no "¿Hay algun menor de edad?"))
+
+ 	(bind ?persmayor (pregunta-si-o-no "¿Hay alguna persona mayor?"))
+
+ 	(bind ?minusvalida (pregunta-si-o-no "¿Hay alguna persona minusvalida?"))
+
+
+ 	;;Hay que hacer la suma de los dos dormitorios!
+ 	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMascota ?mascota) (hayMenorEdad ?menoredad) (hayMayorEdad ?persmayor) (minDorm ?dSimples) (hayMinusvalido ?minusvalida)))
 )
 
 (defrule buscar-vivienda "Busca una vivienda"

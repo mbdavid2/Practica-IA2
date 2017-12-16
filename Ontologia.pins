@@ -1,7 +1,7 @@
-; Wed Dec 13 10:59:03 CET 2017
+; Sat Dec 16 20:04:55 CET 2017
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.1")
+;+ (build "Build 537")
 
 ([Ontologia_Class0] of  Duplex
 
@@ -9,6 +9,7 @@
 	(Altura 2)
 	(Estado nuevo)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "Duplex1")
 	(Piscina TRUE)
@@ -111,6 +112,7 @@
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "ViviendaEjemplo")
 	(Piscina TRUE)
@@ -200,6 +202,7 @@
 	(Calefaccion TRUE)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "PisoTodo")
 	(Piscina TRUE)
@@ -279,6 +282,7 @@
 	(Estado buen_estado)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "UnifamiliarConTodo")
 	(Piscina TRUE)
@@ -387,6 +391,7 @@
 	(Estado buen_estado)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "Ciudad2Duplex")
 	(Piscina TRUE)
@@ -445,6 +450,7 @@
 	(Calefaccion TRUE)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "ejemplo")
 	(Piscina TRUE)
@@ -483,6 +489,7 @@
 	(Calefaccion TRUE)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "ejemplos")
 	(Piscina TRUE)
@@ -571,6 +578,7 @@
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "ConTodoBarrioCaro")
 	(Piscina TRUE)
@@ -610,6 +618,7 @@
 	(Estado nuevo)
 	(Garaje TRUE)
 	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 3)
 	(NombreVivienda "UnifamiliarCaro")
 	(Piscina TRUE)

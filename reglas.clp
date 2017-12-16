@@ -95,15 +95,15 @@
 
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
-    (slot edad (type INTEGER))
     (slot preciomaximo (type INTEGER))
     (slot preciominimo (type INTEGER)) 
-    (slot minDorm (type INTEGER)) ;;este hay que quitarlo
+    (slot dDobles (type INTEGER))
+    (slot dSimples (type INTEGER))
     (slot hayMascota (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMenorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMayorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMinusvalido (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
-    (slot tieneCoche (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot necesitaGaraje (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot trabaja (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot barrioTrabajo (type INSTANCE) (allowed-classes Barrio))  
     (slot quiereTranspPublico (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
@@ -117,71 +117,98 @@
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t "----------- Sistema de Recomendacion de Viviendas ------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
-        (bind ?ed (pregunta-integer "Que edad tienes?" 0 110))
-        (assert (PrefSolicitantes (edad ?ed)))
-        (assert (nuevo_solicitante_prueba))
+	;;(assert (PrefSolicitantes))
+	(assert (preguntar_preferencias))
 )
 
-(defrule get-edad "Establece la edad del usuario"
-	(not (PrefSolicitantes)
-        =>
-	(bind ?ed (pregunta-integer "Que edad tienes?" 0 110))
-        (assert (PrefSolicitantes (edad ?ed)))
-)
-
-(defrule establecer-edad "Establece la edad del usuario"
-	?Pref <- (PrefSolicitantes (edad ?edad))
-	=>
-	(bind ?ed (pregunta-integer "Que edad tienes?" 0 110))
-	(modify ?u (edad ?e))
-        (focus procesado)
-)
-
-
-
-;;;Pruebas
-(defrule prefaqe "Pregunta las preferencias de los solicitantes"
-	(nuevo_solicitante_prueba)
+(defrule preferencias "Pregunta las preferencias de los solicitantes"
+	?puntero <- (preguntar_preferencias)
+	;;?Solicitante <- (PrefSolicitantes)
 	=>
 	;;Precio maximo
- 	(bind ?pmax (pregunta-integer "Precio maximo?" 0 999999999))
- 	(assert (PrefSolicitantes (preciomaximo ?pmax)))
- 	(precio_max)
+ 	(bind ?pmax (pregunta-integer "Precio maximo que estas dispuesto a pagar?" 0 999999999))
+ 	;;(modify ?Solicitante (preciomaximo ?pmax))
+
+ 	;;Precio minimo, si le interesa
+ 	(bind ?if (pregunta-si-o-no "Tienes un precio minimo a partir del cual crees que la oferta es adecuada?"))
+	(if (eq ?if TRUE) 
+	then (bind ?pmin (pregunta-integer "Precio minimo?" 0 999999999))
+	else (bind ?pmin 0) 
+	)
+	;;(modify ?Solicitante (preciominimo ?pmin))
+
+	;;Numero de dormitorios
+	(bind ?if (pregunta-si-o-no "Quieres un numero concreto de dormitorios?"))
+	(if (eq ?if TRUE)
+	then 
+		(bind ?dSimples (pregunta-integer "Minimo numero de dormitorios simples?" 0 50))
+ 		(bind ?dDobles (pregunta-integer "Minimo numero de dormitorios dobles?" 0 50))
+ 		;;(modify ?Solicitante (dSimples ?dSimples) (dDobles ?dDobles))
+
+	else 	
+		(bind ?dSimples 0)
+ 		(bind ?dDobles 0)
+ 		;;(modify ?Solicitante (dSimples 0) (dDobles 0))
+	)
 
  	;;Tiene mascotas o planea tenerlas
- 	(bind ?mascota (pregunta-si-o-no "Tiene alguna mascota o planea tenerla?"))
-        (modify PrefSolicitantes))
+ 	(bind ?mascota (pregunta-si-o-no "Hay alguna mascota?"))
+ 	;;(modify ?Solicitante (hayMascota ?mascota))
 
- 	;;Precio maximo
+ 	;;Necesita garaje
 	(bind ?garaje (pregunta-si-o-no "Necesitas garaje?"))
+	;;(modify ?Solicitante (necesitaGaraje ?garaje))
 
-	;;Precio maximo
- 	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMascota ?mascota)))
+	
+
+	;;Ahora estas las usamos para "sentido comun" pero tambien hay que preguntar si es importante tener colegio cerca en este caso por ejemplo
+ 	;;Hay algun menor de edad?
+ 	(bind ?menoredad (pregunta-si-o-no "Hay algun menor de edad?"))
+
+ 	;;Hay alguna persona mayor?
+ 	(bind ?persmayor (pregunta-si-o-no "Hay alguna persona mayor?"))
+
+ 	;;Hay alguna persona minusvalida?
+ 	(bind ?minusvalida (pregunta-si-o-no "Hay alguna persona minusvalida?"))
+ 	;;(modify ?Solicitante (hayMinusvalido ?minusvalida))
+
+ 	(retract ?puntero)
+ 	(assert (PrefSolicitantes 
+ 		(preciomaximo ?pmax) 
+ 		(preciominimo ?pmin) 
+ 		(dDobles ?dDobles) 
+ 		(dSimples ?dSimples) 
+ 		(hayMascota ?mascota) 
+ 		(hayMenorEdad ?menoredad) 
+ 		(hayMayorEdad ?persmayor) 
+ 		(hayMinusvalido ?minusvalida)
+ 		(necesitaGaraje ?garaje)
+ 		;;(trabaja)
+ 		;;(barrioTrabajo)
+ 		;;(quiereTranspPublico)
+ 		)
+ 	)
+ 	(assert (nuevo_solicitante))
 )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(deftemplate PrefSolicitantes
+    (slot preciomaximo (type INTEGER))
+    (slot preciominimo (type INTEGER)) 
+    (slot dDobles (type INTEGER))
+    (slot dSimples (type INTEGER))
+    (slot hayMascota (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot hayMenorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot hayMayorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot hayMinusvalido (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot necesitaGaraje (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot trabaja (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot barrioTrabajo (type INSTANCE) (allowed-classes Barrio))  
+    (slot quiereTranspPublico (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+)
 
 
 (defrule buscar-vivienda "Busca una vivienda"
-	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (minDorm ?dorms) (hayMinusvalido ?minus))
+	?PrefSolicitantes <- (PrefSolicitantes (preciomaximo ?pmax) (dSimples ?dorms) (hayMinusvalido ?minus))
 	?puntero <- (nuevo_solicitante)
 	=>
 	(printout t crlf)
@@ -212,31 +239,7 @@
 )
 
 
-(defrule preferencias "Pregunta las preferencias de los solicitantes"
-	(nuevo_solicitante)
-	=>
- 	(bind ?pmax (pregunta-integer "Precio maximo?" 0 999999999))
- 	
- 	;;aqui funcion a la que le pasamos pmax para que busque segun eso? o todas las preguntas seguidas
 
- 	(bind ?mascota (pregunta-si-o-no "Hay alguna mascota?"))
-
-	(bind ?garaje (pregunta-si-o-no "Necesitas garaje?"))
-
- 	(bind ?dSimples (pregunta-integer "Minimo numero de dormitorios simples?" 0 50))
-
- 	(bind ?dDobles (pregunta-integer "Minimo numero de dormitorios dobles?" 0 50))
-
- 	(bind ?menoredad (pregunta-si-o-no "Hay algun menor de edad?"))
-
- 	(bind ?persmayor (pregunta-si-o-no "Hay alguna persona mayor?"))
-
- 	(bind ?minusvalida (pregunta-si-o-no "Hay alguna persona minusvalida?"))
-
-
- 	;;Hay que hacer la suma de los dos dormitorios!
- 	(assert (PrefSolicitantes (preciomaximo ?pmax) (hayMascota ?mascota) (hayMenorEdad ?menoredad) (hayMayorEdad ?persmayor) (minDorm ?dSimples) (hayMinusvalido ?minusvalida)))
-)
 
 
 

@@ -478,16 +478,3 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
-
-(defclass Candidato
-	(is-a USER)
-	(role concrete)
-	(single-slot Viv
-		(type INSTANCE)
-;+		(allowed-classes Vivienda)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))

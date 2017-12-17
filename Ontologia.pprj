@@ -1,7 +1,7 @@
-; Wed Dec 13 10:59:03 CET 2017
+; Sun Dec 17 21:30:36 CET 2017
 ; 
-;+ (version "3.5")
-;+ (build "Build 663")
+;+ (version "3.4.1")
+;+ (build "Build 537")
 
 ([ANNOTATED_INSTANCE_WIDGET] of  Widget
 
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class30]
-		[Ontologia_ProjectKB_Class31]
-		[Ontologia_ProjectKB_Class32]))
+		[Ontologia_ProjectKB_Class65]
+		[Ontologia_ProjectKB_Class66]
+		[Ontologia_ProjectKB_Class67]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,7 +66,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_507514_Class3] of  Map
+([KB_071796_Class3] of  Map
 )
 
 ([KB_738170_Class0] of  String
@@ -77,9 +77,9 @@
 ([KB_738170_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class33]
-		[Ontologia_ProjectKB_Class34]
-		[Ontologia_ProjectKB_Class35]))
+		[Ontologia_ProjectKB_Class68]
+		[Ontologia_ProjectKB_Class69]
+		[Ontologia_ProjectKB_Class70]))
 
 ([KB_738170_Class10] of  Property_List
 )
@@ -502,77 +502,41 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class10] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Ontologia_ProjectKB_Class11])
-	(widget_class_name "org.protege.owl.axiome.ui.AxiomeTab"))
-
-([Ontologia_ProjectKB_Class11] of  Property_List
-)
-
-([Ontologia_ProjectKB_Class30] of  String
+([Ontologia_ProjectKB_Class65] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ontologia_ProjectKB_Class31] of  String
+([Ontologia_ProjectKB_Class66] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Ontologia_ProjectKB_Class32] of  String
+([Ontologia_ProjectKB_Class67] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ontologia_ProjectKB_Class33] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([Ontologia_ProjectKB_Class34] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([Ontologia_ProjectKB_Class35] of  Map_Entry
+([Ontologia_ProjectKB_Class68] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class4] of  Widget
+([Ontologia_ProjectKB_Class69] of  Map_Entry
 
-	(is_hidden TRUE)
-	(property_list [Ontologia_ProjectKB_Class5])
-	(widget_class_name "edu.stanford.smi.protege.query.LuceneQueryPlugin"))
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class5] of  Property_List
-)
+([Ontologia_ProjectKB_Class70] of  Map_Entry
 
-([Ontologia_ProjectKB_Class6] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Ontologia_ProjectKB_Class7])
-	(widget_class_name "org.protege.owl.mm.portability.protege3.MappingMasterTab"))
-
-([Ontologia_ProjectKB_Class7] of  Property_List
-)
-
-([Ontologia_ProjectKB_Class8] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Ontologia_ProjectKB_Class9])
-	(widget_class_name "edu.stanford.smi.protegex.changeanalysis.ChangeAnalysisTab"))
-
-([Ontologia_ProjectKB_Class9] of  Property_List
-)
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([Ontologia_ProjectKB_Class99] of  String
 
@@ -659,8 +623,8 @@
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[PAL_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET])
+		[STANDARD_CLASS_FORM_WIDGET]
+		[PAL_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

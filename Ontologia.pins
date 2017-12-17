@@ -1,4 +1,4 @@
-; Sat Dec 16 20:04:55 CET 2017
+; Sun Dec 17 21:30:36 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -52,7 +52,7 @@
 	(NombreServicio "CineEjemplo")
 	(Precio Medio)
 	(TipoOcio Cine)
-	(UbicacionX 67)
+	(UbicacionX 4167)
 	(UbicacionY 12))
 
 ([Ontologia_Class10007] of  Salud
@@ -139,6 +139,41 @@
 	(Simple FALSE)
 	(Superficie 8))
 
+([Ontologia_Class20000] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Mercadona")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 123)
+	(UbicacionY 1457))
+
+([Ontologia_Class20001] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Eroski")
+	(Parking_cerca FALSE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 1378)
+	(UbicacionY 4670))
+
+([Ontologia_Class20002] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Caprabo")
+	(TipoComercio Alimentacion)
+	(UbicacionX 500)
+	(UbicacionY 3456))
+
+([Ontologia_Class20003] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Dia")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 100)
+	(UbicacionY 567))
+
 ([Ontologia_Class20004] of  Dormitorio
 
 	(Balcon FALSE)
@@ -179,14 +214,18 @@
 ([Ontologia_Class20010] of  Duplex
 
 	(Altura 30)
-	(Estado nuevo)
+	(Ascensor TRUE)
+	(Estado buen_estado)
+	(Garaje TRUE)
+	(Jardin TRUE)
 	(N_Ba%C3%B1os 1)
 	(NombreVivienda "DuplexConTodo")
+	(Piscina TRUE)
 	(Preu 21231)
 	(Superficie_Total 30)
 	(tiene [Ontologia_Class20011])
-	(UbicacionX 30)
-	(UbicacionY 130))
+	(UbicacionX 1301)
+	(UbicacionY 1230))
 
 ([Ontologia_Class20011] of  Dormitorio
 
@@ -386,27 +425,24 @@
 	(Aire_Acondicionado TRUE)
 	(Altura 20)
 	(Ascensor TRUE)
-	(Buenas_Vistas TRUE)
+	(Buenas_Vistas FALSE)
 	(Calefaccion TRUE)
 	(Estado buen_estado)
 	(Garaje TRUE)
 	(Jardin TRUE)
-	(MascotasPermitidas TRUE)
+	(MascotasPermitidas FALSE)
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "Ciudad2Duplex")
-	(Piscina TRUE)
+	(Piscina FALSE)
 	(Preu 111111)
 	(Superficie_Total 180)
-	(Terraza TRUE)
+	(Terraza FALSE)
 	(tiene
 		[Ontologia_Class20034]
 		[Ontologia_Class20035]
-		[Ontologia_Class20036]
-		[Ontologia_Class20037]
-		[Ontologia_Class20038]
 		[Ontologia_Class20039])
 	(UbicacionX 100)
-	(UbicacionY 200))
+	(UbicacionY 2561))
 
 ([Ontologia_Class20034] of  Dormitorio
 
@@ -520,8 +556,8 @@
 	(NombreServicio "Hospital 1")
 	(Parking_cerca TRUE)
 	(Tipo Hospital)
-	(UbicacionX 130)
-	(UbicacionY 178))
+	(UbicacionX 3130)
+	(UbicacionY 1178))
 
 ([Ontologia_Class20048] of  Transp_Publico
 
@@ -660,3 +696,464 @@
 
 	(Balcon TRUE)
 	(Superficie 10))
+
+([Ontologia_Class30000] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque1")
+	(UbicacionX 561)
+	(UbicacionY 3312))
+
+([Ontologia_Class30001] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque2")
+	(UbicacionX 4561)
+	(UbicacionY 332))
+
+([Ontologia_Class30002] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque3")
+	(Parking_cerca TRUE)
+	(UbicacionX 2161)
+	(UbicacionY 922))
+
+([Ontologia_Class30003] of  ZonaVerde
+
+	(MascotasPermitidas FALSE)
+	(NombreServicio "Parque4")
+	(Parking_cerca TRUE)
+	(UbicacionX 161)
+	(UbicacionY 1112))
+
+([Ontologia_Class30004] of  Educacion
+
+	(Estudios Universidad)
+	(NombreServicio "Universidad1")
+	(Precio Medio)
+	(Publico TRUE)
+	(UbicacionX 3321)
+	(UbicacionY 1235))
+
+([Ontologia_Class30005] of  Educacion
+
+	(Estudios Secundaria)
+	(NombreServicio "Colegio3")
+	(Parking_cerca TRUE)
+	(Publico TRUE)
+	(UbicacionX 4123)
+	(UbicacionY 155))
+
+([Ontologia_Class30006] of  Educacion
+
+	(Estudios Universidad)
+	(NombreServicio "Universidad2")
+	(Precio Caro)
+	(UbicacionX 2234)
+	(UbicacionY 1123))
+
+([Ontologia_Class30007] of  Educacion
+
+	(Estudios Secundaria)
+	(NombreServicio "Instituto1")
+	(Publico TRUE)
+	(UbicacionX 3354)
+	(UbicacionY 3345))
+
+([Ontologia_Class30008] of  Ocio
+
+	(Horario Nocturno)
+	(NombreServicio "Teatro1")
+	(Parking_cerca TRUE)
+	(Precio Caro)
+	(TipoOcio Teatro)
+	(UbicacionX 456)
+	(UbicacionY 1234))
+
+([Ontologia_Class30009] of  Ocio
+
+	(Horario Diurno)
+	(NombreServicio "Cine2")
+	(Precio Caro)
+	(TipoOcio Cine)
+	(UbicacionX 4412)
+	(UbicacionY 3412))
+
+([Ontologia_Class30010] of  Ocio
+
+	(Horario Nocturno)
+	(NombreServicio "Teatro")
+	(Parking_cerca TRUE)
+	(Precio Medio)
+	(TipoOcio Teatro)
+	(UbicacionX 2198)
+	(UbicacionY 4198))
+
+([Ontologia_Class30011] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Hospital2")
+	(Parking_cerca TRUE)
+	(Tipo Hospital)
+	(UbicacionX 441)
+	(UbicacionY 3154))
+
+([Ontologia_Class30012] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Farmacia")
+	(Tipo Farmacia)
+	(UbicacionX 4412)
+	(UbicacionY 1231))
+
+([Ontologia_Class30013] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Farmacia1")
+	(Tipo Farmacia)
+	(UbicacionX 412)
+	(UbicacionY 1231))
+
+([Ontologia_Class30014] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Farmacia2")
+	(Tipo Farmacia)
+	(UbicacionX 412)
+	(UbicacionY 121))
+
+([Ontologia_Class30015] of  Salud
+
+	(Disponible24h FALSE)
+	(NombreServicio "Farmacia3")
+	(Tipo Farmacia)
+	(UbicacionX 1212)
+	(UbicacionY 1131))
+
+([Ontologia_Class30016] of  Salud
+
+	(Disponible24h FALSE)
+	(NombreServicio "Farmacia4")
+	(Tipo Farmacia)
+	(UbicacionX 4542)
+	(UbicacionY 4431))
+
+([Ontologia_Class30017] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Farmacia5")
+	(Tipo Farmacia)
+	(UbicacionX 4122)
+	(UbicacionY 2227))
+
+([Ontologia_Class40000] of  ZonaVerde
+
+	(NombreServicio "Parque9")
+	(Parking_cerca TRUE)
+	(UbicacionX 4412)
+	(UbicacionY 39871))
+
+([Ontologia_Class40001] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque10")
+	(UbicacionX 3123)
+	(UbicacionY 1989))
+
+([Ontologia_Class40002] of  ZonaVerde
+
+	(NombreServicio "Parque11")
+	(UbicacionX 4445)
+	(UbicacionY 3986))
+
+([Ontologia_Class40003] of  ZonaVerde
+
+	(NombreServicio "Parque12")
+	(UbicacionX 1485)
+	(UbicacionY 4879))
+
+([Ontologia_Class40004] of  ZonaVerde
+
+	(NombreServicio "Parque5")
+	(Parking_cerca TRUE)
+	(UbicacionX 4121)
+	(UbicacionY 111))
+
+([Ontologia_Class40005] of  ZonaVerde
+
+	(NombreServicio "Parque5")
+	(UbicacionX 1123)
+	(UbicacionY 3124))
+
+([Ontologia_Class40006] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque6")
+	(Parking_cerca TRUE)
+	(UbicacionX 122)
+	(UbicacionY 4123))
+
+([Ontologia_Class40007] of  ZonaVerde
+
+	(NombreServicio "Parque7")
+	(UbicacionX 231)
+	(UbicacionY 3111))
+
+([Ontologia_Class40008] of  ZonaVerde
+
+	(MascotasPermitidas TRUE)
+	(NombreServicio "Parque8")
+	(UbicacionX 2212)
+	(UbicacionY 3812))
+
+([Ontologia_Class50000] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Centro1")
+	(Tipo CentroDeDia)
+	(UbicacionX 4876)
+	(UbicacionY 163))
+
+([Ontologia_Class50001] of  Salud
+
+	(Disponible24h TRUE)
+	(NombreServicio "Centro2")
+	(Parking_cerca TRUE)
+	(Tipo CentroDeDia)
+	(UbicacionX 111)
+	(UbicacionY 32131))
+
+([Ontologia_Class50002] of  Comercio
+)
+
+([Ontologia_Class50003] of  Comercio
+)
+
+([Ontologia_Class50004] of  Transp_Publico
+
+	(AptoMinusvalidos TRUE)
+	(Disponible24h TRUE)
+	(NombreServicio "Bus45")
+	(TipoTransp Bus)
+	(UbicacionX 1123)
+	(UbicacionY 1311))
+
+([Ontologia_Class50005] of  Transp_Publico
+
+	(AptoMinusvalidos TRUE)
+	(Disponible24h TRUE)
+	(NombreServicio "Bus60")
+	(TipoTransp Bus)
+	(UbicacionX 123)
+	(UbicacionY 4391))
+
+([Ontologia_Class50006] of  Transp_Publico
+
+	(AptoMinusvalidos FALSE)
+	(Disponible24h TRUE)
+	(NombreServicio "Bus80")
+	(TipoTransp Bus)
+	(UbicacionX 412)
+	(UbicacionY 1511))
+
+([Ontologia_Class50007] of  Transp_Publico
+
+	(AptoMinusvalidos FALSE)
+	(Disponible24h FALSE)
+	(NombreServicio "Bus15")
+	(TipoTransp Bus)
+	(UbicacionX 313)
+	(UbicacionY 4711))
+
+([Ontologia_Class50008] of  Transp_Publico
+
+	(AptoMinusvalidos FALSE)
+	(Disponible24h TRUE)
+	(NombreServicio "Bus76")
+	(TipoTransp Bus)
+	(UbicacionX 3123)
+	(UbicacionY 311))
+
+([Ontologia_Class50009] of  Transp_Publico
+
+	(AptoMinusvalidos TRUE)
+	(Disponible24h FALSE)
+	(NombreServicio "Bus10")
+	(TipoTransp Bus)
+	(UbicacionX 239)
+	(UbicacionY 4311))
+
+([Ontologia_Class50010] of  Transp_Publico
+
+	(AptoMinusvalidos FALSE)
+	(Disponible24h TRUE)
+	(NombreServicio "Bus22")
+	(TipoTransp Bus)
+	(UbicacionX 4423)
+	(UbicacionY 3981))
+
+([Ontologia_Class60000] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 60)
+	(Ascensor FALSE)
+	(Buenas_Vistas FALSE)
+	(Calefaccion TRUE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "Duplex4")
+	(Piscina TRUE)
+	(Preu 3123)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class2]
+		[Ontologia_Class20006]
+		[Ontologia_Class20007]
+		[Ontologia_Class20011])
+	(UbicacionX 2423)
+	(UbicacionY 1712))
+
+([Ontologia_Class60001] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 51)
+	(Ascensor TRUE)
+	(Buenas_Vistas FALSE)
+	(Calefaccion FALSE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin FALSE)
+	(MascotasPermitidas FALSE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Duplex6")
+	(Piscina TRUE)
+	(Preu 4123)
+	(Superficie_Total 100)
+	(Terraza FALSE)
+	(tiene
+		[Ontologia_Class2]
+		[Ontologia_Class20017]
+		[Ontologia_Class20017])
+	(UbicacionX 723)
+	(UbicacionY 1812))
+
+([Ontologia_Class60002] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 51)
+	(Ascensor FALSE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion FALSE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin FALSE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Duplex6")
+	(Piscina FALSE)
+	(Preu 4123)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class2]
+		[Ontologia_Class20035]
+		[Ontologia_Class20041]
+		[Ontologia_Class20042]
+		[Ontologia_Class20045])
+	(UbicacionX 4123)
+	(UbicacionY 4112))
+
+([Ontologia_Class60003] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 21)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion FALSE)
+	(Estado buen_estado)
+	(Garaje FALSE)
+	(Jardin FALSE)
+	(MascotasPermitidas FALSE)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "Duplex5")
+	(Piscina TRUE)
+	(Preu 600)
+	(Superficie_Total 50)
+	(Terraza FALSE)
+	(tiene
+		[Ontologia_Class2]
+		[Ontologia_Class20006])
+	(UbicacionX 3123)
+	(UbicacionY 112))
+
+([Ontologia_Class60004] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Mercadona2")
+	(Parking_cerca FALSE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 4870)
+	(UbicacionY 175))
+
+([Ontologia_Class60005] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Carrefour3")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 3970)
+	(UbicacionY 175))
+
+([Ontologia_Class60006] of  Comercio
+
+	(Horario Diurno)
+	(NombreServicio "Carrefour2")
+	(Parking_cerca TRUE)
+	(TipoComercio Alimentacion)
+	(UbicacionX 1310)
+	(UbicacionY 4575))
+
+([Ontologia_Class70004] of  Duplex
+
+	(Altura 31)
+	(Ascensor TRUE)
+	(Estado buen_estado)
+	(N_Ba%C3%B1os 1)
+	(NombreVivienda "Duplex9")
+	(Preu 2000)
+	(Superficie_Total 100)
+	(tiene
+		[Ontologia_Class20004]
+		[Ontologia_Class20006]
+		[Ontologia_Class20011]
+		[Ontologia_Class20014])
+	(UbicacionX 1123)
+	(UbicacionY 4789))
+
+([Ontologia_Class70005] of  Duplex
+
+	(Aire_Acondicionado TRUE)
+	(Altura 20)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Estado buen_estado)
+	(Garaje TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "Duplex8")
+	(Piscina TRUE)
+	(Preu 800)
+	(Superficie_Total 12)
+	(tiene
+		[Ontologia_Class2]
+		[Ontologia_Class20006]
+		[Ontologia_Class20007]
+		[Ontologia_Class20011]
+		[Ontologia_Class20013])
+	(UbicacionX 2311)
+	(UbicacionY 4987))

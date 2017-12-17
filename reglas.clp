@@ -194,6 +194,7 @@
  			 ;;"BarrioCiudad2
 	;;)
 
+
 	;;Lo de arriba no funciona
 
  	(retract ?puntero)
@@ -235,19 +236,67 @@
 
 	;;Bucle para iterar por todas las viviendas, cada una la añadimos a la clase candidato
 	;;y luego en esa clase calculamos la puntuacion segun sus caracteristicas
+	
 	(bind $?viviendas (find-all-instances ((?inst Vivienda)) TRUE))
 	(loop-for-count (?i 1 (length$ $?viviendas)) do
 		;;La instancia de vivienda que vamos a tratar
 		(bind ?curr-obj (nth$ ?i ?viviendas))
 
 		(bind ?puntuacion 0)
-
-		;;Precio maximo
+		
+		;;Precio maximo/minimo -> 0 si bien, -500 si poco mal, -2000 si mal
 		(bind ?curr-precio (send ?curr-obj get-Preu))
-		(bind ?diferencia (- ?pmax ?curr-precio))
-		(bind ?puntuacion (+ ?puntuacion ?diferencia))
+		(bind ?margin (- ?pmax ?pmin))
+		(bind ?margin (* ?margin 0.2))
+		
+		(if  (and (>= ?curr-precio ?pmin) (<= ?curr-precio ?pmax)) 
+			then (bind ?puntuacion(+ ?puntuacion 0))
+			else 
+			(if (and (>= ?curr-precio (- ?pmin ?margin)) (<= ?curr-precio (+ ?pmax ?margin)))
+				then (bind ?puntuacion (- ?puntuacion 500))
+				else (bind ?puntuacion (- ?puntuacion 1000))
+			)
+		)
+		
+		
+		
+		;;(bind ?diferencia (- ?pmax ?curr-precio))
+		;;(bind ?puntuacion (+ ?puntuacion ?diferencia))
+		
+		;;Numero Dormitorios (si no se pregunta nada no se punctua, si se pregunta si puntua mal cuel que tiene mas, y mucho mal cuel que tiene menor)
+		(bind ?curr-dobles (send ?curr-obj get-dDobles))
+		(bind ?curr-simples (send ?curr-obj get-dSimples))
+		(bind ?curr-d (+ ?curr-dobles ?curr-simples))
+		(bind ?sol-d (+ ?dDobles ?dSimples))
+		(if  (and (eq ?dDobles 0) (eq ?dSimples 0)) 
+			then (bind ?puntuacion(+ ?puntuacion 0))
+			else 
+			(if (or (< ?curr-dobles ?dDobles) (< ?curr-simples ?dSimples)) 
+				then (bind ?puntuacion (- ?puntuacion 1000))
+				else
+				(if (and (eq ?curr-dobles ?dDobles) (eq ?curr-simples ?dSimples))
+					then (bind ?puntuacion (+ ?puntuacion 0))
+					else (bind ?puntuacion (- ?puntuacion 500)
+		))))
+		
+		
+		
+		;; NecesitaGaraje
+		(bind ?curr-garaje (send ?curr-obj get-garaje))
+		(if (eq ?garaje TRUE)
+			then
+				(if (eq ?curr-garaje FALSE)
+					then (bind ?puntuacion (- ?puntuacion 1000))
+				)
+			else
+				(if (eq ?curr-garaje TRUE)
+				then (bind ?puntuacion (+ ?puntuacion 10))
+				)
+		)
+		
+		
 
-		(printout t "eadads" crlf)
+		(printout t "margin" ?margin crlf)
 
 		;;La guardamos como clase de tipo "candidato"
 		(make-instance (gensym) of Candidato (Viv ?curr-obj) (Puntuacion ?puntuacion))
@@ -276,6 +325,10 @@
 		else (printout t "Adios!" crlf)
 	)	
 )
+
+
+
+
 
 
 

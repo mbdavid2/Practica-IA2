@@ -76,14 +76,21 @@
 (deffunction parque-mascotas-dist (?vivienda)
 	(bind ?x (send ?vivienda get-UbicacionX))
 	(bind ?y (send ?vivienda get-UbicacionY))
+
+
 	(bind ?i 1)
 	(bind ?n 0)
 	(bind ?zonasverdes (find-all-instances ((?inst ZonaVerde)) TRUE))
+	;;(printout t "La vivienda tiene Ubicacion : (" ?x ", " ?y "), size: " (length$ ?zonasverdes) crlf)
 	(while (and (<= ?i (length$ ?zonasverdes)) (< ?n 2)) do
 		(bind ?zv (nth$ ?i ?zonasverdes))
 		(bind ?if (send ?zv get-MascotasPermitidas))
-		(if (eq ?if "TRUE") 
-			then (bind ?dist (+ (abs (- ?x (send ?zv get-UbicacionX))) (abs (- ?y (send ?zv get-UbicacionY)))))
+		(if (eq ?if TRUE) 
+			then 
+			(bind ?xzv (send ?zv get-UbicacionX))
+			(bind ?yzv (send ?zv get-UbicacionY))
+			;;(printout t "La zona verde tiene Ubicacion : (" ?xzv ", " ?yzv ")" crlf)
+			(bind ?dist (+ (abs (- ?x ?xzv)) (abs (- ?y ?yzv))))
 			(if (<= ?dist 500) 
 				then (bind ?n 2)
 				else 
@@ -301,7 +308,7 @@
 			)
 		)
 		
-		;(printout t "puntuacion precio: " ?puntuacion crlf)
+		(printout t "puntuacion precio: " ?puntuacion crlf)
 		
 		;;(bind ?diferencia (- ?pmax ?curr-precio))
 		;;(bind ?puntuacion (+ ?puntuacion ?diferencia))
@@ -313,8 +320,6 @@
 
 		;; hay que hacerlo asi pq no tenemos atributo simples y dobles, solo "tiene" que es instancia de dormitorios
 		(bind ?instancias_dormitorios (send ?curr-obj get-tiene))
-		;;(bind ?curr-d (length$ (?instancias_dormitorios)))
-
 
 		;;-------Dormitorios-------
 		(bind ?curr-dobles 0)
@@ -327,34 +332,29 @@
 			)
 		)
 
-		;(printout t "dobles: " ?curr-dobles " simples: " ?curr-simples crlf)
-
 		(bind ?sol-d (+ ?dDobles ?dSimples))
 		(if  (and (eq ?dDobles 0) (eq ?dSimples 0)) 
 			then (bind ?puntuacion(+ ?puntuacion 0))
 			else 
-			(if (or (< ?curr-dobles ?dDobles ) (< ?curr-simples ?dSimples)) 
+			(if (or (< ?dDobles ?curr-dobles ) (< ?dSimples ?curr-simples )) 
 				then (bind ?puntuacion (- ?puntuacion 1000))
 				else
 				(if (and (eq ?curr-dobles ?dDobles) (eq ?curr-simples ?dSimples))
 					then (bind ?puntuacion (+ ?puntuacion 0))
 					else (bind ?puntuacion (- ?puntuacion 500)
 		))))
-		
-		
-		
-		
 
+		(printout t "puntuacion dorms: " ?puntuacion crlf)
+		
+		
 		;;-----NecesitaGaraje-------
 		(bind ?curr-garaje (send ?curr-obj get-Garaje))
-
-		;;(printout t "Quiere garaje: " ?garaje crlf)
-		;;(printout t "La casa tiene: " ?curr-garaje crlf)
 
 		(if (eq ?garaje TRUE)
 			then
 				(if (eq ?curr-garaje FALSE)
 					then (bind ?puntuacion (- ?puntuacion 1000))
+					else (bind ?puntuacion (+ ?puntuacion 10)) ;;Extra
 				)
 			else
 				(if (eq ?curr-garaje TRUE)
@@ -362,9 +362,15 @@
 				)
 		)
 		
+		(printout t "puntuacion garaje: " ?puntuacion crlf)
+		
 		;;------Mascotas--------
-		;;(bind ?n (parque-mascotas-dist ?curr-obj)) 
-		;;(bind ?puntuacion (+ -500 (* ?n 500)))
+		(if (eq ?mascota TRUE)
+			then (bind ?n (parque-mascotas-dist ?curr-obj)) 
+			     (bind ?puntuacion (+ ?puntuacion (+ -500 (* ?n 500))))
+		)
+
+		(printout t "puntuacion mascota: " ?puntuacion crlf)
 
 		
 

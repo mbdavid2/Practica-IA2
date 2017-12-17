@@ -242,9 +242,14 @@
 		;;La instancia de vivienda que vamos a tratar
 		(bind ?curr-obj (nth$ ?i ?viviendas))
 
+
+		(printout t "Vivienda que consideramos:")
+		(printout t " "(instance-name ?curr-obj) " " crlf)
+
 		(bind ?puntuacion 0)
 		
-		;;Precio maximo/minimo -> 0 si bien, -500 si poco mal, -2000 si mal
+		;;-------Precio maximo/minimo-------
+		;;0 si bien, -500 si poco mal, -2000 si mal
 		(bind ?curr-precio (send ?curr-obj get-Preu))
 		(bind ?margin (- ?pmax ?pmin))
 		(bind ?margin (* ?margin 0.2))
@@ -258,20 +263,39 @@
 			)
 		)
 		
-		
+		;(printout t "puntuacion precio: " ?puntuacion crlf)
 		
 		;;(bind ?diferencia (- ?pmax ?curr-precio))
 		;;(bind ?puntuacion (+ ?puntuacion ?diferencia))
 		
 		;;Numero Dormitorios (si no se pregunta nada no se punctua, si se pregunta si puntua mal cuel que tiene mas, y mucho mal cuel que tiene menor)
-		(bind ?curr-dobles (send ?curr-obj get-dDobles))
-		(bind ?curr-simples (send ?curr-obj get-dSimples))
-		(bind ?curr-d (+ ?curr-dobles ?curr-simples))
+		;;(bind ?curr-dobles (send ?curr-obj get-dDobles))
+		;;(bind ?curr-simples (send ?curr-obj get-dSimples))
+		;;(bind ?curr-d (+ ?curr-dobles ?curr-simples))
+
+		;; hay que hacerlo asi pq no tenemos atributo simples y dobles, solo "tiene" que es instancia de dormitorios
+		(bind ?instancias_dormitorios (send ?curr-obj get-tiene))
+		;;(bind ?curr-d (length$ (?instancias_dormitorios)))
+
+
+		;;-------Dormitorios-------
+		(bind ?curr-dobles 0)
+		(bind ?curr-simples 0)
+		(progn$ (?i ?instancias_dormitorios)
+			(bind ?type (send ?i get-Simple))
+			(if (eq ?type "TRUE") 
+				then (bind ?curr-dobles (+ ?curr-dobles 1))
+				else (bind ?curr-simples (+ ?curr-simples 1))
+			)
+		)
+
+		;(printout t "dobles: " ?curr-dobles " simples: " ?curr-simples crlf)
+
 		(bind ?sol-d (+ ?dDobles ?dSimples))
 		(if  (and (eq ?dDobles 0) (eq ?dSimples 0)) 
 			then (bind ?puntuacion(+ ?puntuacion 0))
 			else 
-			(if (or (< ?curr-dobles ?dDobles) (< ?curr-simples ?dSimples)) 
+			(if (or (< ?curr-dobles ?dDobles ) (< ?curr-simples ?dSimples)) 
 				then (bind ?puntuacion (- ?puntuacion 1000))
 				else
 				(if (and (eq ?curr-dobles ?dDobles) (eq ?curr-simples ?dSimples))
@@ -281,8 +305,14 @@
 		
 		
 		
-		;; NecesitaGaraje
-		(bind ?curr-garaje (send ?curr-obj get-garaje))
+		
+
+		;;-----NecesitaGaraje-------
+		(bind ?curr-garaje (send ?curr-obj get-Garaje))
+
+		;;(printout t "Quiere garaje: " ?garaje crlf)
+		;;(printout t "La casa tiene: " ?curr-garaje crlf)
+
 		(if (eq ?garaje TRUE)
 			then
 				(if (eq ?curr-garaje FALSE)
@@ -290,19 +320,25 @@
 				)
 			else
 				(if (eq ?curr-garaje TRUE)
-				then (bind ?puntuacion (+ ?puntuacion 10))
+				then (bind ?puntuacion (+ ?puntuacion 10)) ;;Extra
 				)
 		)
 		
 		
 
-		(printout t "margin" ?margin crlf)
+		;(printout t "margin" ?margin crlf)
 
 		;;La guardamos como clase de tipo "candidato"
+		(printout t "Puntuacion final: " ?puntuacion crlf)
 		(make-instance (gensym) of Candidato (Viv ?curr-obj) (Puntuacion ?puntuacion))
 	)	
 
 
+
+
+
+
+	;;;Version antigua
 	(bind ?viviendas 
 		(find-all-instances ((?inst Vivienda)) 
 			(and 
@@ -313,7 +349,7 @@
 		)
 	)
 	
-	(print-vivienda ?viviendas)	
+	;;(print-vivienda ?viviendas)	
 
 	(retract ?PrefSolicitantes)
 	(retract ?puntero)

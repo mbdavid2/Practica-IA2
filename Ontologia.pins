@@ -200,7 +200,7 @@
 	(Ascensor TRUE)
 	(Buenas_Vistas TRUE)
 	(Calefaccion TRUE)
-	(Garaje TRUE)
+	(Garaje FALSE)
 	(Jardin TRUE)
 	(MascotasPermitidas TRUE)
 	(N_Ba%C3%B1os 2)

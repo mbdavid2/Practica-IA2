@@ -59,6 +59,44 @@
 	)
 )
 
+;;Trobar si hi ha un parc que permeti mascotes a prop
+(deffunction 
+	parque_mascotas_cerca 
+	(?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+	(bind ?parcs_mascotes (find-instance ((?inst ZonaVerde)) 
+	(and 
+		(<= (+ (abs (- ?x (send ?inst get-UbicacionX))) (abs (- ?y (send ?inst get-UbicacionY)))) 500)
+		(send ?inst get-MascotasPermitidas))))
+	?parcs_mascotes
+)
+
+;;2: Parc < 500m, 1: Parc < 1000m, 0: No hi ha cap parc a prop que accepti mascotes
+(deffunction parque-mascotas-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?zonasverdes (find-all-instances ((?inst ZonaVerde)) TRUE))
+	(while (and (<= ?i (length$ ?zonasverdes)) (< ?n 2)) do
+		(bind ?zv (nth$ ?i ?zonasverdes))
+		(bind ?if (send ?zv get-MascotasPermitidas))
+		(if (eq ?if "TRUE") 
+			then (bind ?dist (+ (abs (- ?x (send ?zv get-UbicacionX))) (abs (- ?y (send ?zv get-UbicacionY)))))
+			(if (<= ?dist 500) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 1000) 
+						then (bind ?n 1)
+					)
+			)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
 ;;; Funcion que retorna el elemento con puntuacion maxima (COPIADAAA DE OTRO FICHERO HAY QUE CAMBIAR UN POCO
 ;;(deffunction maximo-puntuacion ($?lista)
 ;;	(bind ?maximo -1)
@@ -324,6 +362,10 @@
 				)
 		)
 		
+		;;------Mascotas--------
+		;;(bind ?n (parque-mascotas-dist ?curr-obj)) 
+		;;(bind ?puntuacion (+ -500 (* ?n 500)))
+
 		
 
 		;(printout t "margin" ?margin crlf)
@@ -338,7 +380,7 @@
 
 
 
-	;;;Version antigua
+	;;;Version antigua 
 	(bind ?viviendas 
 		(find-all-instances ((?inst Vivienda)) 
 			(and 

@@ -139,22 +139,18 @@
 		(create-accessor read-write))
 )
 
-(deftemplate candidato "vivienda posible"
-	(slot noCoinciden (type INTEGER))
-	(slot extras (type INTEGER))
-	(slot vivienda (type INSTANCE) (allowed-classes Vivienda))  	
-)
-
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
     (slot preciominimo (type INTEGER)) 
+	(slot npersonas (type INTEGER))
     (slot dDobles (type INTEGER))
     (slot dSimples (type INTEGER))
     (slot hayMascota (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMenorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMayorEdad (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot hayMinusvalido (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+	(slot tieneCoche (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot necesitaGaraje (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot trabaja (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot barrioTrabajo (type INSTANCE) (allowed-classes Barrio))  
@@ -179,7 +175,6 @@
 	=>
 	;;Precio maximo
  	(bind ?pmax (pregunta-integer "Precio maximo que estas dispuesto a pagar?" 0 999999999))
- 	;;(modify ?Solicitante (preciomaximo ?pmax))
 
  	;;Precio minimo, si le interesa
  	(bind ?if (pregunta-si-o-no "Tienes un precio minimo a partir del cual crees que la oferta es adecuada?"))
@@ -187,30 +182,31 @@
 	then (bind ?pmin (pregunta-integer "Precio minimo?" 0 999999999))
 	else (bind ?pmin 0) 
 	)
-	;;(modify ?Solicitante (preciominimo ?pmin))
-
+	
+	;;Numero de personas
+	(bind ?npers (pregunta-integer "Cuantas personas van a vivir en la casa?" 0 50))
+	
 	;;Numero de dormitorios
 	(bind ?if (pregunta-si-o-no "Quieres un numero concreto de dormitorios?"))
 	(if (eq ?if TRUE)
 	then 
 		(bind ?dSimples (pregunta-integer "Minimo numero de dormitorios simples?" 0 50))
  		(bind ?dDobles (pregunta-integer "Minimo numero de dormitorios dobles?" 0 50))
- 		;;(modify ?Solicitante (dSimples ?dSimples) (dDobles ?dDobles))
 
 	else 	
 		(bind ?dSimples 0)
  		(bind ?dDobles 0)
- 		;;(modify ?Solicitante (dSimples 0) (dDobles 0))
 	)
 
  	;;Tiene mascotas o planea tenerlas
  	(bind ?mascota (pregunta-si-o-no "Hay alguna mascota?"))
- 	;;(modify ?Solicitante (hayMascota ?mascota))
 
  	;;Necesita garaje
-	(bind ?garaje (pregunta-si-o-no "Necesitas garaje?"))
-	;;(modify ?Solicitante (necesitaGaraje ?garaje))
-
+	(bind ?garaje FALSE)
+	(bind ?coche (pregunta-si-o-no "Tienes coche?"))
+	(if (eq ?coche TRUE)
+		then (bind ?garaje (pregunta-si-o-no "Necesitas garaje?"))
+	)
 	
 
 	;;Ahora estas las usamos para "sentido comun" pero tambien hay que preguntar si es importante tener colegio cerca en este caso por ejemplo
@@ -222,8 +218,6 @@
 
  	;;Hay alguna persona minusvalida?
  	(bind ?minusvalida (pregunta-si-o-no "Hay alguna persona minusvalida?"))
- 	;;(modify ?Solicitante (hayMinusvalido ?minusvalida))
-
 
  	;;Si trabaja, barrio en el que trabaja
  	(bind ?trabaja (pregunta-si-o-no "Trabajas?"))
@@ -246,12 +240,14 @@
  	(assert (PrefSolicitantes 
  		(preciomaximo ?pmax) 
  		(preciominimo ?pmin) 
+		(npersonas ?npers)
  		(dDobles ?dDobles) 
  		(dSimples ?dSimples) 
  		(hayMascota ?mascota) 
  		(hayMenorEdad ?menoredad) 
  		(hayMayorEdad ?persmayor) 
  		(hayMinusvalido ?minusvalida)
+		(tieneCoche ?coche)
  		(necesitaGaraje ?garaje)
  		(trabaja ?trabaja)
  		;;(barrioTrabajo ?barrio)
@@ -265,12 +261,14 @@
 	?PrefSolicitantes <- (PrefSolicitantes 
 		(preciomaximo ?pmax) 
  		(preciominimo ?pmin) 
+		(npersonas ?npers)
  		(dDobles ?dDobles) 
  		(dSimples ?dSimples) 
  		(hayMascota ?mascota) 
  		(hayMenorEdad ?menoredad) 
  		(hayMayorEdad ?persmayor) 
  		(hayMinusvalido ?minusvalida)
+		(tieneCoche ?coche)
  		(necesitaGaraje ?garaje)
  		(trabaja ?trabaja)) 
 	?puntero <- (nuevo_solicitante)
@@ -279,19 +277,20 @@
 	(printout t "Buscando viviendas..." crlf)
 	(printout t crlf)
 
-	;;Bucle para iterar por todas las viviendas, cada una la añadimos a la clase candidato
-	;;y luego en esa clase calculamos la puntuacion segun sus caracteristicas
+	;;Bucle para iterar por todas las viviendas, cada una calculamos la puntuacion segun sus caracteristicas
+	;;y luego la añadimos a la clase candidato
 	
 	(bind $?viviendas (find-all-instances ((?inst Vivienda)) TRUE))
 	(loop-for-count (?i 1 (length$ $?viviendas)) do
 		;;La instancia de vivienda que vamos a tratar
 		(bind ?curr-obj (nth$ ?i ?viviendas))
 
-
 		(printout t "Vivienda que consideramos:")
 		(printout t " "(instance-name ?curr-obj) " " crlf)
-
+		
 		(bind ?puntuacion 0)
+		
+		(bind ?listamala (create$))
 		
 		;;-------Precio maximo/minimo-------
 		;;0 si bien, -500 si poco mal, -2000 si mal
@@ -299,19 +298,20 @@
 		(bind ?margin (- ?pmax ?pmin))
 		(bind ?margin (* ?margin 0.2))
 		
+		
+	   
 		(if  (and (>= ?curr-precio ?pmin) (<= ?curr-precio ?pmax)) 
 			then (bind ?puntuacion(+ ?puntuacion 0))
 			else 
 			(if (and (>= ?curr-precio (- ?pmin ?margin)) (<= ?curr-precio (+ ?pmax ?margin)))
 				then (bind ?puntuacion (- ?puntuacion 500))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "precio poco adecuado"))	 
 				else (bind ?puntuacion (- ?puntuacion 1000))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "precio no adecuado"))	
 			)
 		)
-		
+			
 		(printout t "puntuacion precio: " ?puntuacion crlf)
-		
-		;;(bind ?diferencia (- ?pmax ?curr-precio))
-		;;(bind ?puntuacion (+ ?puntuacion ?diferencia))
 		
 		;;Numero Dormitorios (si no se pregunta nada no se punctua, si se pregunta si puntua mal cuel que tiene mas, y mucho mal cuel que tiene menor)
 		;;(bind ?curr-dobles (send ?curr-obj get-dDobles))
@@ -332,16 +332,21 @@
 			)
 		)
 
-		(bind ?sol-d (+ ?dDobles ?dSimples))
+		(bind ?total-pers (+ (* ?curr-dobles 2) ?curr-simples))
+		
+		
+		(if (< ?total-pers ?npers)
+			then (bind ?puntuacion(- ?puntuacion 1000))
+		
 		(if  (and (eq ?dDobles 0) (eq ?dSimples 0)) 
 			then (bind ?puntuacion(+ ?puntuacion 0))
 			else 
-			(if (or (< ?dDobles ?curr-dobles ) (< ?dSimples ?curr-simples )) 
+			(if (or (< ?curr-dobles ?dDobles) (< ?curr-simples ?dSimples)) 
 				then (bind ?puntuacion (- ?puntuacion 1000))
 				else
-				(if (and (eq ?curr-dobles ?dDobles) (eq ?curr-simples ?dSimples))
-					then (bind ?puntuacion (+ ?puntuacion 0))
-					else (bind ?puntuacion (- ?puntuacion 500)
+				(if (or (> ?curr-dobles ?dDobles) (> ?curr-simples ?dSimples ))
+					then (bind ?puntuacion (+ ?puntuacion 10))
+						 
 		))))
 
 		(printout t "puntuacion dorms: " ?puntuacion crlf)
@@ -349,36 +354,79 @@
 		
 		;;-----NecesitaGaraje-------
 		(bind ?curr-garaje (send ?curr-obj get-Garaje))
-
 		(if (eq ?garaje TRUE)
 			then
 				(if (eq ?curr-garaje FALSE)
 					then (bind ?puntuacion (- ?puntuacion 1000))
-					else (bind ?puntuacion (+ ?puntuacion 10)) ;;Extra
 				)
 			else
 				(if (eq ?curr-garaje TRUE)
-				then (bind ?puntuacion (+ ?puntuacion 10)) ;;Extra
+				then 
+					(if (eq ?coche TRUE) 
+					then (bind ?puntuacion (+ ?puntuacion 10))
+					else (bind ?puntuacion (+ ?puntuacion 5))
+					;;Guardar justificacion
+					)
 				)
 		)
 		
 		(printout t "puntuacion garaje: " ?puntuacion crlf)
 		
 		;;------Mascotas--------
+		(bind ?curr-mascota (send ?curr-obj get-MascotasPermitidas))
 		(if (eq ?mascota TRUE)
 			then (bind ?n (parque-mascotas-dist ?curr-obj)) 
-			     (bind ?puntuacion (+ ?puntuacion (+ -500 (* ?n 500))))
+				(switch ?n
+					(case 0 then (- ?puntuacion 500))
+					(case 1 then (+ ?puntuacion 5))
+					(case 2 then (+ ?puntuacion 10))
+				)
+				 (if (not(eq ?curr-mascota TRUE))
+					then (bind ?puntuacion (- ?puntuacion 1000))
+				 )
 		)
 
 		(printout t "puntuacion mascota: " ?puntuacion crlf)
 
+		;;---------Ascensor------------
+		(bind ?curr-ascensor (send ?curr-obj get-Ascensor))
 		
-
-		;(printout t "margin" ?margin crlf)
-
+		;;Si hay persona minusvalida y no hay ascenor penalizamos mucho
+		(if (eq ?minusvalida TRUE)
+			then 
+				(if (eq ?curr-ascensor TRUE)
+					then (bind ?puntuacion (+ ?puntuacion 10))
+					else then (bind ?puntuacion (- ?puntuacion 1000))
+				)
+			else 
+				(if (eq ?curr-ascensor TRUE)
+					then (bind ?puntuacion (+ ?puntuacion 10))
+					;;Extra justificacion
+				)
+		)
+		
+		;;Si no hay persona minusvalida pero hay persona mayor y no hay ascenor penalizamos pero no tanto
+		(if (and (eq ?persmayor TRUE) (eq ?minusvalida FALSE))
+			then 
+				(if (eq ?curr-ascensor TRUE)
+					then (bind ?puntuacion (+ ?puntuacion 1000))
+					else then (bind ?puntuacion (- ?puntuacion 700))
+				)
+			else 
+				(if (eq ?curr-ascensor TRUE)
+					then (bind ?puntuacion (+ ?puntuacion 100))
+					;;Extra justificacion
+				)
+		)
+		
+		(printout t "puntuacion ascensor: " ?puntuacion crlf)
+		
+		
 		;;La guardamos como clase de tipo "candidato"
 		(printout t "Puntuacion final: " ?puntuacion crlf)
 		(make-instance (gensym) of Candidato (Viv ?curr-obj) (Puntuacion ?puntuacion))
+		
+		
 	)	
 
 

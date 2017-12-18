@@ -1,4 +1,4 @@
-; Sun Dec 17 21:30:36 CET 2017
+; Mon Dec 18 20:41:54 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -94,12 +94,21 @@
 		[Ontologia_Class20008]
 		[Ontologia_Class20010]
 		[Ontologia_Class20012]
-		[Ontologia_Class20016])
+		[Ontologia_Class20016]
+		[Ontologia_Class10012]
+		[Ontologia_Class20008]
+		[Ontologia_Class20010])
 	(NombreBarrio "BarrioEjemplo (Sin Unifamiliar)")
 	(ofrece
 		[Ontologia_Class10004]
 		[Ontologia_Class10007]
-		[Ontologia_Class10009])
+		[Ontologia_Class10009]
+		[Ontologia_Class10004]
+		[Ontologia_Class20000]
+		[Ontologia_Class10005]
+		[Ontologia_Class20049]
+		[Ontologia_Class10006]
+		[Ontologia_Class20050])
 	(Precio_General 1200))
 
 ([Ontologia_Class10012] of  Duplex
@@ -305,11 +314,33 @@
 
 	(contiene
 		[Ontologia_Class20021]
-		[Ontologia_Class20025])
+		[Ontologia_Class20025]
+		[Ontologia_Class0]
+		[Ontologia_Class20010]
+		[Ontologia_Class20033]
+		[Ontologia_Class60000])
 	(NombreBarrio "BarrioEjemplo (solo monolocal)")
 	(ofrece
 		[Ontologia_Class20029]
-		[Ontologia_Class20030])
+		[Ontologia_Class20030]
+		[Ontologia_Class20002]
+		[Ontologia_Class20003]
+		[Ontologia_Class30004]
+		[Ontologia_Class10007]
+		[Ontologia_Class20047]
+		[Ontologia_Class30011]
+		[Ontologia_Class30012]
+		[Ontologia_Class10008]
+		[Ontologia_Class50004]
+		[Ontologia_Class50007]
+		[Ontologia_Class50009]
+		[Ontologia_Class10007]
+		[Ontologia_Class30011]
+		[Ontologia_Class30014]
+		[Ontologia_Class50001]
+		[Ontologia_Class30001]
+		[Ontologia_Class40000]
+		[Ontologia_Class40003])
 	(Precio_General 1000))
 
 ([Ontologia_Class20021] of  Unifamiliar
@@ -410,14 +441,31 @@
 	(contiene
 		[Ontologia_Class20033]
 		[Ontologia_Class20040]
-		[Ontologia_Class20044])
+		[Ontologia_Class20044]
+		[Ontologia_Class60001]
+		[Ontologia_Class60002]
+		[Ontologia_Class60003])
 	(NombreBarrio "BarrioCiudad2")
 	(ofrece
 		[Ontologia_Class20047]
 		[Ontologia_Class20048]
 		[Ontologia_Class20049]
 		[Ontologia_Class20050]
-		[Ontologia_Class20051])
+		[Ontologia_Class20051]
+		[Ontologia_Class30006]
+		[Ontologia_Class50002]
+		[Ontologia_Class50003]
+		[Ontologia_Class10009]
+		[Ontologia_Class40000]
+		[Ontologia_Class40002]
+		[Ontologia_Class10008]
+		[Ontologia_Class50005]
+		[Ontologia_Class50008]
+		[Ontologia_Class50010]
+		[Ontologia_Class10007]
+		[Ontologia_Class30013]
+		[Ontologia_Class30014]
+		[Ontologia_Class30017])
 	(Precio_General 800))
 
 ([Ontologia_Class20033] of  Duplex
@@ -600,8 +648,27 @@
 
 	(contiene
 		[Ontologia_Class20053]
-		[Ontologia_Class20058])
+		[Ontologia_Class20058]
+		[Ontologia_Class0]
+		[Ontologia_Class70004]
+		[Ontologia_Class70005])
 	(NombreBarrio "BarrioCaroCiudad2")
+	(ofrece
+		[Ontologia_Class30007]
+		[Ontologia_Class60004]
+		[Ontologia_Class60005]
+		[Ontologia_Class60006]
+		[Ontologia_Class10009]
+		[Ontologia_Class40006]
+		[Ontologia_Class40007]
+		[Ontologia_Class40008]
+		[Ontologia_Class50009]
+		[Ontologia_Class50010]
+		[Ontologia_Class20047]
+		[Ontologia_Class30012]
+		[Ontologia_Class30016]
+		[Ontologia_Class50000]
+		[Ontologia_Class50001])
 	(Precio_General 1800))
 
 ([Ontologia_Class20053] of  Piso

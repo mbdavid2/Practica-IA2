@@ -337,6 +337,236 @@
 	?n
 )
 
+;; 2: Ocio < 500m, 1: Ocio < 2000m, 0: No hay ocio cerca
+;; cualcuier tipo de ocio
+(deffunction ocio-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?ocio (find-all-instances ((?inst Ocio)) TRUE))
+	(while (and (<= ?i (length$ ?ocio)) (< ?n 2)) do
+		(bind ?s (nth$ ?i ?ocio))
+		(bind ?xs (send ?s get-UbicacionX))
+		(bind ?ys (send ?s get-UbicacionY))
+		(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+		(if (<= ?dist 500) 
+			then (bind ?n 2)
+			else 
+				(if (<= ?dist 2000) 
+					then (bind ?n 1)
+				)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: Comercio < 500m, 1: Comercio < 2000m, 0: No hay comercio cerca
+;; cualcuier tipo de comercio
+;; si h es true se buscan solo las instancias activas 24h
+(deffunction comercio-dist (?vivienda ?h)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?comercio (find-all-instances ((?inst Comercio)) TRUE))
+	(if (eq ?h FALSE)
+	then
+		(while (and (<= ?i (length$ ?comercio)) (< ?n 2)) do
+			(bind ?s (nth$ ?i ?comercio))
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 500) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 2000) 
+						then (bind ?n 1)
+					)
+			)
+			(bind ?i (+ ?i 1))
+		)
+	else
+		
+		
+		(while (and (<= ?i (length$ ?comercio)) (< ?n 2)) do
+			(bind ?s (nth$ ?i ?comercio))
+			(bind ?if (send ?s get-Horario))
+			(if (eq ?if 24h) then
+				(bind ?xs (send ?s get-UbicacionX))
+				(bind ?ys (send ?s get-UbicacionY))
+				(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+				(if (<= ?dist 500) 
+					then (bind ?n 2)
+					else 
+						(if (<= ?dist 2000) 
+							then (bind ?n 1)
+						)
+				)
+			)
+			(bind ?i (+ ?i 1))
+		)
+	)
+	?n
+)
+
+;; 2: Transporte < 500m, 1: Transporte < 1000m, 0: No hay transporte cerca
+;; cualcuier tipo de transporte
+;; si 24h es true se buscan solo las istancias activas h
+(deffunction transporte-dist (?vivienda ?h)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?transporte (find-all-instances ((?inst Transp_Publico)) TRUE))
+	(if (eq ?h FALSE)
+	then
+		(while (and (<= ?i (length$ ?transporte)) (< ?n 2)) do
+			(bind ?s (nth$ ?i ?transporte))
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 500) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 1000) 
+						then (bind ?n 1)
+					)
+			)
+			(bind ?i (+ ?i 1))
+		)
+	else
+		(while (and (<= ?i (length$ ?transporte)) (< ?n 2)) do
+			(bind ?s (nth$ ?i ?transporte))
+			(bind ?if (send ?s get-Disponible24h))
+			(if (eq ?if TRUE) then
+				(bind ?xs (send ?s get-UbicacionX))
+				(bind ?ys (send ?s get-UbicacionY))
+				(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+				(if (<= ?dist 500) 
+					then (bind ?n 2)
+					else 
+						(if (<= ?dist 1000) 
+							then (bind ?n 1)
+						)
+				)
+			)
+			(bind ?i (+ ?i 1))
+		)
+	)
+	?n
+)
+
+;; Servicios cerca
+;; 3:muchos servicios y muy cercanos, 2:mucho servicios, 1: muchos servicios acesible, 0: Poco servicios cerca
+(deffunction servicio-dist (?vivienda)	
+	(bind ?numero 0)
+	(bind ?cercanos 0)
+	(bind ?n (salud-dist ?vivienda))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 (bind ?cercanos (+ ?cercanos 0)))
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 0)))
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 0)))
+					(case 3 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 1)))
+				)
+
+	
+	(bind ?n (ocio-dist ?vivienda))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 2))
+								 )
+	)
+	
+	(bind ?n (comercio-dist ?vivienda FALSE))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 2))
+								 )
+	)
+	
+	(bind ?n (transporte-dist ?vivienda FALSE))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 0))
+								 )
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 (bind ?cercanos (+ ?cercanos 2))
+								 )
+	)
+	
+	(if (>= ?cercanos 3) then (bind ?n 3)
+						else (if (and (>= ?numero 3)(>= ?cercanos 1))
+								then (bind ?n 2)
+								else (if (>= ?numero 2)
+										then (bind ?n 1)
+										else (bind ?n 0)
+									 )
+							 )
+	)
+	
+	?n
+)
+
+;; Servicios cerca
+;; 2:muchos servicios 24h, 1: algun servicios 24h, 0: ningun servicio 24h
+(deffunction servicios-trabaja (?vivienda)	
+	(bind ?numero 0)
+	
+	(bind ?n (comercio-dist ?vivienda TRUE))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 )
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 )
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 )
+	)
+	
+	(bind ?n (transporte-dist ?vivienda TRUE))
+	(switch ?n
+					(case 0 then (bind ?numero (+ ?numero 0))
+								 )
+					(case 1 then (bind ?numero (+ ?numero 1))
+								 )
+					(case 2 then (bind ?numero (+ ?numero 1))
+								 )
+	)
+	
+	(if (>= ?numero 2) 
+		then (bind ?n 2)
+		else (if (>= ?numero 1)
+				then (bind ?n 1)
+				else (bind ?n 0)
+			 )
+	)
+	
+	?n
+)
+
 ;;;------------------DEFTEMPLATES Y CLASES PARA GUARDAR INFO--------------------
 
 (defclass Candidato
@@ -679,6 +909,22 @@
 				)
 		) 
 		
+		;;------Trabaja--------
+		;; Valutamos bien si tiene servicios 24h cerca
+		(if (eq ?trabaja TRUE)
+			then
+				(bind ?n (servicios-trabaja ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 20)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene servicios 24h")))
+					(case 1 then (+ ?puntuacion 0)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene servicios 24h cerca")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos servicios 24h cerca")))
+				)
+		) 
+		
+		
 		;;---------Salud------------
 		(if (or (eq ?persmayor TRUE) (eq ?minusvalida TRUE))
 			then
@@ -742,7 +988,25 @@
 					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
 				)
 		)
-				
+		
+		
+		;;---------Puntuacion general------------
+		
+		;;Servicios cercanos
+		(bind ?n (servicio-dist ?curr-obj)) 
+		(switch ?n
+			(case 0 then (- ?puntuacion 10)
+				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Tiene poco servicios cerca")))
+			(case 1 then (+ ?puntuacion 0)
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun servicios cerca")))
+			(case 2 then (+ ?puntuacion 10)
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho servicios cerca y algun es muy cerca")))
+			(case 3 then (+ ?puntuacion 20)
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho servicios muy cerca")))
+		)
+		
+		
+		
 		
 		;;La guardamos como clase de tipo "candidato" -> la subclase es segun la puntuación que ha obtenido
 		(if (> ?puntuacion 0) then (make-instance (gensym) of MuyAdecuada (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesBuenas ?listabuena)))

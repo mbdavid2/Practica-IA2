@@ -1,4 +1,4 @@
-; Mon Dec 18 20:41:54 CET 2017
+; Tue Dec 19 00:01:43 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -125,7 +125,7 @@
 	(N_Ba%C3%B1os 2)
 	(NombreVivienda "ViviendaEjemplo")
 	(Piscina TRUE)
-	(Preu 45421)
+	(Preu 5421)
 	(Superficie_Total 60)
 	(Terraza TRUE)
 	(tiene
@@ -133,7 +133,10 @@
 		[Ontologia_Class1]
 		[Ontologia_Class2]
 		[Ontologia_Class3]
-		[Ontologia_Class20004])
+		[Ontologia_Class20004]
+		[Ontologia_Class20004]
+		[Ontologia_Class20005]
+		[Ontologia_Class20006])
 	(UbicacionX 34)
 	(UbicacionY 123))
 
@@ -1184,6 +1187,58 @@
 	(TipoComercio Alimentacion)
 	(UbicacionX 1310)
 	(UbicacionY 4575))
+
+([Ontologia_Class70001] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 40)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 2)
+	(NombreVivienda "Familia2")
+	(Piscina TRUE)
+	(Preu 2000)
+	(Superficie_Total 100)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class10013]
+		[Ontologia_Class20004]
+		[Ontologia_Class20006]
+		[Ontologia_Class20007]
+		[Ontologia_Class20011]
+		[Ontologia_Class20014])
+	(UbicacionX 727)
+	(UbicacionY 3321))
+
+([Ontologia_Class70002] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 50)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Familia1")
+	(Preu 3000)
+	(Superficie_Total 70)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20027]
+		[Ontologia_Class20028]
+		[Ontologia_Class20037]
+		[Ontologia_Class20039]
+		[Ontologia_Class20042]
+		[Ontologia_Class20045])
+	(UbicacionX 1000)
+	(UbicacionY 4312))
 
 ([Ontologia_Class70004] of  Duplex
 

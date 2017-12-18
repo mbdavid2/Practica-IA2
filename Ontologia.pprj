@@ -1,4 +1,4 @@
-; Mon Dec 18 20:41:54 CET 2017
+; Tue Dec 19 00:01:43 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,9 +20,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class34]
-		[Ontologia_ProjectKB_Class35]
-		[Ontologia_ProjectKB_Class36]))
+		[Ontologia_ProjectKB_Class10146]
+		[Ontologia_ProjectKB_Class10147]
+		[Ontologia_ProjectKB_Class10148]))
 
 ([CLSES_TAB] of  Widget
 
@@ -66,7 +66,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_643982_Class3] of  Map
+([KB_684009_Class3] of  Map
 )
 
 ([KB_738170_Class0] of  String
@@ -77,9 +77,9 @@
 ([KB_738170_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class37]
-		[Ontologia_ProjectKB_Class38]
-		[Ontologia_ProjectKB_Class39]))
+		[Ontologia_ProjectKB_Class10149]
+		[Ontologia_ProjectKB_Class10150]
+		[Ontologia_ProjectKB_Class10151]))
 
 ([KB_738170_Class10] of  Property_List
 )
@@ -502,36 +502,36 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class34] of  String
+([Ontologia_ProjectKB_Class10146] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ontologia_ProjectKB_Class35] of  String
+([Ontologia_ProjectKB_Class10147] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Ontologia_ProjectKB_Class36] of  String
+([Ontologia_ProjectKB_Class10148] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ontologia_ProjectKB_Class37] of  Map_Entry
+([Ontologia_ProjectKB_Class10149] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class38] of  Map_Entry
+([Ontologia_ProjectKB_Class10150] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class39] of  Map_Entry
+([Ontologia_ProjectKB_Class10151] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")

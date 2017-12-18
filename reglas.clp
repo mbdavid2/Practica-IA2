@@ -829,7 +829,7 @@
 		(bind ?curr-simples 0)
 		(progn$ (?i ?instancias_dormitorios)
 			(bind ?type (send ?i get-Simple))
-			(if (eq ?type "TRUE") 
+			(if (eq ?type FALSE) 
 				then (bind ?curr-dobles (+ ?curr-dobles 1))
 				else (bind ?curr-simples (+ ?curr-simples 1))
 			)

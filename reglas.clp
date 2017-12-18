@@ -799,10 +799,12 @@
 		(bind ?listabuena (create$))
 		
 		;;-------Precio maximo/minimo-------
-		;;0 si bien, -500 si poco mal, -1000 si mal
+		;;0 si bien, -500 si poco mal, -1000 si mal, -10000 si mucho mal
 		(bind ?curr-precio (send ?curr-obj get-Preu))
 		(bind ?margin (- ?pmax ?pmin))
+		(bind ?margin2 (+ ?margin 0.5))
 		(bind ?margin (* ?margin 0.2))
+		
 		
 		
 	   
@@ -812,8 +814,12 @@
 			(if (and (>= ?curr-precio (- ?pmin ?margin)) (<= ?curr-precio (+ ?pmax ?margin)))
 				then (bind ?puntuacion (- ?puntuacion 500))
 					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio poco adecuado"))	 
-				else (bind ?puntuacion (- ?puntuacion 1000))
-					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio no adecuado"))	
+				else (if (and (>= ?curr-precio (- ?pmin ?margin2)) (<= ?curr-precio (+ ?pmax ?margin2)))
+				      then (bind ?puntuacion (- ?puntuacion 1000))
+				      	   (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio no adecuado"))
+				      else 
+				      	   (bind ?puntacion (-? puntuacion 10000))
+				)	
 			)
 		)
 			

@@ -102,6 +102,241 @@
 	?n
 )
 
+
+
+
+
+;;Trobar si hi ha un parc cerca
+(deffunction parque_cerca 
+	(?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+	(bind ?parcs (find-instance ((?inst ZonaVerde)) 
+	(<= (+ (abs (- ?x (send ?inst get-UbicacionX))) (abs (- ?y (send ?inst get-UbicacionY)))) 500)
+	))
+	?parcs
+)
+
+;; 2: Parc < 500m, 1: Parc < 1000m, 0: No hi ha cap parc a prop
+(deffunction parque-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?zonasverdes (find-all-instances ((?inst ZonaVerde)) TRUE))
+	;;(printout t "La vivienda tiene Ubicacion : (" ?x ", " ?y "), size: " (length$ ?zonasverdes) crlf)
+	(while (and (<= ?i (length$ ?zonasverdes)) (< ?n 2)) do
+		(bind ?zv (nth$ ?i ?zonasverdes)) 
+		(bind ?xzv (send ?zv get-UbicacionX))
+		(bind ?yzv (send ?zv get-UbicacionY))
+		(bind ?dist (+ (abs (- ?x ?xzv)) (abs (- ?y ?yzv))))
+		(if (<= ?dist 500) 
+			then (bind ?n 2)
+			else 
+				(if (<= ?dist 1000) 
+					then (bind ?n 1)
+				)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: Educacion < 1000m, 1: Educacion < 3000m, 0: No hay escolas cerca 
+;; 1000m porque se puede ir a pie, 3000m porque se puede ir en bicicleta
+(deffunction educacion-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?educacion (find-all-instances ((?inst Educacion)) TRUE))
+	;;(printout t "La vivienda tiene Ubicacion : (" ?x ", " ?y "), size: " (length$ ?educacion) crlf)
+	(while (and (<= ?i (length$ ?educacion)) (< ?n 2)) do
+		(bind ?zv (nth$ ?i ?educacion)) 
+		(bind ?xzv (send ?zv get-UbicacionX))
+		(bind ?yzv (send ?zv get-UbicacionY))
+		;;(printout t "La zona verde tiene Ubicacion : (" ?xzv ", " ?yzv ")" crlf)
+		(bind ?dist (+ (abs (- ?x ?xzv)) (abs (- ?y ?yzv))))
+		(if (<= ?dist 1000) 
+			then (bind ?n 2)
+			else 
+				(if (<= ?dist 3000) 
+					then (bind ?n 1)
+				)
+			
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: Parc < 1000m, 1: Parc < 3000m, 0: No hay teatros cerca
+;; distancias para pies/bicicleta (consideramos que no estan muchisimo teatros en solito)
+;; ponemos teatros porque diurnos/24h porque pensamos que por la noche muchos mayores estan a dormir
+(deffunction ocio-teatro-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?ocio (find-all-instances ((?inst Ocio)) TRUE))
+	;;(printout t "La vivienda tiene Ubicacion : (" ?x ", " ?y "), size: " (length$ ?zonasverdes) crlf)
+	(while (and (<= ?i (length$ ?ocio)) (< ?n 2)) do
+		(bind ?s (nth$ ?i ?ocio))
+		(bind ?h (send ?s get-Horario))
+		(bind ?t (send ?s get-TipoOcio))
+		(if (and (eq ?t Teatro) (or (eq ?h Diurno) (eq ?h 24h))) 
+			then 
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			;;(printout t "La zona verde tiene Ubicacion : (" ?xs ", " ?ys ")" crlf)
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 1000) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 3000) 
+						then (bind ?n 1)
+					)
+			)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: Farmacia < 500m, 1: Farmacia < 2000m, 0: No hay farmacia cerca
+(deffunction farmacia-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?salud (find-all-instances ((?inst Salud)) TRUE))
+	(while (and (<= ?i (length$ ?salud)) (< ?n 2)) do
+		(bind ?s (nth$ ?i ?salud))
+		(bind ?t (send ?s get-Tipo))
+		(if (eq ?t Farmacia)  
+			then 
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 500) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 2000) 
+						then (bind ?n 1)
+					)
+			)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: Hospital < 1000m, 1: Hospital < 3000m, 0: No hay hospital cerca
+(deffunction hospital-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?salud (find-all-instances ((?inst Salud)) TRUE))
+	(while (and (<= ?i (length$ ?salud)) (< ?n 2)) do
+		(bind ?s (nth$ ?i ?salud))
+		(bind ?t (send ?s get-Tipo))
+		(if (eq ?t Hospital)  
+			then 
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 1000) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 3000) 
+						then (bind ?n 1)
+					)
+			)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; 2: CentroDeDia < 1000m, 1: CentroDeDia < 3000m, 0: No hay centrodedia cerca
+(deffunction centrodedia-dist (?vivienda)
+	(bind ?x (send ?vivienda get-UbicacionX))
+	(bind ?y (send ?vivienda get-UbicacionY))
+
+	(bind ?i 1)
+	(bind ?n 0)
+	(bind ?salud (find-all-instances ((?inst Salud)) TRUE))
+	(while (and (<= ?i (length$ ?salud)) (< ?n 2)) do
+		(bind ?s (nth$ ?i ?salud))
+		(bind ?t (send ?s get-Tipo))
+		(if (eq ?t CentroDeDia)  
+			then 
+			(bind ?xs (send ?s get-UbicacionX))
+			(bind ?ys (send ?s get-UbicacionY))
+			(bind ?dist (+ (abs (- ?x ?xs)) (abs (- ?y ?ys))))
+			(if (<= ?dist 1000) 
+				then (bind ?n 2)
+				else 
+					(if (<= ?dist 3000) 
+						then (bind ?n 1)
+					)
+			)
+		)
+		(bind ?i (+ ?i 1))
+	)
+	?n
+)
+
+;; Salud
+;; 3:muchos tipos y muy cercanos, 2:mucho tipos pero no muy cercanos, 1: no mucho tipos , 0: No hay salud cerca
+(deffunction salud-dist (?vivienda)	
+	(bind ?numero 0)
+	(bind ?cercanos 0)
+	(bind ?n (farmacia-dist ?vivienda))
+	(if (>= ?n 1)
+		then (bind ?numero (+ ?numero 1))
+			(if (>= ?n 2)
+				then (bind ?cercanos (+ ?cercanos 1))
+			)
+	)
+	
+	(bind ?n (hospital-dist ?vivienda))
+	(if (>= ?n 1)
+		then (bind ?numero (+ ?numero 1))
+			(if (>= ?n 2)
+				then (bind ?cercanos (+ ?cercanos 1))
+			)
+	)
+	
+	(bind ?n (centrodedia-dist ?vivienda))
+	(if (>= ?n 1)
+		then (bind ?numero (+ ?numero 1))
+			(if (>= ?n 2)
+				then (bind ?cercanos (+ ?cercanos 1))
+			)
+	)
+	
+	(if (and (>= ?numero 2) (>= ?cercanos 2))
+		then (bind ?n 3)
+		else (if (>= ?numero 2)
+				then (bind ?n 2)
+				else (if (>= ?numero 1)
+						then (bind ?n 1)
+						else (bind ?n 0)
+				)
+		)
+	)
+	
+	?n
+)
+
 ;;;------------------DEFTEMPLATES Y CLASES PARA GUARDAR INFO--------------------
 
 (defclass Candidato
@@ -308,7 +543,7 @@
 		(bind ?listabuena (create$))
 		
 		;;-------Precio maximo/minimo-------
-		;;0 si bien, -500 si poco mal, -2000 si mal
+		;;0 si bien, -500 si poco mal, -1000 si mal
 		(bind ?curr-precio (send ?curr-obj get-Preu))
 		(bind ?margin (- ?pmax ?pmin))
 		(bind ?margin (* ?margin 0.2))
@@ -402,7 +637,77 @@
 				 )
 		)
 
-
+		;;------Menor Edad--------
+		;; Si hay parcs, escolas cerca vamos a punctuar mas, si no tiene nadie vamos a penalizar un poco
+		(if (eq ?menoredad TRUE)
+			then
+				;;parques
+				(bind ?n (parque-dist ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 5)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene parques cerca para los niños")))
+					(case 1 then (+ ?puntuacion 5)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene parques cerca para los niños")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene parques muy cerca para los niños")))
+				)
+				;;escolas
+				(bind ?n (educacion-dist ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 5)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene escolas cerca para los niños")))
+					(case 1 then (+ ?puntuacion 5)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escolas cerca para los niños")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escolas muy cerca para los niños")))
+				)
+		)
+		
+		;;------Mayor Edad--------
+		;; Si hay teatros cerca vamos a punctuar un poco mas
+		(if (eq ?persmayor TRUE)
+			then
+				;;teatro
+				(bind ?n (ocio-teatro-dist ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 5)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene teatros cerca")))
+					(case 1 then (+ ?puntuacion 5)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene teatros cerca")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene teatros muy cerca")))
+				)
+		) 
+		
+		;;---------Salud------------
+		(if (or (eq ?persmayor TRUE) (eq ?minusvalida TRUE))
+			then
+			;;salud
+				(bind ?n (salud-dist ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 1000)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene centros de salud cerca")))
+					(case 1 then (+ ?puntuacion 0)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun centro de salud cerca")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud cerca")))
+					(case 3 then (+ ?puntuacion 20)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud muy cerca")))
+				)
+			else 
+				;;si no tenemos mayores podemos penalizar un poco meno la absencia de salud cerca
+				(bind ?n (salud-dist ?curr-obj)) 
+				(switch ?n
+					(case 0 then (- ?puntuacion 10)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene centros de salud cerca")))
+					(case 1 then (+ ?puntuacion 0)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun centro de salud cerca")))
+					(case 2 then (+ ?puntuacion 5)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud cerca")))
+					(case 3 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud muy cerca")))
+				)
+		)
 		;;---------Ascensor------------
 		(bind ?curr-ascensor (send ?curr-obj get-Ascensor))
 		
@@ -414,6 +719,7 @@
 					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene ascensor"))
 				)
 		)
+		
 		(if (eq ?curr-ascensor TRUE)
 			then 
 			(bind ?puntuacion (+ ?puntuacion 10))
@@ -507,12 +813,6 @@
 	(printout t "Adios" crlf)
 	(retract ?p)
 )
-
-
-
-
-
-
 
 
 

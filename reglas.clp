@@ -637,6 +637,10 @@
     (slot trabaja (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
     (slot barrioTrabajo (type INSTANCE) (allowed-classes Barrio))  
     (slot quiereTranspPublico (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot quierePiscina (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot quiereTerraza (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
+    (slot superficie (type INTEGER))
+    (slot estado (type INTEGER))
 )
 
 ;;;------------------------------------MAIN--------------------------------------
@@ -701,11 +705,24 @@
  	;;Hay alguna persona minusvalida?
  	(bind ?minusvalida (pregunta-si-o-no "Hay alguna persona minusvalida?"))
 
+ 	;;Superficie
+	(bind ?if (pregunta-si-o-no "Necesitas que la vivienda tenga una superficie minima?"))
+	(if (eq ?if TRUE) 
+	then (bind ?supmin (pregunta-integer "Superficie minimo?" 0 999999999))
+	else (bind ?supmin 0) 
+	)
+
+        ;;Terraza
+        (bind ?terraza (pregunta-si-o-no "Necesitas que la vivienda tenga terraza?"))
+
+        ;;Piscina
+        (bind ?piscina (pregunta-si-o-no "Quieres que la vivienda tenga piscina?"))
+
  	;;Si trabaja, barrio en el que trabaja
  	(bind ?trabaja (pregunta-si-o-no "Trabajas?"))
-	;;(if (eq ?trabaja TRUE)
-	;;then 
-	;;	(bind ?nBarrio (pregunta-general "En que barrio trabajas?"))
+	(if (eq ?trabaja TRUE)
+	then 
+		(bind ?nBarrio (pregunta-general "En que barrio trabajas?"))
 		;;(while (not (any-instancep ((?inst Barrio)) (eq (str-compare ?Barrio:nombreBarrio ?nBarrio) 0))) 
 		;;do
 		;;	(printout t "No existe el barrio." crlf)
@@ -713,7 +730,7 @@
 		;;) 
  	;;	(bind ?barrio (find-instance ((?inst Barrio)) (= ?Barrio:NombreBarrio ?nBarrio)))
  			 ;;"BarrioCiudad2
-	;;)
+	)
 
 
 	;;Lo de arriba no funciona
@@ -734,6 +751,9 @@
  		(trabaja ?trabaja)
  		;;(barrioTrabajo ?barrio)
  		;;(quiereTranspPublico)
+ 		(superficie ?supmin)
+ 		(quiereTerraza ?terraza)
+ 		(quierePiscina ?piscina)
  		)
  	)
  	(assert (nuevo_solicitante))
@@ -752,7 +772,10 @@
  		(hayMinusvalido ?minusvalida)
 		(tieneCoche ?coche)
  		(necesitaGaraje ?garaje)
- 		(trabaja ?trabaja)) 
+ 		(trabaja ?trabaja)
+ 		(superficie ?supmin)
+ 		(quiereTerraza ?terraza)
+ 		(quierePiscina ?piscina)) 
 	?puntero <- (nuevo_solicitante)
 	=>
 	(printout t crlf)
@@ -885,11 +908,11 @@
 				(bind ?n (educacion-dist ?curr-obj)) 
 				(switch ?n
 					(case 0 then (- ?puntuacion 5)
-						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene escolas cerca para los niños")))
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene escuelas cerca para los niños")))
 					(case 1 then (+ ?puntuacion 5)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escolas cerca para los niños")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escuelas cerca para los niños")))
 					(case 2 then (+ ?puntuacion 10)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escolas muy cerca para los niños")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene escuelas muy cerca para los niños")))
 				)
 		)
 		
@@ -936,9 +959,9 @@
 					(case 1 then (+ ?puntuacion 0)
 						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun centro de salud cerca")))
 					(case 2 then (+ ?puntuacion 10)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud cerca")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos centros de salud cerca")))
 					(case 3 then (+ ?puntuacion 20)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud muy cerca")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos centros de salud muy cerca")))
 				)
 			else 
 				;;si no tenemos mayores podemos penalizar un poco meno la absencia de salud cerca
@@ -949,15 +972,15 @@
 					(case 1 then (+ ?puntuacion 0)
 						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun centro de salud cerca")))
 					(case 2 then (+ ?puntuacion 5)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud cerca")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos centros de salud cerca")))
 					(case 3 then (+ ?puntuacion 10)
-						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho centros de salud muy cerca")))
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos centros de salud muy cerca")))
 				)
 		)
 		;;---------Ascensor------------
 		(bind ?curr-ascensor (send ?curr-obj get-Ascensor))
 		
-		;;Si hay persona minusvalida y no hay ascenor penalizamos mucho
+		;;Si hay persona minusvalida y no hay ascenor penalizamos
 		(if (eq ?minusvalida TRUE)
 			then 
 				(if (eq ?curr-ascensor FALSE)
@@ -971,38 +994,93 @@
 			(bind ?puntuacion (+ ?puntuacion 10))
 			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
 		)					
-					
-		
-		;;Si no hay persona minusvalida pero hay persona mayor y no hay ascenor penalizamos pero no tanto
-		(if (and (eq ?persmayor TRUE) (eq ?minusvalida FALSE))
+
+		;;;-------Superficie------------
+		(bind ?curr-sup (send ?curr-obj get-Superficie_Total))
+		(if (< ?curr-sup ?supmin)
 			then 
-				(if (eq ?curr-ascensor TRUE)
-					then (bind ?puntuacion (+ ?puntuacion 1000))
-					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
-					else (bind ?puntuacion (- ?puntuacion 700))
-					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene ascensor"))
-				)
-			else 
-				(if (eq ?curr-ascensor TRUE)
-					then (bind ?puntuacion (+ ?puntuacion 100))
-					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
-				)
+				(bind ?puntuacion (- ?puntuacion 1000))
+				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Tiene menos superficie de la deseada"))
+			
+		)
+		(if (> ?curr-sup ?supmin)
+			then 
+				(bind ?puntuacion (+ ?puntuacion 10))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene superficie extra"))
+			
+		)
+
+		;;;-------Piscina------------
+		(bind ?curr-piscina (send ?curr-obj get-Piscina))
+		(if (and (eq ?curr-piscina FALSE) (eq ?piscina TRUE))
+			then 
+				(bind ?puntuacion (- ?puntuacion 1000))
+				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene piscina"))
+			
+		)
+		(if (and (eq ?curr-piscina TRUE) (eq ?piscina FALSE))
+			then 
+				(bind ?puntuacion (+ ?puntuacion 10))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene piscina"))
+			
+		)
+
+		;;;-------Terraza------------
+		(bind ?curr-terraza (send ?curr-obj get-Terraza))
+		(if (and (eq ?curr-terraza FALSE) (eq ?terraza TRUE))
+			then 
+				(bind ?puntuacion (- ?puntuacion 1000))
+				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene terraza"))
+			
+		)
+		(if (and (eq ?curr-terraza TRUE) (eq ?terraza FALSE))
+			then 
+				(bind ?puntuacion (+ ?puntuacion 10))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene terraza"))
+			
 		)
 		
-		
+		;;;-------Estado de la vivienda------------
+		(bind ?curr-estado (send ?curr-obj get-Estado)) 
+
+		(if (eq ?curr-estado "nuevo") then 
+			(+ ?puntuacion 10)
+			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Esta nueva"))
+		)
+
+		(if (eq ?curr-estado "reformar") then 
+			(- ?puntuacion 200)
+			(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Necesita reformas"))
+		)
+
+
+
+		;(switch ?curr-estado
+		;	(case "nuevo" then 
+			;	(+ ?puntuacion 10)
+			;	(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Esta nueva"))
+			;)
+			;(case "reformar" then 
+			;	(- ?puntuacion 300)
+			;	(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Neceista reformas"))
+			;)
+		;)
+
+
+
 		;;---------Puntuacion general------------
 		
 		;;Servicios cercanos
 		(bind ?n (servicio-dist ?curr-obj)) 
 		(switch ?n
 			(case 0 then (- ?puntuacion 10)
-				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Tiene poco servicios cerca")))
+				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Tiene pocos servicios cerca")))
 			(case 1 then (+ ?puntuacion 0)
-				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algun servicios cerca")))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene algunos servicios cerca")))
 			(case 2 then (+ ?puntuacion 10)
-				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho servicios cerca y algun es muy cerca")))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos servicios cerca y algun muy cerca")))
 			(case 3 then (+ ?puntuacion 20)
-				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene mucho servicios muy cerca")))
+				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene muchos servicios muy cerca")))
 		)
 		
 		
@@ -1027,6 +1105,7 @@
 	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas muy adecuadas:" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
 		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t crlf)
 		(printout t "-> Vivienda " (+ ?total ?i) ":")
 		(print-vivienda (send ?curr get-Viv))	
 		(printout t "Cosas buenas:" crlf)
@@ -1040,6 +1119,7 @@
 	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
 		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t crlf)
 		(printout t "-> Vivienda " (+ ?total ?i) ":")
 		(print-vivienda (send ?curr get-Viv))
 		(printout t "______________________________" crlf)
@@ -1050,6 +1130,7 @@
 	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
 		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t crlf)
 		(printout t "-> Vivienda " (+ ?total ?i) ":")
 		(print-vivienda (send ?curr get-Viv))	
 		(printout t "Cosas malas:" crlf)
@@ -1071,6 +1152,7 @@
 			(printout t "Cosas malas:" crlf)
 			(print-justificaciones(send ?curr get-justificacionesMalas))
 			(printout t "______________________________" crlf)
+			(printout t crlf)
 		)
 	)
 	(printout t crlf)

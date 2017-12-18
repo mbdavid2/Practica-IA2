@@ -1,4 +1,4 @@
-; Tue Dec 19 00:01:43 CET 2017
+; Tue Dec 19 00:25:28 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -1187,6 +1187,30 @@
 	(TipoComercio Alimentacion)
 	(UbicacionX 1310)
 	(UbicacionY 4575))
+
+([Ontologia_Class70000] of  Unifamiliar
+
+	(Aire_Acondicionado TRUE)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Prueba3")
+	(Piscina TRUE)
+	(Preu 400)
+	(Superficie_Total 130)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20007]
+		[Ontologia_Class20006]
+		[Ontologia_Class20009]
+		[Ontologia_Class20013])
+	(UbicacionX 1567)
+	(UbicacionY 552))
 
 ([Ontologia_Class70001] of  Piso
 

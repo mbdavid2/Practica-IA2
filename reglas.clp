@@ -816,7 +816,7 @@
 				      then (bind ?puntuacion (- ?puntuacion 1000))
 				      	   (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio no adecuado"))
 				      else 
-				      	   (bind ?puntacion (- ?puntuacion 10000))
+				      	   (bind ?puntuacion (- ?puntuacion 10000))
 				)	
 			)
 		)
@@ -1155,26 +1155,25 @@
 	)
 	(bind ?total (+ ?total (length$ ?soluciones)))
 	
-	(if (eq ?total 0) then
-		(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
-		(printout t crlf)
-		(printout t "No se han encontrado viviendas adecuadas, estas son las mejores que se han encontrado:" crlf)
-		(loop-for-count (?i 1 (length$ ?soluciones)) do
-			(if (< ?n ?limit) then
-				(printout t crlf)
-				(bind ?curr (nth$ ?i ?soluciones))
-				(printout t "-> Vivienda " (+ ?total ?i) ":")
-				(print-vivienda (send ?curr get-Viv))
-				(printout t "Cosas malas:" crlf)
-				(print-justificaciones(send ?curr get-justificacionesMalas))
-				(printout t "______________________________" crlf)
-				(printout t crlf)
-				(bind ?n (+ ?n 1))
-				(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
-			)
+
+	(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
+	(printout t crlf)
+	(if (and (not (eq (length$ ?soluciones) 0)) (< ?n ?limit)) then (printout t "Otras:" crlf))
+	(loop-for-count (?i 1 (length$ ?soluciones)) do
+		(if (< ?n ?limit) then
+			(printout t crlf)
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t "-> Vivienda " (+ ?total ?i) ":")
+			(print-vivienda (send ?curr get-Viv))
+			(printout t "Cosas malas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesMalas))
+			(printout t "______________________________" crlf)
+			(printout t crlf)
+			(bind ?n (+ ?n 1))
+			(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
 		)
 	)
-
+	
 	;;Informacion adicional sobre una vivienda en concreto
 	(while (pregunta-si-o-no "Quieres ver alguna vivienda en concreto (si) o salir del sistema (no)?") do
 		(bind ?index (pregunta-integer "Cual de las viviendas quieres ver en mas detalle?" 1 ?limit))

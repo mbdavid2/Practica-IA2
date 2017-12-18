@@ -816,7 +816,7 @@
 				      then (bind ?puntuacion (- ?puntuacion 1000))
 				      	   (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio no adecuado"))
 				      else 
-				      	   (bind ?puntacion (- ?puntuacion 10000))
+				      	   (bind ?puntuacion (- ?puntuacion 10000))
 				)	
 			)
 		)

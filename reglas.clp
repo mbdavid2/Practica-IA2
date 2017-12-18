@@ -36,18 +36,18 @@
 
 (deffunction print-vivienda (?vivienda)
 				(printout t " "(instance-name ?vivienda) " " crlf)
-				(bind ?grado (send ?vivienda get-Preu))
-				(bind ?ubiX (send ?vivienda get-UbicacionX))
-				(bind ?ubiY (send ?vivienda get-UbicacionY))
-				(bind ?dormitorios (length$ (send ?vivienda get-tiene)))
-				(bind ?ascensor (send ?vivienda get-Ascensor))
+				;(bind ?grado (send ?vivienda get-Preu))
+				;(bind ?ubiX (send ?vivienda get-UbicacionX))
+				;(bind ?ubiY (send ?vivienda get-UbicacionY))
+				;(bind ?dormitorios (length$ (send ?vivienda get-tiene)))
+				;(bind ?ascensor (send ?vivienda get-Ascensor))
 
 				;;Mostramos la información de la vivienda, e indicamos las cosas distintas respecto las preferencias
 
-				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
-				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
-				(printout t " -> Tiene ascensor: " ?ascensor crlf)
-				(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
+				;(printout t " -> Precio vivienda: " ?grado " euros" crlf)
+				;(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
+				;(printout t " -> Tiene ascensor: " ?ascensor crlf)
+				;(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
 				(printout t crlf)
 )
 
@@ -55,6 +55,7 @@
 	(loop-for-count (?i 1 (length$ ?justificacionesBuenas)) do
 		(printout t " - "(nth$ ?i ?justificacionesBuenas) crlf)
 	)
+	(printout t crlf)
  )		
 
 ;;Trobar si hi ha un parc que permeti mascotes a prop
@@ -300,9 +301,6 @@
 	(loop-for-count (?i 1 (length$ $?viviendas)) do
 		;;La instancia de vivienda que vamos a tratar
 		(bind ?curr-obj (nth$ ?i ?viviendas))
-
-		(printout t "Vivienda que consideramos:")
-		(printout t " "(instance-name ?curr-obj) " " crlf)
 		
 		(bind ?puntuacion 0)
 		
@@ -322,23 +320,16 @@
 			else 
 			(if (and (>= ?curr-precio (- ?pmin ?margin)) (<= ?curr-precio (+ ?pmax ?margin)))
 				then (bind ?puntuacion (- ?puntuacion 500))
-					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "precio poco adecuado"))	 
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio poco adecuado"))	 
 				else (bind ?puntuacion (- ?puntuacion 1000))
-					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "precio no adecuado"))	
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Precio no adecuado"))	
 			)
 		)
 			
-		(printout t "puntuacion precio: " ?puntuacion crlf)
 		
-		;;Numero Dormitorios (si no se pregunta nada no se punctua, si se pregunta si puntua mal cuel que tiene mas, y mucho mal cuel que tiene menor)
-		;;(bind ?curr-dobles (send ?curr-obj get-dDobles))
-		;;(bind ?curr-simples (send ?curr-obj get-dSimples))
-		;;(bind ?curr-d (+ ?curr-dobles ?curr-simples))
-
-		;; hay que hacerlo asi pq no tenemos atributo simples y dobles, solo "tiene" que es instancia de dormitorios
-		(bind ?instancias_dormitorios (send ?curr-obj get-tiene))
-
+		
 		;;-------Dormitorios-------
+		(bind ?instancias_dormitorios (send ?curr-obj get-tiene))
 		(bind ?curr-dobles 0)
 		(bind ?curr-simples 0)
 		(progn$ (?i ?instancias_dormitorios)
@@ -354,31 +345,33 @@
 		
 		(if (< ?total-pers ?npers)
 			then (bind ?puntuacion(- ?puntuacion 1000))
-			(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "dormitorios insuficientes"))
+			(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Numero de dormitorios insuficiente"))
+		)
+		(if (> ?total-pers ?npers)
+			then (bind ?puntuacion(+ ?puntuacion 10))
+			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "En la casa pueden vivir más personas de las especificadas"))
 		)
 		
 		(if (not(and (eq ?dDobles 0) (eq ?dSimples 0))) 
 			then 		
 			(if (or (< ?curr-dobles ?dDobles) (< ?curr-simples ?dSimples)) 
 				then (bind ?puntuacion (- ?puntuacion 1000))
-					 (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "numero de dormitorios no coincide"))
-
+				     (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "El numero de dormitorios no coincide"))
 				else
 				(if (or (> ?curr-dobles ?dDobles) (> ?curr-simples ?dSimples ))
 					then (bind ?puntuacion (+ ?puntuacion 10))
-					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "dormitorios extra"))
+					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene dormitorios extra"))
 						 
 		)))
 
-		(printout t "puntuacion dorms: " ?puntuacion crlf)
-		
-		
 		;;-----NecesitaGaraje-------
 		(bind ?curr-garaje (send ?curr-obj get-Garaje))
 		(if (eq ?garaje TRUE)
 			then
 				(if (eq ?curr-garaje FALSE)
 					then (bind ?puntuacion (- ?puntuacion 1000))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene garaje"))
+
 				)
 			else
 				(if (eq ?curr-garaje TRUE)
@@ -386,28 +379,29 @@
 					(if (eq ?coche TRUE) 
 					then (bind ?puntuacion (+ ?puntuacion 10))
 					else (bind ?puntuacion (+ ?puntuacion 5))
-					;;Guardar justificacion
+					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene garaje"))
 					)
 				)
 		)
-		
-		(printout t "puntuacion garaje: " ?puntuacion crlf)
 		
 		;;------Mascotas--------
 		(bind ?curr-mascota (send ?curr-obj get-MascotasPermitidas))
 		(if (eq ?mascota TRUE)
 			then (bind ?n (parque-mascotas-dist ?curr-obj)) 
 				(switch ?n
-					(case 0 then (- ?puntuacion 500))
-					(case 1 then (+ ?puntuacion 5))
-					(case 2 then (+ ?puntuacion 10))
+					(case 0 then (- ?puntuacion 500)
+						(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene parques cerca que permitan mascotas")))
+					(case 1 then (+ ?puntuacion 5)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene parques cerca que permiten mascotas")))
+					(case 2 then (+ ?puntuacion 10)
+						(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene parques muy cerca que permiten mascotas")))
 				)
 				 (if (not(eq ?curr-mascota TRUE))
 					then (bind ?puntuacion (- ?puntuacion 1000))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No se permiten mascotas en la vivienda"))
 				 )
 		)
 
-		(printout t "puntuacion mascota: " ?puntuacion crlf)
 
 		;;---------Ascensor------------
 		(bind ?curr-ascensor (send ?curr-obj get-Ascensor))
@@ -415,99 +409,103 @@
 		;;Si hay persona minusvalida y no hay ascenor penalizamos mucho
 		(if (eq ?minusvalida TRUE)
 			then 
-				(if (eq ?curr-ascensor TRUE)
-					then (bind ?puntuacion (+ ?puntuacion 10))
-					else then (bind ?puntuacion (- ?puntuacion 1000))
-				)
-			else 
-				(if (eq ?curr-ascensor TRUE)
-					then (bind ?puntuacion (+ ?puntuacion 10))
-					;;Extra justificacion
+				(if (eq ?curr-ascensor FALSE)
+					then (bind ?puntuacion (- ?puntuacion 1000))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene ascensor"))
 				)
 		)
+		(if (eq ?curr-ascensor TRUE)
+			then 
+			(bind ?puntuacion (+ ?puntuacion 10))
+			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
+		)					
+					
 		
 		;;Si no hay persona minusvalida pero hay persona mayor y no hay ascenor penalizamos pero no tanto
 		(if (and (eq ?persmayor TRUE) (eq ?minusvalida FALSE))
 			then 
 				(if (eq ?curr-ascensor TRUE)
 					then (bind ?puntuacion (+ ?puntuacion 1000))
-					else then (bind ?puntuacion (- ?puntuacion 700))
+					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
+					else (bind ?puntuacion (- ?puntuacion 700))
+					(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "No tiene ascensor"))
 				)
 			else 
 				(if (eq ?curr-ascensor TRUE)
 					then (bind ?puntuacion (+ ?puntuacion 100))
-					;;Extra justificacion
+					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene ascensor"))
 				)
 		)
+				
 		
-		(printout t "puntuacion ascensor: " ?puntuacion crlf)
-		
-		
-		;;La guardamos como clase de tipo "candidato"
-		(printout t "Puntuacion final: " ?puntuacion crlf)
+		;;La guardamos como clase de tipo "candidato" -> la subclase es segun la puntuación que ha obtenido
 		(if (> ?puntuacion 0) then (make-instance (gensym) of MuyAdecuada (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesBuenas ?listabuena)))
 		(if (eq ?puntuacion 0) then (make-instance (gensym) of Adecuada (Viv ?curr-obj) (Puntuacion ?puntuacion)))
 		(if (and (< ?puntuacion 0) (>= ?puntuacion -2000)) then (make-instance (gensym) of ParcialmenteAdecuada (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesMalas ?listamala)(justificacionesBuenas ?listabuena)))
 		(if (< ?puntuacion -2000) then (make-instance (gensym) of Otras (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesMalas ?listamala)))
-		)	
-		(assert (mostrar_resultado))
-		)
+	)	
+	(assert (mostrar_resultado))
+	(retract ?puntero)
+)
 	
 	
-	(defrule mostrar-resultado "Muestra los resultados"
-		(mostrar_resultado)
-		=>
-		(bind ?total 0)
-		(bind ?soluciones (find-all-instances ((?inst MuyAdecuada)) TRUE))
-		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas muy adecuadas:" crlf))
+(defrule mostrar-resultado "Muestra los resultados"
+	?p <- (mostrar_resultado)
+	=>
+	(bind ?total 0)
+	(bind ?soluciones (find-all-instances ((?inst MuyAdecuada)) TRUE))
+	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas muy adecuadas:" crlf))
+	(loop-for-count (?i 1 (length$ ?soluciones)) do
+		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t "-> Vivienda " (+ ?total ?i) ":")
+		(print-vivienda (send ?curr get-Viv))	
+		(printout t "Cosas buenas:" crlf)
+		(print-justificaciones(send ?curr get-justificacionesBuenas))
+		(printout t "______________________________" crlf)
+	)
+	(bind ?total (length$ ?soluciones))
+	
+	(bind ?soluciones (find-all-instances ((?inst Adecuada)) TRUE))
+	
+	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
+	(loop-for-count (?i 1 (length$ ?soluciones)) do
+		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t "-> Vivienda " (+ ?total ?i) ":")
+		(print-vivienda (send ?curr get-Viv))
+		(printout t "______________________________" crlf)
+	)
+	(bind ?total (+ ?total (length$ ?soluciones)))
+	
+	(bind ?soluciones (find-all-instances ((?inst ParcialmenteAdecuada)) TRUE))
+	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
+	(loop-for-count (?i 1 (length$ ?soluciones)) do
+		(bind ?curr (nth$ ?i ?soluciones))
+		(printout t "-> Vivienda " (+ ?total ?i) ":")
+		(print-vivienda (send ?curr get-Viv))	
+		(printout t "Cosas malas:" crlf)
+		(print-justificaciones(send ?curr get-justificacionesMalas))
+		(printout t "Cosas buenas:" crlf)
+		(print-justificaciones(send ?curr get-justificacionesBuenas))
+		(printout t "______________________________" crlf)
+	)
+	(bind ?total (+ ?total (length$ ?soluciones)))
+	
+	(if (eq ?total 0) then
+		(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
+		(printout t "No se han encontrado viviendas adecuadas, estas son las mejores que se han encontrado:" crlf)
 		(loop-for-count (?i 1 (length$ ?soluciones)) do
+			(printout t crlf)
 			(bind ?curr (nth$ ?i ?soluciones))
-			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
-			(print-vivienda (send ?curr get-Viv))	
-			(printout t "Cosas buenas:" crlf)
-			(print-justificaciones(send ?curr get-justificacionesBuenas))
-		)
-		(bind ?total (length$ ?soluciones))
-		
-		(bind ?soluciones (find-all-instances ((?inst Adecuada)) TRUE))
-		
-		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
-		(loop-for-count (?i 1 (length$ ?soluciones)) do
-			(bind ?curr (nth$ ?i ?soluciones))
-			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
+			(printout t "-> Vivienda " (+ ?total ?i) ":")
 			(print-vivienda (send ?curr get-Viv))
-			 
-		)
-		(bind ?total (+ ?total (length$ ?soluciones)))
-		
-		(bind ?soluciones (find-all-instances ((?inst ParcialmenteAdecuada)) TRUE))
-		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
-		(loop-for-count (?i 1 (length$ ?soluciones)) do
-			(bind ?curr (nth$ ?i ?soluciones))
-			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
-			(print-vivienda (send ?curr get-Viv))	
 			(printout t "Cosas malas:" crlf)
 			(print-justificaciones(send ?curr get-justificacionesMalas))
-			(printout t "Cosas buenas:" crlf)
-			(print-justificaciones(send ?curr get-justificacionesBuenas))
+			(printout t "______________________________" crlf)
 		)
-		(bind ?total (+ ?total (length$ ?soluciones)))
-		
-		(if (eq ?total 0) then
-			(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
-			(loop-for-count (?i 1 (length$ ?soluciones)) do
-				(bind ?curr (nth$ ?i ?soluciones))
-				(printout t "Vivienda " (+ ?total ?i) ":" crlf)
-				(print-vivienda (send ?curr get-Viv))
-			)
-		)
-
-	(bind ?nuevo (pregunta-si-o-no "Quieres hacer una solicitud nueva?"))
-
-	(if (eq ?nuevo TRUE)
-		then (assert (nuevo_solicitante))
-		else (printout t "Adios!" crlf)
-	)	
+	)
+	(printout t crlf)
+	(printout t "Adios" crlf)
+	(retract ?p)
 )
 
 

@@ -36,17 +36,40 @@
 
 (deffunction print-vivienda (?vivienda)
 				(printout t " "(instance-name ?vivienda) " " crlf)
-				;(bind ?grado (send ?vivienda get-Preu))
+				(printout t crlf)
+)
+
+(deffunction print-detalles-vivienda (?vivienda)
+				(printout t " "(instance-name ?vivienda) " " crlf)
+				(bind ?grado (send ?vivienda get-Preu))
 				;(bind ?ubiX (send ?vivienda get-UbicacionX))
 				;(bind ?ubiY (send ?vivienda get-UbicacionY))
-				;(bind ?dormitorios (length$ (send ?vivienda get-tiene)))
-				;(bind ?ascensor (send ?vivienda get-Ascensor))
+				(bind ?dormitorios (length$ (send ?vivienda get-tiene)))
+				(bind ?ascensor (send ?vivienda get-Ascensor))
+				(bind ?mascotas (send ?vivienda get-MascotasPermitidas))
+				(bind ?terraza (send ?vivienda get-Terraza))
+				(bind ?piscina (send ?vivienda get-Piscina))
+				(bind ?vistas (send ?vivienda get-Buenas_Vistas))				
+				(bind ?garaje (send ?vivienda get-Garaje))
+				(bind ?jardin (send ?vivienda get-Jardin))
+				(bind ?aire (send ?vivienda get-Aire_Acondicionado))
+				(bind ?calefaccion (send ?vivienda get-Calefaccion))
+				(bind ?superficie (send ?vivienda get-Superficie_Total))
 
-				;;Mostramos la información de la vivienda, e indicamos las cosas distintas respecto las preferencias
+				(printout t " -> Precio vivienda: " ?grado " euros" crlf)
+				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
+				(printout t " -> Superficie total: " ?superficie " metros cuadrados" crlf)
+				(if (eq ?ascensor TRUE) then (printout t " -> Tiene ascensor" crlf))
+				(if (eq ?mascotas TRUE) then (printout t " -> Permite mascotas" crlf))
+				(if (eq ?piscina TRUE) then (printout t " -> Tiene piscina" crlf))
+				(if (eq ?vistas TRUE) then (printout t " -> Tiene buenas vistas" crlf))
+				(if (eq ?garaje TRUE) then (printout t " -> Tiene garaje" crlf))
+				(if (eq ?jardin TRUE) then (printout t " -> Tiene jardin" crlf))
+				(if (eq ?aire TRUE) then (printout t " -> Tiene aire acondicionado" crlf))
+				(if (eq ?terraza TRUE) then (printout t " -> Tiene terraza" crlf))
+				(if (eq ?calefaccion TRUE) then (printout t " -> Tiene calefaccion" crlf))
+				
 
-				;(printout t " -> Precio vivienda: " ?grado " euros" crlf)
-				;(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
-				;(printout t " -> Tiene ascensor: " ?ascensor crlf)
 				;(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
 				(printout t crlf)
 )
@@ -101,10 +124,6 @@
 	)
 	?n
 )
-
-
-
-
 
 ;;Trobar si hi ha un parc cerca
 (deffunction parque_cerca 
@@ -718,22 +737,8 @@
         ;;Piscina
         (bind ?piscina (pregunta-si-o-no "Quieres que la vivienda tenga piscina?"))
 
- 	;;Si trabaja, barrio en el que trabaja
+ 	;;Si trabaja
  	(bind ?trabaja (pregunta-si-o-no "Trabajas?"))
-	(if (eq ?trabaja TRUE)
-	then 
-		(bind ?nBarrio (pregunta-general "En que barrio trabajas?"))
-		;;(while (not (any-instancep ((?inst Barrio)) (eq (str-compare ?Barrio:nombreBarrio ?nBarrio) 0))) 
-		;;do
-		;;	(printout t "No existe el barrio." crlf)
-		;;	(bind ?nBarrio (pregunta-general "En que barrio trabajas?"))
-		;;) 
- 	;;	(bind ?barrio (find-instance ((?inst Barrio)) (= ?Barrio:NombreBarrio ?nBarrio)))
- 			 ;;"BarrioCiudad2
-	)
-
-
-	;;Lo de arriba no funciona
 
  	(retract ?puntero)
  	(assert (PrefSolicitantes 
@@ -749,8 +754,6 @@
 		(tieneCoche ?coche)
  		(necesitaGaraje ?garaje)
  		(trabaja ?trabaja)
- 		;;(barrioTrabajo ?barrio)
- 		;;(quiereTranspPublico)
  		(superficie ?supmin)
  		(quiereTerraza ?terraza)
  		(quierePiscina ?piscina)
@@ -837,7 +840,7 @@
 		)
 		(if (> ?total-pers ?npers)
 			then (bind ?puntuacion(+ ?puntuacion 10))
-			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "En la casa pueden vivir más personas de las especificadas"))
+			(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "En la casa pueden vivir mas personas de las especificadas"))
 		)
 		
 		(if (not(and (eq ?dDobles 0) (eq ?dSimples 0))) 
@@ -1003,7 +1006,7 @@
 				(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Tiene menos superficie de la deseada"))
 			
 		)
-		(if (> ?curr-sup ?supmin)
+		(if (and (> ?curr-sup ?supmin) (> ?supmin 0))
 			then 
 				(bind ?puntuacion (+ ?puntuacion 10))
 				(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Tiene superficie extra"))
@@ -1053,21 +1056,6 @@
 			(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Necesita reformas"))
 		)
 
-
-
-		;(switch ?curr-estado
-		;	(case "nuevo" then 
-			;	(+ ?puntuacion 10)
-			;	(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "Esta nueva"))
-			;)
-			;(case "reformar" then 
-			;	(- ?puntuacion 300)
-			;	(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "Neceista reformas"))
-			;)
-		;)
-
-
-
 		;;---------Puntuacion general------------
 		
 		;;Servicios cercanos
@@ -1100,63 +1088,98 @@
 (defrule mostrar-resultado "Muestra los resultados"
 	?p <- (mostrar_resultado)
 	=>
+	(bind ?if (pregunta-si-o-no "Quieres ver los cinco mejores candidatos (si) o todos (no)?"))
+	(if (eq ?if FALSE)
+		then (bind ?limit (length$ (find-all-instances ((?inst Candidato)) TRUE)))
+		else (bind ?limit 5)
+	)
+	(bind ?n 0)
 	(bind ?total 0)
 	(bind ?soluciones (find-all-instances ((?inst MuyAdecuada)) TRUE))
-	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas muy adecuadas:" crlf))
+
+	(bind ?listacinco (create$))
+
+	(printout t crlf)
+	(if (and (not (eq (length$ ?soluciones) 0)) (< ?n ?limit)) then (printout t "-------------Viviendas muy adecuadas-------------" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
-		(bind ?curr (nth$ ?i ?soluciones))
-		(printout t crlf)
-		(printout t "-> Vivienda " (+ ?total ?i) ":")
-		(print-vivienda (send ?curr get-Viv))	
-		(printout t "Cosas buenas:" crlf)
-		(print-justificaciones(send ?curr get-justificacionesBuenas))
-		(printout t "______________________________" crlf)
+		(if (< ?n ?limit) then
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t crlf)
+			(printout t "-> Vivienda " (+ ?total ?i) ":")
+			(print-vivienda (send ?curr get-Viv))	
+			(printout t "Cosas buenas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesBuenas))
+			(printout t "______________________________" crlf)
+			(bind ?n (+ ?n 1))
+			(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
+		)
 	)
 	(bind ?total (length$ ?soluciones))
 	
 	(bind ?soluciones (find-all-instances ((?inst Adecuada)) TRUE))
-	
-	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
+	(printout t crlf)
+	(if (and (not (eq (length$ ?soluciones) 0)) (< ?n ?limit)) then (printout t "-------------Viviendas adecuadas-------------" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
-		(bind ?curr (nth$ ?i ?soluciones))
-		(printout t crlf)
-		(printout t "-> Vivienda " (+ ?total ?i) ":")
-		(print-vivienda (send ?curr get-Viv))
-		(printout t "______________________________" crlf)
+		(if (< ?n ?limit) then
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t crlf)
+			(printout t "-> Vivienda " (+ ?total ?i) ":")
+			(print-vivienda (send ?curr get-Viv))
+			(printout t "______________________________" crlf)
+			(bind ?n (+ ?n 1))
+			(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
+		)
 	)
 	(bind ?total (+ ?total (length$ ?soluciones)))
-	
+	(printout t crlf)
 	(bind ?soluciones (find-all-instances ((?inst ParcialmenteAdecuada)) TRUE))
-	(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
+	(if (and (not (eq (length$ ?soluciones) 0)) (< ?n ?limit)) then (printout t "-------------Viviendas parcialmente adecuadas-------------" crlf))
 	(loop-for-count (?i 1 (length$ ?soluciones)) do
-		(bind ?curr (nth$ ?i ?soluciones))
-		(printout t crlf)
-		(printout t "-> Vivienda " (+ ?total ?i) ":")
-		(print-vivienda (send ?curr get-Viv))	
-		(printout t "Cosas malas:" crlf)
-		(print-justificaciones(send ?curr get-justificacionesMalas))
-		(printout t "Cosas buenas:" crlf)
-		(print-justificaciones(send ?curr get-justificacionesBuenas))
-		(printout t "______________________________" crlf)
+		(if (< ?n ?limit) then
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t crlf)
+			(printout t "-> Vivienda " (+ ?total ?i) ":")
+			(print-vivienda (send ?curr get-Viv))	
+			(printout t "Cosas malas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesMalas))
+			(printout t "Cosas buenas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesBuenas))
+			(printout t "______________________________" crlf)
+			(bind ?n (+ ?n 1))
+			(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
+		)
 	)
 	(bind ?total (+ ?total (length$ ?soluciones)))
 	
 	(if (eq ?total 0) then
 		(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
+		(printout t crlf)
 		(printout t "No se han encontrado viviendas adecuadas, estas son las mejores que se han encontrado:" crlf)
 		(loop-for-count (?i 1 (length$ ?soluciones)) do
-			(printout t crlf)
-			(bind ?curr (nth$ ?i ?soluciones))
-			(printout t "-> Vivienda " (+ ?total ?i) ":")
-			(print-vivienda (send ?curr get-Viv))
-			(printout t "Cosas malas:" crlf)
-			(print-justificaciones(send ?curr get-justificacionesMalas))
-			(printout t "______________________________" crlf)
-			(printout t crlf)
+			(if (< ?n ?limit) then
+				(printout t crlf)
+				(bind ?curr (nth$ ?i ?soluciones))
+				(printout t "-> Vivienda " (+ ?total ?i) ":")
+				(print-vivienda (send ?curr get-Viv))
+				(printout t "Cosas malas:" crlf)
+				(print-justificaciones(send ?curr get-justificacionesMalas))
+				(printout t "______________________________" crlf)
+				(printout t crlf)
+				(bind ?n (+ ?n 1))
+				(bind ?listacinco (insert$ ?listacinco (+ (length$ ?listacinco) 1) ?curr))
+			)
 		)
 	)
+
+	;;Informacion adicional sobre una vivienda en concreto
+	(while (pregunta-si-o-no "Quieres ver alguna vivienda en concreto (si) o salir del sistema (no)?") do
+		(bind ?index (pregunta-integer "Cual de las viviendas quieres ver en mas detalle?" 1 ?limit))
+		(printout t crlf)
+		(print-detalles-vivienda (send (nth$ ?index ?listacinco) get-Viv))
+	)
 	(printout t crlf)
-	(printout t "Adios" crlf)
+	(printout t "Adios! Gracias por usar el sistema" crlf)
+	(printout t crlf)
 	(retract ?p)
 )
 

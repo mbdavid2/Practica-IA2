@@ -51,6 +51,12 @@
 				(printout t crlf)
 )
 
+(deffunction print-justificaciones (?justificacionesBuenas)
+	(loop-for-count (?i 1 (length$ ?justificacionesBuenas)) do
+		(printout t " - "(nth$ ?i ?justificacionesBuenas) crlf)
+	)
+ )		
+
 ;;Trobar si hi ha un parc que permeti mascotes a prop
 (deffunction parque_mascotas_cerca 
 	(?vivienda)
@@ -94,22 +100,6 @@
 	)
 	?n
 )
-
-;;; Funcion que retorna el elemento con puntuacion maxima (COPIADAAA DE OTRO FICHERO HAY QUE CAMBIAR UN POCO
-;;(deffunction maximo-puntuacion ($?lista)
-;;	(bind ?maximo -1)
-;;	(bind ?elemento nil)
-;;	(progn$ (?curr-rec $?lista)
-;;;;		(bind ?curr-cont (send ?curr-rec get-contenido))
-	;;	(bind ?curr-punt (send ?curr-rec get-puntuacion))
-	;;	(if (> ?curr-punt ?maximo)
-	;;		then 
-	;;		(bind ?maximo ?curr-punt)
-	;;		(bind ?elemento ?curr-rec)
-	;;	)
-	;;)
-	;;?elemento
-;;)
 
 ;;;------------------DEFTEMPLATES Y CLASES PARA GUARDAR INFO--------------------
 
@@ -473,7 +463,9 @@
 		(loop-for-count (?i 1 (length$ ?soluciones)) do
 			(bind ?curr (nth$ ?i ?soluciones))
 			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
-			(print-vivienda (send ?curr get-Viv))		
+			(print-vivienda (send ?curr get-Viv))	
+			(printout t "Cosas buenas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesBuenas))
 		)
 		(bind ?total (length$ ?soluciones))
 		
@@ -482,9 +474,9 @@
 		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
 		(loop-for-count (?i 1 (length$ ?soluciones)) do
 			(bind ?curr (nth$ ?i ?soluciones))
-			(bind ?curr (nth$ ?i ?soluciones))
 			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
-			(print-vivienda (send ?curr get-Viv))	
+			(print-vivienda (send ?curr get-Viv))
+			 
 		)
 		(bind ?total (+ ?total (length$ ?soluciones)))
 		
@@ -492,9 +484,12 @@
 		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
 		(loop-for-count (?i 1 (length$ ?soluciones)) do
 			(bind ?curr (nth$ ?i ?soluciones))
-			(bind ?curr (nth$ ?i ?soluciones))
 			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
 			(print-vivienda (send ?curr get-Viv))	
+			(printout t "Cosas malas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesMalas))
+			(printout t "Cosas buenas:" crlf)
+			(print-justificaciones(send ?curr get-justificacionesBuenas))
 		)
 		(bind ?total (+ ?total (length$ ?soluciones)))
 		
@@ -502,9 +497,8 @@
 			(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
 			(loop-for-count (?i 1 (length$ ?soluciones)) do
 				(bind ?curr (nth$ ?i ?soluciones))
-				
-			
-			
+				(printout t "Vivienda " (+ ?total ?i) ":" crlf)
+				(print-vivienda (send ?curr get-Viv))
 			)
 		)
 

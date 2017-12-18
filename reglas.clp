@@ -34,17 +34,13 @@
 
 ;;;---------------------------FUNCIONES AUXILIARES-------------------------------------
 
-(deffunction print-vivienda (?viviendas)
-	(if (> (length$ ?viviendas) 0)
-		then 
-			(progn$ (?i ?viviendas)
-				(printout t "Vivienda posible:")
-				(printout t " "(instance-name ?i) " " crlf)
-				(bind ?grado (send ?i get-Preu))
-				(bind ?ubiX (send ?i get-UbicacionX))
-				(bind ?ubiY (send ?i get-UbicacionY))
-				(bind ?dormitorios (length$ (send ?i get-tiene)))
-				(bind ?ascensor (send ?i get-Ascensor))
+(deffunction print-vivienda (?vivienda)
+				(printout t " "(instance-name ?vivienda) " " crlf)
+				(bind ?grado (send ?vivienda get-Preu))
+				(bind ?ubiX (send ?vivienda get-UbicacionX))
+				(bind ?ubiY (send ?vivienda get-UbicacionY))
+				(bind ?dormitorios (length$ (send ?vivienda get-tiene)))
+				(bind ?ascensor (send ?vivienda get-Ascensor))
 
 				;;Mostramos la información de la vivienda, e indicamos las cosas distintas respecto las preferencias
 
@@ -52,16 +48,11 @@
 				(printout t " -> Numero de dormitorios: " ?dormitorios crlf)
 				(printout t " -> Tiene ascensor: " ?ascensor crlf)
 				(printout t " -> Ubicacion: (" ?ubiX "," ?ubiY ")" crlf)
-				(printout t crlf))
-			
-		else 
-			(printout t "No hay ninguna vivienda que satisfazca tus condiciones" crlf)	
-	)
+				(printout t crlf)
 )
 
 ;;Trobar si hi ha un parc que permeti mascotes a prop
-(deffunction 
-	parque_mascotas_cerca 
+(deffunction parque_mascotas_cerca 
 	(?vivienda)
 	(bind ?x (send ?vivienda get-UbicacionX))
 	(bind ?y (send ?vivienda get-UbicacionY))
@@ -134,11 +125,46 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot justificaciones
+)
+
+(defclass Adecuada
+	(is-a Candidato)
+	(role concrete)
+)
+
+(defclass MuyAdecuada
+	(is-a Candidato)
+	(role concrete)
+	(multislot justificacionesBuenas
 		(type STRING)
 		(create-accessor read-write))
 )
 
+(defclass ParcialmenteAdecuada
+	(is-a Candidato)
+	(role concrete)
+	(multislot justificacionesMalas
+		(type STRING)
+		(create-accessor read-write))
+	(multislot justificacionesBuenas
+		(type STRING)
+		(create-accessor read-write))
+)
+
+(defclass Otras
+	(is-a Candidato)
+	(role concrete)
+	(multislot justificacionesMalas
+		(type STRING)
+		(create-accessor read-write))
+)
+
+(deftemplate SolucionFinal
+    (multislot MuyAdecuadas (type INSTANCE) (allowed-classes Candidato))
+	(multislot Adecuadas (type INSTANCE) (allowed-classes Candidato))
+	(multislot ParcialmenteAdecuadas (type INSTANCE) (allowed-classes Candidato))
+)
+	
 ;;; deftemplate para guardar las preferencias de los solicitantes
 (deftemplate PrefSolicitantes
     (slot preciomaximo (type INTEGER))
@@ -291,6 +317,7 @@
 		(bind ?puntuacion 0)
 		
 		(bind ?listamala (create$))
+		(bind ?listabuena (create$))
 		
 		;;-------Precio maximo/minimo-------
 		;;0 si bien, -500 si poco mal, -2000 si mal
@@ -337,17 +364,21 @@
 		
 		(if (< ?total-pers ?npers)
 			then (bind ?puntuacion(- ?puntuacion 1000))
+			(bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "dormitorios insuficientes"))
+		)
 		
-		(if  (and (eq ?dDobles 0) (eq ?dSimples 0)) 
-			then (bind ?puntuacion(+ ?puntuacion 0))
-			else 
+		(if (not(and (eq ?dDobles 0) (eq ?dSimples 0))) 
+			then 		
 			(if (or (< ?curr-dobles ?dDobles) (< ?curr-simples ?dSimples)) 
 				then (bind ?puntuacion (- ?puntuacion 1000))
+					 (bind ?listamala (insert$ ?listamala (+ (length$ ?listamala) 1) "numero de dormitorios no coincide"))
+
 				else
 				(if (or (> ?curr-dobles ?dDobles) (> ?curr-simples ?dSimples ))
 					then (bind ?puntuacion (+ ?puntuacion 10))
+					(bind ?listabuena (insert$ ?listabuena (+ (length$ ?listabuena) 1) "dormitorios extra"))
 						 
-		))))
+		)))
 
 		(printout t "puntuacion dorms: " ?puntuacion crlf)
 		
@@ -424,31 +455,58 @@
 		
 		;;La guardamos como clase de tipo "candidato"
 		(printout t "Puntuacion final: " ?puntuacion crlf)
-		(make-instance (gensym) of Candidato (Viv ?curr-obj) (Puntuacion ?puntuacion))
+		(if (> ?puntuacion 0) then (make-instance (gensym) of MuyAdecuada (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesBuenas ?listabuena)))
+		(if (eq ?puntuacion 0) then (make-instance (gensym) of Adecuada (Viv ?curr-obj) (Puntuacion ?puntuacion)))
+		(if (and (< ?puntuacion 0) (>= ?puntuacion -2000)) then (make-instance (gensym) of ParcialmenteAdecuada (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesMalas ?listamala)(justificacionesBuenas ?listabuena)))
+		(if (< ?puntuacion -2000) then (make-instance (gensym) of Otras (Viv ?curr-obj) (Puntuacion ?puntuacion) (justificacionesMalas ?listamala)))
+		)	
+		(assert (mostrar_resultado))
+		)
+	
+	
+	(defrule mostrar-resultado "Muestra los resultados"
+		(mostrar_resultado)
+		=>
+		(bind ?total 0)
+		(bind ?soluciones (find-all-instances ((?inst MuyAdecuada)) TRUE))
+		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas muy adecuadas:" crlf))
+		(loop-for-count (?i 1 (length$ ?soluciones)) do
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
+			(print-vivienda (send ?curr get-Viv))		
+		)
+		(bind ?total (length$ ?soluciones))
 		
+		(bind ?soluciones (find-all-instances ((?inst Adecuada)) TRUE))
 		
-	)	
-
-
-
-
-
-
-	;;;Version antigua 
-	(bind ?viviendas 
-		(find-all-instances ((?inst Vivienda)) 
-			(and 
-				(< ?inst:Preu ?pmax)
-				(>= (length$ (send ?inst get-tiene)) ?dSimples)
-				(not (and (eq ?minusvalida TRUE)(eq ?inst:Ascensor FALSE)))
+		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas adecuadas:" crlf))
+		(loop-for-count (?i 1 (length$ ?soluciones)) do
+			(bind ?curr (nth$ ?i ?soluciones))
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
+			(print-vivienda (send ?curr get-Viv))	
+		)
+		(bind ?total (+ ?total (length$ ?soluciones)))
+		
+		(bind ?soluciones (find-all-instances ((?inst ParcialmenteAdecuada)) TRUE))
+		(if (not (eq (length$ ?soluciones) 0)) then (printout t "Viviendas parcialmente adecuadas:" crlf))
+		(loop-for-count (?i 1 (length$ ?soluciones)) do
+			(bind ?curr (nth$ ?i ?soluciones))
+			(bind ?curr (nth$ ?i ?soluciones))
+			(printout t "Vivienda " (+ ?total ?i) ":" crlf)
+			(print-vivienda (send ?curr get-Viv))	
+		)
+		(bind ?total (+ ?total (length$ ?soluciones)))
+		
+		(if (eq ?total 0) then
+			(bind ?soluciones (find-all-instances ((?inst Otras)) TRUE))
+			(loop-for-count (?i 1 (length$ ?soluciones)) do
+				(bind ?curr (nth$ ?i ?soluciones))
+				
+			
+			
 			)
 		)
-	)
-	
-	;;(print-vivienda ?viviendas)	
-
-	(retract ?PrefSolicitantes)
-	(retract ?puntero)
 
 	(bind ?nuevo (pregunta-si-o-no "Quieres hacer una solicitud nueva?"))
 

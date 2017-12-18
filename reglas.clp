@@ -713,8 +713,6 @@
 		then (bind ?garaje (pregunta-si-o-no "Necesitas garaje?"))
 	)
 	
-
-	;;Ahora estas las usamos para "sentido comun" pero tambien hay que preguntar si es importante tener colegio cerca en este caso por ejemplo
  	;;Hay algun menor de edad?
  	(bind ?menoredad (pregunta-si-o-no "Hay algun menor de edad?"))
 

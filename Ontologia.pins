@@ -1,4 +1,4 @@
-; Tue Dec 19 00:25:28 CET 2017
+; Tue Dec 19 00:53:52 CET 2017
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -321,7 +321,8 @@
 		[Ontologia_Class0]
 		[Ontologia_Class20010]
 		[Ontologia_Class20033]
-		[Ontologia_Class60000])
+		[Ontologia_Class60000]
+		[Ontologia_Class80000])
 	(NombreBarrio "BarrioEjemplo (solo monolocal)")
 	(ofrece
 		[Ontologia_Class20029]
@@ -654,7 +655,8 @@
 		[Ontologia_Class20058]
 		[Ontologia_Class0]
 		[Ontologia_Class70004]
-		[Ontologia_Class70005])
+		[Ontologia_Class70005]
+		[Ontologia_Class80001])
 	(NombreBarrio "BarrioCaroCiudad2")
 	(ofrece
 		[Ontologia_Class30007]
@@ -1303,3 +1305,61 @@
 		[Ontologia_Class20013])
 	(UbicacionX 2311)
 	(UbicacionY 4987))
+
+([Ontologia_Class80000] of  Piso
+
+	(Aire_Acondicionado TRUE)
+	(Altura 60)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Estado nuevo)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 3)
+	(NombreVivienda "Prueba4")
+	(Piscina TRUE)
+	(Preu 40312)
+	(Superficie_Total 231)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20007]
+		[Ontologia_Class20006]
+		[Ontologia_Class20007]
+		[Ontologia_Class20009]
+		[Ontologia_Class20011]
+		[Ontologia_Class20013]
+		[Ontologia_Class20014]
+		[Ontologia_Class20017])
+	(UbicacionX 421)
+	(UbicacionY 2113))
+
+([Ontologia_Class80001] of  Unifamiliar
+
+	(Aire_Acondicionado TRUE)
+	(Ascensor TRUE)
+	(Buenas_Vistas TRUE)
+	(Calefaccion TRUE)
+	(Garaje TRUE)
+	(Jardin TRUE)
+	(MascotasPermitidas TRUE)
+	(N_Ba%C3%B1os 4)
+	(NombreVivienda "Prueba42")
+	(Piscina TRUE)
+	(Preu 60000)
+	(Superficie_Total 123)
+	(Terraza TRUE)
+	(tiene
+		[Ontologia_Class20006]
+		[Ontologia_Class20009]
+		[Ontologia_Class20014]
+		[Ontologia_Class20015]
+		[Ontologia_Class20028]
+		[Ontologia_Class20035]
+		[Ontologia_Class20037]
+		[Ontologia_Class20038]
+		[Ontologia_Class20041]
+		[Ontologia_Class20043])
+	(UbicacionX 678)
+	(UbicacionY 1298))
